@@ -83,7 +83,7 @@ public class InitLog extends HttpServlet {
 		       }
 		
 		List<String[]> list = new ArrayList<String[]>();
-		list = Init.InitLogFile("F:/test/u_ex141002.log");
+		list = Init.InitLogFile("F:/test/u_ex140929.log");
 		request.setAttribute("logList", list);
 		
 //		out.flush();

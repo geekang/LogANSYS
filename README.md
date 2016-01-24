@@ -1,3 +1,7 @@
+# Update
+
+2016-01-24 ADDED：Transform Log File into structured data(insert into MySQL).
+
 # Introduction
 
 An IIS Log analyse tool.
