@@ -1,6 +1,7 @@
 # Update
 
-2016-01-24 ADDED：Transform Log File into structured data(insert into MySQL).
+2016-01-25 ADDED:Display the description of each field at the log info table.
+2016-01-24 ADDED:Transform Log File into structured data(insert into MySQL).
 
 # Introduction
 

@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.geekang.db.MySQLConnector;
+import com.geekang.db.LogfileInfo;
+import com.geekang.util.Character;
 
 /*
  * Date：2016-01-24
@@ -27,6 +29,7 @@ public class Init {
 	/*
 	 * Date:2016-01-24 List<String[]>:The first row is the fields of this log
 	 * file.
+	 * Update:2016-01-25
 	 */
 	public static List<String[]> InitLogFile(String filePath) {
 
@@ -49,6 +52,9 @@ public class Init {
 
 					fields = new String[fieldsNum];
 					System.arraycopy(fieldsTEMP, 1, fields, 0, fieldsNum);
+					for(int i = 0; i < fields.length; i++){
+						fields[i] = LogfileInfo.getLogfileHead(Character.logFileField2DB(fields[i]));
+					}
 					list.add(fields);
 					isEntry = true;
 					continue;
