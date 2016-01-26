@@ -1,6 +1,6 @@
 package com.geekang.util;
 
-public class Character {
+public class Text {
 
 	public static String logFileField2DB(String fileHead){
 

@@ -5,16 +5,30 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.junit.Test;
+
+import com.geekang.util.Date;
+
 /**
- * Date:2016-01-25
- * Update:2016-01-25
+ * 
+ * @description Log file info related class.
  * @author Geekang
- *
+ * @date 2016年1月25日
+ * @update 2016年1月26日
+ * @version 1.0.2
  */
 public class LogfileInfo {
 
-	/*
-	 * Get log file field description from DB.
+	/**
+	 * 
+	 * 
+	 * @description Get log file field description from DB.
+	 * @author Geekang
+	 * @date 2016年1月25日
+	 * @update 2016年1月25日
+	 * @version 1.0.1
+	 * @param fileHead
+	 * @return String
 	 */
 	public static String getLogfileHead(String fileHead){
 		
@@ -45,5 +59,35 @@ public class LogfileInfo {
 			e.printStackTrace();
 		}
 		return desc;
+	}
+	
+	/**
+	 * 
+	 * 
+	 * @description Generate table name which format like "f+date_platform_hash".
+	 * @author Geekang
+	 * @date 2016年1月26日
+	 * @update 2016年1月26日
+	 * @version 1.0.1
+	 * @param filePath
+	 * @return String
+	 */
+	public static String generateTABLEName(String platform,String filePath){
+		
+		String tableName = "f";
+		tableName = tableName + Date.getDate("yyyyMMdd");
+		if(platform.startsWith("#Software: Microsoft Internet Information Services")){
+			tableName = tableName + "_" + "iis";
+		} else {
+			tableName = tableName + "_" + "unknown";
+		}
+		tableName = tableName + "_" + System.currentTimeMillis();
+
+		return tableName;
+	}
+	
+	@Test
+	public void test(){
+		System.out.println(generateTABLEName("",""));
 	}
 }

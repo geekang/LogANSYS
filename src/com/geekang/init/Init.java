@@ -13,23 +13,33 @@ import java.util.List;
 
 import com.geekang.db.MySQLConnector;
 import com.geekang.db.LogfileInfo;
-import com.geekang.util.Character;
+import com.geekang.util.Text;
 
-/*
- * Date：2016-01-24
- * Update：2016-01-24
- * Author：geekang
+/**
+ * 
+ * @description Init
+ * @author Geekang
+ * @date 2016年1月24日
+ * @update 2016年1月26日
+ * @version 1.0.2
  */
 public class Init {
 
 	public static List<String[]> list = new ArrayList<String[]>();// log row
 	public static String[] fields = {};// fields in each row
 	static int fieldsNum;// fields number
+	static String firstLine;//first line
 
-	/*
-	 * Date:2016-01-24 List<String[]>:The first row is the fields of this log
-	 * file.
-	 * Update:2016-01-25
+	/**
+	 * 
+	 * 
+	 * @description TODO
+	 * @author Geekang
+	 * @date 2016年1月24日
+	 * @update 2016年1月26日
+	 * @version 1.0.2
+	 * @param filePath
+	 * @return TODO
 	 */
 	public static List<String[]> InitLogFile(String filePath) {
 
@@ -38,13 +48,21 @@ public class Init {
 		String[] fieldsTEMP = null;
 		String[] entryTEMP = null;
 		boolean isEntry = false;
-
+		boolean isFirst = true;
+		
 		try {
 			br = new BufferedReader(new InputStreamReader(new FileInputStream(filePath)));
 
 			list.clear();
 
 			while ((byteread = br.readLine()) != null) {
+				
+				if(isFirst){
+					firstLine = byteread;
+					isFirst = false;
+				}
+				
+				
 				if (byteread.startsWith("#Fields:")) {
 					fieldsTEMP = byteread.split(" ");
 					
@@ -53,7 +71,7 @@ public class Init {
 					fields = new String[fieldsNum];
 					System.arraycopy(fieldsTEMP, 1, fields, 0, fieldsNum);
 					for(int i = 0; i < fields.length; i++){
-						fields[i] = LogfileInfo.getLogfileHead(Character.logFileField2DB(fields[i]));
+						fields[i] = LogfileInfo.getLogfileHead(Text.logFileField2DB(fields[i]));
 					}
 					list.add(fields);
 					isEntry = true;
@@ -87,24 +105,33 @@ public class Init {
 
 	}
 
-	/*
-	 * Date:2016-01-24
+	/**
+	 * 
+	 * 
+	 * @description Insert the structured data into MySQL.
+	 * @author Geekang
+	 * @date 2016年1月24日
+	 * @update 2016年1月26日
+	 * @version 1.0.2
 	 */
 	private static void SaveData2DB() {
 		
 		Connection connection;
 		String sql;
 		PreparedStatement preStmt;
+		String tableName;
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			connection = MySQLConnector.getConnect();
 			
-			sql = "CREATE TABLE IIS_u_ex140928(record_id int NOT NULL AUTO_INCREMENT,date varchar(255),time varchar(255),s_ip varchar(255),cs_method varchar(255),cs_uri_stem varchar(255),cs_uri_query varchar(255),s_port varchar(255),cs_username varchar(255),c_ip varchar(255),csUser_Agent varchar(255),sc_status varchar(255),sc_substatus varchar(255),sc_win32_status varchar(255),time_taken varchar(255),PRIMARY KEY (record_id))";
+			tableName = LogfileInfo.generateTABLEName(firstLine,"");
+			
+			sql = "CREATE TABLE " + tableName + "(record_id int NOT NULL AUTO_INCREMENT,date varchar(255),time varchar(255),s_ip varchar(255),cs_method varchar(255),cs_uri_stem varchar(255),cs_uri_query varchar(255),s_port varchar(255),cs_username varchar(255),c_ip varchar(255),csUser_Agent varchar(255),sc_status varchar(255),sc_substatus varchar(255),sc_win32_status varchar(255),time_taken varchar(255),PRIMARY KEY (record_id))";
 			preStmt = connection.prepareStatement(sql);
 			preStmt.executeUpdate();//create table
 			
-			sql = "INSERT INTO IIS_u_ex140928(date,time,s_ip,cs_method,cs_uri_stem,cs_uri_query,s_port,cs_username,c_ip,csUser_Agent,sc_status,sc_substatus,sc_win32_status,time_taken) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+			sql = "INSERT INTO " + tableName + "(date,time,s_ip,cs_method,cs_uri_stem,cs_uri_query,s_port,cs_username,c_ip,csUser_Agent,sc_status,sc_substatus,sc_win32_status,time_taken) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			connection.setAutoCommit(false);
 			preStmt = connection.prepareStatement(sql);
 			
