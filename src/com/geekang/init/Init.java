@@ -11,8 +11,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Test;
+
 import com.geekang.db.MySQLConnector;
 import com.geekang.db.LogfileInfo;
+import com.geekang.util.File;
 import com.geekang.util.Text;
 
 /**
@@ -20,8 +23,8 @@ import com.geekang.util.Text;
  * @description Init
  * @author Geekang
  * @date 2016年1月24日
- * @update 2016年1月26日
- * @version 1.0.2
+ * @update 2016年1月28日
+ * @version 1.0.3
  */
 public class Init {
 
@@ -29,6 +32,10 @@ public class Init {
 	public static String[] fields = {};// fields in each row
 	static int fieldsNum;// fields number
 	static String firstLine;//first line
+	public static String filePath;
+	public static String startTime;
+	public static String endTime;
+	static String platform;
 
 	/**
 	 * 
@@ -36,8 +43,8 @@ public class Init {
 	 * @description TODO
 	 * @author Geekang
 	 * @date 2016年1月24日
-	 * @update 2016年1月26日
-	 * @version 1.0.2
+	 * @update 2016年1月28日
+	 * @version 1.0.3
 	 * @param filePath
 	 * @return TODO
 	 */
@@ -49,12 +56,14 @@ public class Init {
 		String[] entryTEMP = null;
 		boolean isEntry = false;
 		boolean isFirst = true;
+
+		Init.filePath = filePath;
 		
 		try {
 			br = new BufferedReader(new InputStreamReader(new FileInputStream(filePath)));
 
 			list.clear();
-
+			
 			while ((byteread = br.readLine()) != null) {
 				
 				if(isFirst){
@@ -62,6 +71,9 @@ public class Init {
 					isFirst = false;
 				}
 				
+				if (byteread.startsWith("#Date:")) {
+					startTime = byteread.split(" ")[1] + " " + byteread.split(" ")[2];
+				}
 				
 				if (byteread.startsWith("#Fields:")) {
 					fieldsTEMP = byteread.split(" ");
@@ -90,7 +102,12 @@ public class Init {
 					
 					list.add(entryTEMP);
 				}
+				
 			}
+			
+			endTime = entryTEMP[0] + " " + entryTEMP[1];
+			list.add(0,LogFileInfo());
+			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -111,8 +128,8 @@ public class Init {
 	 * @description Insert the structured data into MySQL.
 	 * @author Geekang
 	 * @date 2016年1月24日
-	 * @update 2016年1月26日
-	 * @version 1.0.2
+	 * @update 2016年1月28日
+	 * @version 1.0.3
 	 */
 	private static void SaveData2DB() {
 		
@@ -135,7 +152,7 @@ public class Init {
 			connection.setAutoCommit(false);
 			preStmt = connection.prepareStatement(sql);
 			
-			for(int i = 0; i < list.size() - 1; i++){
+			for(int i = 1; i < list.size() - 1; i++){
 				for(int j = 0; j < fieldsNum; j++){
 					preStmt.setString(j + 1,list.get(i + 1)[j]);
 				}
@@ -153,6 +170,43 @@ public class Init {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	
+	/**
+	 * 
+	 * 
+	 * @description TODO
+	 * @author Geekang
+	 * @date 2016年1月26日
+	 * @update 2016年1月26日
+	 * @version 1.0.1
+	 * @param TODO
+	 * @return TODO
+	 */
+	public static String[] LogFileInfo(){
+		
+		String[] logFileInfo = new String[6];
+		String[] fileName;
+		
+		fileName = filePath.split("\\\\");
+		logFileInfo[0] = fileName[fileName.length - 1];//file name
+		logFileInfo[1] = startTime;//start time
+		logFileInfo[2] = endTime;//start time
+		if(firstLine.startsWith("#Software: Microsoft Internet Information Services")){
+			logFileInfo[3] = "Microsoft Internet Information Services";
+		}
+		logFileInfo[4] = File.getFileLength(filePath);
+		logFileInfo[5] = Integer.toString(list.size() - 1);
+		
+		return logFileInfo;
+	}
+	
+	
+	
+	@Test
+	public void test(){
+		//System.out.println(LogFileInfo("F:\\test\\filename.txt")[0]);
 	}
 
 }

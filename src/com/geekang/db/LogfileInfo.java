@@ -5,8 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import org.junit.Test;
-
 import com.geekang.util.Date;
 
 /**
@@ -75,6 +73,7 @@ public class LogfileInfo {
 	public static String generateTABLEName(String platform,String filePath){
 		
 		String tableName = "f";
+		
 		tableName = tableName + Date.getDate("yyyyMMdd");
 		if(platform.startsWith("#Software: Microsoft Internet Information Services")){
 			tableName = tableName + "_" + "iis";
@@ -84,10 +83,5 @@ public class LogfileInfo {
 		tableName = tableName + "_" + System.currentTimeMillis();
 
 		return tableName;
-	}
-	
-	@Test
-	public void test(){
-		System.out.println(generateTABLEName("",""));
 	}
 }

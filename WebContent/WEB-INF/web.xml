@@ -8,7 +8,7 @@
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
   <context-param>
-  	<param-name>file-upload</param-name>
-  	<param-value>F:\\test\\</param-value>
+    <param-name>file-upload</param-name>
+    <param-value>F:\\test\\</param-value>
   </context-param>
 </web-app>

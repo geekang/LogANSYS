@@ -1,6 +1,8 @@
 # Update
 
-2016-01-26(Version:1.0.3) ADDED:Generate data table name by date,platform and hash.
+2016-01-28(Version:1.0.4) ADDED:Overview Page.
+  
+2016-01-26(Version:1.0.3) FIXED:Generate data table name by date,platform and hash.
   
 2016-01-25(Version:1.0.2) ADDED:Display the description of each field at the log info table.
   
