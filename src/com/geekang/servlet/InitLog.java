@@ -19,6 +19,7 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import com.geekang.init.Init;
+import com.geekang.util.Date;
 
 /**
  * Servlet implementation class InitLog
@@ -65,6 +66,12 @@ public class InitLog extends HttpServlet {
 			throws ServletException, IOException {
 		
 		final ServletContext application = this.getServletContext();
+		
+		String[] startTime = new String[2];
+		startTime[0] = Long.toString(System.currentTimeMillis());
+		startTime[1] = Date.FormatDate(System.currentTimeMillis(), "yyyy-MM-dd hh:mm:ss");
+		
+		application.setAttribute("startTime", startTime);
 		
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();

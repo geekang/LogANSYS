@@ -1,5 +1,7 @@
 # Update
-2016-01-29(Version:1.0.5) FIXED:Revise platform description on overview Page.
+2016-01-30(Version:1.0.6) ADDED:Upload time and processing time on Overview Page.
+
+2016-01-29(Version:1.0.5) FIXED:Revise platform description on Overview Page.
 
 2016-01-28(Version:1.0.4) ADDED:Overview Page.
   

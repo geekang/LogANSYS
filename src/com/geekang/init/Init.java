@@ -23,7 +23,7 @@ import com.geekang.util.Text;
  * @description Init
  * @author Geekang
  * @date 2016年1月24日
- * @update 2016年1月28日
+ * @update 2016年3月28日
  * @version 1.0.3
  */
 public class Init {
@@ -179,8 +179,8 @@ public class Init {
 	 * @description TODO
 	 * @author Geekang
 	 * @date 2016年1月26日
-	 * @update 2016年1月26日
-	 * @version 1.0.1
+	 * @update 2016年3月28日
+	 * @version 1.0.2
 	 * @param TODO
 	 * @return TODO
 	 */
@@ -195,7 +195,7 @@ public class Init {
 		logFileInfo[2] = endTime;//start time
 		if(firstLine.startsWith("#Software: Microsoft Internet Information Services")){
 			String[] temp = firstLine.split(": ");
-			logFileInfo[3] = temp[1];
+			logFileInfo[3] = temp[1];//Microsoft Internet Information Services 6.0
 		}
 		logFileInfo[4] = File.getFileLength(filePath);
 		logFileInfo[5] = Integer.toString(list.size() - 1);
