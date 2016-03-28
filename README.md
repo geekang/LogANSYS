@@ -1,4 +1,5 @@
 # Update
+2016-01-29(Version:1.0.5) FIXED:Revise platform description on overview Page.
 
 2016-01-28(Version:1.0.4) ADDED:Overview Page.
   

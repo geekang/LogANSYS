@@ -188,13 +188,14 @@ public class Init {
 		
 		String[] logFileInfo = new String[6];
 		String[] fileName;
-		
+
 		fileName = filePath.split("\\\\");
 		logFileInfo[0] = fileName[fileName.length - 1];//file name
 		logFileInfo[1] = startTime;//start time
 		logFileInfo[2] = endTime;//start time
 		if(firstLine.startsWith("#Software: Microsoft Internet Information Services")){
-			logFileInfo[3] = "Microsoft Internet Information Services";
+			String[] temp = firstLine.split(": ");
+			logFileInfo[3] = temp[1];
 		}
 		logFileInfo[4] = File.getFileLength(filePath);
 		logFileInfo[5] = Integer.toString(list.size() - 1);
