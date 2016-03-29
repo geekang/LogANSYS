@@ -67,11 +67,11 @@ public class InitLog extends HttpServlet {
 		
 		final ServletContext application = this.getServletContext();
 		
-		String[] startTime = new String[2];
-		startTime[0] = Long.toString(System.currentTimeMillis());
-		startTime[1] = Date.FormatDate(System.currentTimeMillis(), "yyyy-MM-dd hh:mm:ss");
+		String[] time = new String[3];
+		time[0] = Long.toString(System.currentTimeMillis());
+		time[1] = Date.FormatDate(System.currentTimeMillis(), "yyyy-MM-dd hh:mm:ss");
 		
-		application.setAttribute("startTime", startTime);
+		application.setAttribute("time", time);
 		
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
