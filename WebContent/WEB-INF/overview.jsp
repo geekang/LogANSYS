@@ -13,6 +13,11 @@
 List<String[]> list = (List<String[]>)application.getAttribute("logList");
 String[] startTime = ((String[])application.getAttribute("startTime"));
 String[] logFileInfo;
+long timePending = System.currentTimeMillis() - Long.parseLong(startTime[0]);
+
+if(application.getAttribute("timePending") == null){
+	application.setAttribute("timePending",timePending);
+}
 
 if(list != null){
 %>
@@ -25,7 +30,7 @@ logFileInfo = list.get(0);
 文件大小：<%=logFileInfo[4] %><br />
 记录数：<%=logFileInfo[5] %><br />
 上传时间：<%=startTime[1] %><br />
-用时：<%=(System.currentTimeMillis() - Long.parseLong(startTime[0])) %>毫秒<br />
+用时：<%=application.getAttribute("timePending") %>毫秒<br />
 <%}%>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
