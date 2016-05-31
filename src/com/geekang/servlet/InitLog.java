@@ -55,7 +55,7 @@ public class InitLog extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		response.sendRedirect("overview");
+		response.sendRedirect("file-overview");
 	}
 
 	/**
@@ -132,7 +132,7 @@ public class InitLog extends HttpServlet {
 		list = Init.InitLogFile(filePath + fileName);
 		application.setAttribute("logList", list);
 		
-		response.sendRedirect("overview");
+		response.sendRedirect("file-overview");
 		
 	}
 
