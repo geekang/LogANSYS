@@ -1,3 +1,4 @@
+2016-05-31(Version:1.0.9) FIXED:Update GUI.
 # Update
 2016-05-31(Version:1.0.9) FIXED:Update GUI.
 
