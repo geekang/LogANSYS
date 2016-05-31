@@ -1,4 +1,6 @@
 # Update
+2016-05-31(Version:1.0.9) FIXED:Update GUI.
+
 2016-02-01(Version:1.0.8) FIXED:Optimizate visual effects.
 
 2016-01-31(Version:1.0.7) FIXED:Fixed processing time on Overview Page when refresh page twice or more.

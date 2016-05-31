@@ -29,7 +29,7 @@ public class Filter extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/overview.jsp");
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/file-overview.jsp");
 		requestDispatcher.forward(request, response);
 	}
 
