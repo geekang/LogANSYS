@@ -3,28 +3,28 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta name="description" content="" />
+	<meta name="description" content="Xenon Boostrap Admin Panel" />
 	<meta name="author" content="" />
 	
-	<title>日志文件概略 - LogANSYS</title>
+	<title>全部详情 - LogANSYS</title>
 
-	<link rel="stylesheet" href="./assets/css/css.css">
-	<link rel="stylesheet" href="./assets/css/fonts/linecons/css/linecons.css">
-	<link rel="stylesheet" href="./assets/css/fonts/fontawesome/css/font-awesome.min.css">
-	<link rel="stylesheet" href="./assets/css/bootstrap.css">
-	<link rel="stylesheet" href="./assets/css/xenon-core.css">
-	<link rel="stylesheet" href="./assets/css/xenon-forms.css">
-	<link rel="stylesheet" href="./assets/css/xenon-components.css">
-	<link rel="stylesheet" href="./assets/css/xenon-skins.css">
-	<link rel="stylesheet" href="./assets/css/custom.css">
+	<link rel="stylesheet" href="assets/css/css.css">
+	<link rel="stylesheet" href="assets/css/fonts/linecons/css/linecons.css">
+	<link rel="stylesheet" href="assets/css/fonts/fontawesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="assets/css/bootstrap.css">
+	<link rel="stylesheet" href="assets/css/xenon-core.css">
+	<link rel="stylesheet" href="assets/css/xenon-forms.css">
+	<link rel="stylesheet" href="assets/css/xenon-components.css">
+	<link rel="stylesheet" href="assets/css/xenon-skins.css">
+	<link rel="stylesheet" href="assets/css/custom.css">
 
-	<script src="./assets/js/jquery-1.11.1.min.js"></script>
+	<script src="assets/js/jquery-1.11.1.min.js"></script>
 
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
@@ -68,7 +68,7 @@
 							<p class="user-title">Web Developer</p>
 							
 							<div class="user-links">
-								<a href="extra-profile.html" class="btn btn-primary">Edit Profile</a>
+								<a href="extra-profile.html" class="btn btn-primary">IP UA</a>
 								<a href="extra-profile.html" class="btn btn-success">Upgrade</a>
 							</div>
 							
@@ -197,13 +197,13 @@
 				<ul id="main-menu" class="main-menu">
 					<!-- add class "multiple-expanded" to allow multiple submenus to open -->
 					<!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
-					<li class="active opened active expanded has-sub">
+					<li>
 						<a href="overview">
 							<i class="linecons-cog"></i>
 							<span class="title">仪表盘</span>
 						</a>
 						<ul>
-							<li class="active">
+							<li>
 								<a href="file-overview">
 									<span class="title">日志文件概略</span>
 								</a>
@@ -230,13 +230,13 @@
 							</li>
 						</ul>
 					</li>
-					<li>
+					<li class="active opened active expanded has-sub">
 						<a href="details">
 							<i class="linecons-desktop"></i>
 							<span class="title">详情</span>
 						</a>
 						<ul>
-							<li>
+							<li class="active">
 								<a href="details-all">
 									<span class="title">全部详情</span>
 								</a>
@@ -371,7 +371,7 @@
 							</li>
 						</ul>
 					</li>
-					<li class="">
+					<li>
 						<a href="ui-widgets.html">
 							<i class="linecons-star"></i>
 							<span class="title">Widgets</span>
@@ -401,7 +401,7 @@
 							</li>
 						</ul>
 					</li>
-					<li>
+					<li class="">
 						<a href="tables-basic.html">
 							<i class="linecons-database"></i>
 							<span class="title">Tables</span>
@@ -461,8 +461,8 @@
 								</a>
 							</li>
 							<li>
-								<a href="forms-editors.html">
-									<span class="title">Editors</span>
+								<a href="forms-IPors.html">
+									<span class="title">IPors</span>
 								</a>
 							</li>
 							<li>
@@ -541,7 +541,7 @@
 							</li>
 							<li>
 								<a href="extra-profile.html">
-									<span class="title">Profile</span>
+									<span class="title">UA</span>
 								</a>
 							</li>
 							<li>
@@ -1032,8 +1032,8 @@
 						
 						<ul class="dropdown-menu user-profile-menu list-unstyled">
 							<li>
-								<a href="#edit-profile">
-									<i class="fa-edit"></i>
+								<a href="#IP-profile">
+									<i class="fa-IP"></i>
 									New Post
 								</a>
 							</li>
@@ -1046,7 +1046,7 @@
 							<li>
 								<a href="#profile">
 									<i class="fa-user"></i>
-									Profile
+									UA
 								</a>
 							</li>
 							<li>
@@ -1076,10 +1076,11 @@
 			<div class="page-title">
 				
 				<div class="title-env">
-					<h1 class="title">日志文件概略</h1>
-					<p class="description">Log File Overview</p>
-				</div>				
-				<div class="breadcrumb-env">
+					<h1 class="title">全部详情</h1>
+					<p class="description">All Details</p>
+				</div>
+				
+					<div class="breadcrumb-env">
 					
 								<ol class="breadcrumb bc-1">
 									<li>
@@ -1087,61 +1088,1315 @@
 						</li>
 								<li>
 						
-										<a href="overview">仪表盘</a>
+										<a href="details">详情</a>
 								</li>
 							<li class="active">
 						
-										<strong>日志文件概略</strong>
+										<strong>全部详情</strong>
 								</li>
 								</ol>
 								
 				</div>
 					
 			</div>
-			<%
-List<String[]> list = (List<String[]>)application.getAttribute("logList");
-String[] time = ((String[])application.getAttribute("time"));
-String[] logFileInfo;
-if(time[2] == null){
-	time[2] = Long.toString(System.currentTimeMillis() - Long.parseLong(time[0]));
-}
 
+			
+			
+			<!-- Removing search and results count filter -->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">以下是此日志文件所有的请求记录</h3>
+					
+					<div class="panel-options">
+						<a href="#" data-toggle="panel">
+							<span class="collapse-icon">&ndash;</span>
+							<span class="expand-icon">+</span>
+						</a>
+						<a href="#" data-toggle="remove">
+							&times;
+						</a>
+					</div>
+				</div>
+				<div class="panel-body">
+					
+					<script type="text/javascript">
+					jQuery(document).ready(function($)
+					{
+						$("#example-2").dataTable({
+							dom: "t" + "<'row'<'col-xs-6'i><'col-xs-6'p>>",
+							aoColumns: [
+								{bSortable: false},
+								null,
+								null,
+								null,
+								null
+							],
+							iDisplayLength: 100,
+							bLengthChange: true,
+							//sScrollXInner: 'enabled',//水平滚动
+						});
+						
+						// Replace checkboxes when they appear
+						var $state = $("#example-2 thead input[type='checkbox']");
+						
+						$("#example-2").on('draw.dt', function()
+						{
+							cbr_replace();
+							
+							$state.trigger('change');
+						});
+						
+						// Script to select all checkboxes
+						$state.on('change', function(ev)
+						{
+							var $chcks = $("#example-2 tbody input[type='checkbox']");
+							
+							if($state.is(':checked'))
+							{
+								$chcks.prop('checked', true).trigger('change');
+							}
+							else
+							{
+								$chcks.prop('checked', false).trigger('change');
+							}
+						});
+					});
+					</script>
+					
+					<table class="table table-bordered table-striped" id="example-2">
+						<thead>
+							<tr>
+								<th class="no-sorting">
+									<input type="checkbox" class="cbr">
+								</th>
+								<th>序号</th>
+								<th>时间</th>
+								<th>IP</th>
+								<th>方法</th>
+								<th>URI</th>
+								<th>UA</th>
+								<th>状态码</th>
+								<th>封禁操作</th>
+							</tr>
+						</thead>
+						
+						<tbody class="middle-align">
+						<%
+List<String[]> list = (List<String[]>)application.getAttribute("logList");
 
 if(list != null){
 %>
-<%
-logFileInfo = list.get(0);
+						<% for(int i=1;i<100;i++){
+String[] record = (String[])list.get(i);
 %>
-			<div class="list-group">
-						<a href="#" class="list-group-item active">
-							<h4 class="list-group-item-heading">上传文件名</h4>
-							<p class="list-group-item-text"><%=logFileInfo[0] %></p>
-						</a>
-						<a href="#" class="list-group-item">
-							<h4 class="list-group-item-heading">上传时间</h4>
-							<p class="list-group-item-text"><%=time[1] %></p>
-						</a>
-						<a href="#" class="list-group-item">
-							<h4 class="list-group-item-heading">日志起始时间</h4>
-							<p class="list-group-item-text"><%=logFileInfo[1] %> 至 <%=logFileInfo[2] %></p>
-						</a>
-						<a href="#" class="list-group-item">
-							<h4 class="list-group-item-heading">Web平台</h4>
-							<p class="list-group-item-text"><%=logFileInfo[3] %></p>
-						</a>
-						<a href="#" class="list-group-item">
-							<h4 class="list-group-item-heading">文件大小</h4>
-							<p class="list-group-item-text"><%=logFileInfo[4] %></p>
-						</a>
-						<a href="#" class="list-group-item">
-							<h4 class="list-group-item-heading">请求数量</h4>
-							<p class="list-group-item-text"><%=logFileInfo[5] %></p>
-						</a>
-						<a href="#" class="list-group-item">
-							<h4 class="list-group-item-heading">处理用时</h4>
-							<p class="list-group-item-text"><%=time[2] %>毫秒</p>
-						</a>
-					</div><%}%>
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<%
+if(i == 1){
+	continue;
+}
+								out.println("<td>" + (i - 1) + "</td>");
+								for(int j = 0; j < record.length; j ++){
+									out.println("<td>" + record[j] + "</td>");
+								}
+
+								%>
+								
+							</tr>
+							<%
+}
+%><%}%>
+							
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td>00:01:36</td>
+								<td>7.2</td>
+								<td>POST</td>
+								<td>
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">
+										IP
+									</a>
+									
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">
+										URI
+									</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">
+										UA
+									</a>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td>00:01:36</td>
+								<td>8.7</td>
+								<td>GET</td>
+								<td>
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">
+										IP
+									</a>
+									
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">
+										URI
+									</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">
+										UA
+									</a>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td>00:01:36</td>
+								<td>10</td>
+								<td>GET</td>
+								<td>
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">
+										IP
+									</a>
+									
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">
+										URI
+									</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">
+										UA
+									</a>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td>00:01:36</td>
+								<td>9.5</td>
+								<td>GET</td>
+								<td>
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">
+										IP
+									</a>
+									
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">
+										URI
+									</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">
+										UA
+									</a>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td>00:01:36</td>
+								<td>7.6</td>
+								<td>POST</td>
+								<td>
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">
+										IP
+									</a>
+									
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">
+										URI
+									</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">
+										UA
+									</a>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td></td>
+								<td>6.8</td>
+								<td>GET</td>
+								<td>
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">
+										IP
+									</a>
+									
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">
+										URI
+									</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">
+										UA
+									</a>
+								</td>
+							</tr>
+						
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td>00:01:36</td>
+								<td>8.7</td>
+								<td>GET</td>
+								<td>
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">
+										IP
+									</a>
+									
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">
+										URI
+									</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">
+										UA
+									</a>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td>00:01:36</td>
+								<td>7.2</td>
+								<td>POST</td>
+								<td>
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">
+										IP
+									</a>
+									
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">
+										URI
+									</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">
+										UA
+									</a>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td>00:01:36</td>
+								<td>9.5</td>
+								<td>GET</td>
+								<td>
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">
+										IP
+									</a>
+									
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">
+										URI
+									</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">
+										UA
+									</a>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td>00:01:36</td>
+								<td>10</td>
+								<td>GET</td>
+								<td>
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">
+										IP
+									</a>
+									
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">
+										URI
+									</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">
+										UA
+									</a>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td><span class="label label-warning" title="2010-10-29">00:01:36</span></td>
+								<td><span class="label label-danger" title="山东济南联通">123.232.100.100</span></td>
+								<td>GET</td>
+								<td>
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">IP</a>
+									
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">URI</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">UA</a>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td>00:01:36</td>
+								<td>7.6</td>
+								<td>POST</td>
+								<td>
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">
+										IP
+									</a>
+									
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">
+										URI
+									</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">
+										UA
+									</a>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td>00:01:36</td>
+								<td>7.2</td>
+								<td>POST</td>
+								<td>
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">
+										IP
+									</a>
+									
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">
+										URI
+									</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">
+										UA
+									</a>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td>00:01:36</td>
+								<td>8.7</td>
+								<td>GET</td>
+								<td>
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">
+										IP
+									</a>
+									
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">
+										URI
+									</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">
+										UA
+									</a>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td>00:01:36</td>
+								<td>10</td>
+								<td>GET</td>
+								<td>
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">
+										IP
+									</a>
+									
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">
+										URI
+									</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">
+										UA
+									</a>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td>00:01:36</td>
+								<td>9.5</td>
+								<td>GET</td>
+								<td>
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">
+										IP
+									</a>
+									
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">
+										URI
+									</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">
+										UA
+									</a>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td>00:01:36</td>
+								<td>7.6</td>
+								<td>POST</td>
+								<td>
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">
+										IP
+									</a>
+									
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">
+										URI
+									</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">
+										UA
+									</a>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td><span class="label label-success">00:01:36</span></td>
+								<td>6.8</td>
+								<td>GET</td>
+								<td>
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">
+										IP
+									</a>
+									
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">
+										URI
+									</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">
+										UA
+									</a>
+								</td>
+							</tr>
+						
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td>00:01:36</td>
+								<td>8.7</td>
+								<td>GET</td>
+								<td>
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">
+										IP
+									</a>
+									
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">
+										URI
+									</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">
+										UA
+									</a>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td>00:01:36</td>
+								<td>7.2</td>
+								<td>POST</td>
+								<td>
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">
+										IP
+									</a>
+									
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">
+										URI
+									</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">
+										UA
+									</a>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td>00:01:36</td>
+								<td>9.5</td>
+								<td>GET</td>
+								<td>
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">
+										IP
+									</a>
+									
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">
+										URI
+									</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">
+										UA
+									</a>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td>00:01:36</td>
+								<td>10</td>
+								<td>GET</td>
+								<td>
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">
+										IP
+									</a>
+									
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">
+										URI
+									</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">
+										UA
+									</a>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td> <span class="label label-success">00:01:36</span></td>
+								<td>6.8</td>
+								<td>GET</td>
+								<td>
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">
+										IP
+									</a>
+									
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">
+										URI
+									</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">
+										UA
+									</a>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td>00:01:36</td>
+								<td>7.6</td>
+								<td>POST</td>
+								<td>
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">
+										IP
+									</a>
+									
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">
+										URI
+									</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">
+										UA
+									</a>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td>00:01:36</td>
+								<td>7.2</td>
+								<td>POST</td>
+								<td>
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">
+										IP
+									</a>
+									
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">
+										URI
+									</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">
+										UA
+									</a>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td>00:01:36</td>
+								<td>8.7</td>
+								<td>GET</td>
+								<td>
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">
+										IP
+									</a>
+									
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">
+										URI
+									</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">
+										UA
+									</a>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td>00:01:36</td>
+								<td>10</td>
+								<td>GET</td>
+								<td>
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">
+										IP
+									</a>
+									
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">
+										URI
+									</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">
+										UA
+									</a>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td>00:01:36</td>
+								<td>9.5</td>
+								<td>GET</td>
+								<td>
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">
+										IP
+									</a>
+									
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">
+										URI
+									</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">
+										UA
+									</a>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td>00:01:36</td>
+								<td>7.6</td>
+								<td>POST</td>
+								<td>
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">
+										IP
+									</a>
+									
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">
+										URI
+									</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">
+										UA
+									</a>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td> <span class="label label-success">00:01:36</span></td>
+								<td>6.8</td>
+								<td>GET</td>
+								<td>
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">
+										IP
+									</a>
+									
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">
+										URI
+									</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">
+										UA
+									</a>
+								</td>
+							</tr>
+						
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td>00:01:36</td>
+								<td>8.7</td>
+								<td>GET</td>
+								<td>
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">
+										IP
+									</a>
+									
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">
+										URI
+									</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">
+										UA
+									</a>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td>00:01:36</td>
+								<td>7.2</td>
+								<td>POST</td>
+								<td>
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">
+										IP
+									</a>
+									
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">
+										URI
+									</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">
+										UA
+									</a>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td>00:01:36</td>
+								<td>9.5</td>
+								<td>GET</td>
+								<td>
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">
+										IP
+									</a>
+									
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">
+										URI
+									</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">
+										UA
+									</a>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td>00:01:36</td>
+								<td>10</td>
+								<td>GET</td>
+								<td>
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">
+										IP
+									</a>
+									
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">
+										URI
+									</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">
+										UA
+									</a>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td> <span class="label label-success">00:01:36</span></td>
+								<td>6.8</td>
+								<td>GET</td>
+								<td>
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">
+										IP
+									</a>
+									
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">
+										URI
+									</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">
+										UA
+									</a>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td>00:01:36</td>
+								<td>7.6</td>
+								<td>POST</td>
+								<td>
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">
+										IP
+									</a>
+									
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">
+										URI
+									</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">
+										UA
+									</a>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td>00:01:36</td>
+								<td>7.2</td>
+								<td>POST</td>
+								<td>
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">
+										IP
+									</a>
+									
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">
+										URI
+									</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">
+										UA
+									</a>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td>00:01:36</td>
+								<td>8.7</td>
+								<td>GET</td>
+								<td>
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">
+										IP
+									</a>
+									
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">
+										URI
+									</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">
+										UA
+									</a>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td>00:01:36</td>
+								<td>10</td>
+								<td>GET</td>
+								<td>
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">
+										IP
+									</a>
+									
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">
+										URI
+									</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">
+										UA
+									</a>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td>00:01:36</td>
+								<td>9.5</td>
+								<td>GET</td>
+								<td>
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">
+										IP
+									</a>
+									
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">
+										URI
+									</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">
+										UA
+									</a>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td>00:01:36</td>
+								<td>7.6</td>
+								<td>POST</td>
+								<td>
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">
+										IP
+									</a>
+									
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">
+										URI
+									</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">
+										UA
+									</a>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td> <span class="label label-success">00:01:36</span></td>
+								<td>6.8</td>
+								<td>GET</td>
+								<td>
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">
+										IP
+									</a>
+									
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">
+										URI
+									</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">
+										UA
+									</a>
+								</td>
+							</tr>
+						
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td>00:01:36</td>
+								<td>8.7</td>
+								<td>GET</td>
+								<td>
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">
+										IP
+									</a>
+									
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">
+										URI
+									</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">
+										UA
+									</a>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td>00:01:36</td>
+								<td>7.2</td>
+								<td>POST</td>
+								<td>
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">
+										IP
+									</a>
+									
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">
+										URI
+									</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">
+										UA
+									</a>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td>00:01:36</td>
+								<td>9.5</td>
+								<td>GET</td>
+								<td>
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">
+										IP
+									</a>
+									
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">
+										URI
+									</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">
+										UA
+									</a>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td>00:01:36</td>
+								<td>10</td>
+								<td>GET</td>
+								<td>
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">
+										IP
+									</a>
+									
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">
+										URI
+									</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">
+										UA
+									</a>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td> <span class="label label-success">00:01:36</span></td>
+								<td>6.8</td>
+								<td>GET</td>
+								<td>
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">
+										IP
+									</a>
+									
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">
+										URI
+									</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">
+										UA
+									</a>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td>00:01:36</td>
+								<td>7.6</td>
+								<td>POST</td>
+								<td>
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">
+										IP
+									</a>
+									
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">
+										URI
+									</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">
+										UA
+									</a>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td>00:01:36</td>
+								<td>7.2</td>
+								<td>POST</td>
+								<td>
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">
+										IP
+									</a>
+									
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">
+										URI
+									</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">
+										UA
+									</a>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td>00:01:36</td>
+								<td>8.7</td>
+								<td>GET</td>
+								<td>
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">
+										IP
+									</a>
+									
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">
+										URI
+									</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">
+										UA
+									</a>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td>00:01:36</td>
+								<td>10</td>
+								<td>GET</td>
+								<td>
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">
+										IP
+									</a>
+									
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">
+										URI
+									</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">
+										UA
+									</a>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td>00:01:36</td>
+								<td>9.5</td>
+								<td>GET</td>
+								<td>
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">
+										IP
+									</a>
+									
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">
+										URI
+									</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">
+										UA
+									</a>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td>00:01:36</td>
+								<td>7.6</td>
+								<td>POST</td>
+								<td>
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">
+										IP
+									</a>
+									
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">
+										URI
+									</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">
+										UA
+									</a>
+								</td>
+							</tr>
+							
+							<tr>
+								<td>
+									<input type="checkbox" class="cbr">
+								</td>
+								<td> <span class="label label-success">00:01:36</span></td>
+								<td>6.8</td>
+								<td>GET</td>
+								<td>
+									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">
+										IP
+									</a>
+									
+									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">
+										URI
+									</a>
+									
+									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">
+										UA
+									</a>
+								</td>
+							</tr>
+							
+						</tbody>
+					</table>
+					
+				</div>
+			</div>
+
 			<!-- Main Footer -->
 			<!-- Choose between footer styles: "footer-type-1" or "footer-type-2" -->
 			<!-- Add class "sticky" to  always stick the footer to the end of page (if page contents is small) -->
@@ -1310,25 +2565,26 @@ logFileInfo = list.get(0);
 
 
 	<!-- Imported styles on this page -->
-	<link rel="stylesheet" href="./assets/css/fonts/meteocons/css/meteocons.css">
+	<link rel="stylesheet" href="assets/js/datatables/dataTables.bootstrap.css">
 
 	<!-- Bottom Scripts -->
-	<script src="./assets/js/bootstrap.min.js"></script>
-	<script src="./assets/js/TweenMax.min.js"></script>
-	<script src="./assets/js/resizeable.js"></script>
-	<script src="./assets/js/joinable.js"></script>
-	<script src="./assets/js/xenon-api.js"></script>
-	<script src="./assets/js/xenon-toggles.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/TweenMax.min.js"></script>
+	<script src="assets/js/resizeable.js"></script>
+	<script src="assets/js/joinable.js"></script>
+	<script src="assets/js/xenon-api.js"></script>
+	<script src="assets/js/xenon-toggles.js"></script>
+	<script src="assets/js/datatables/js/jquery.dataTables.min.js"></script>
 
 
 	<!-- Imported scripts on this page -->
-	<script src="./assets/js/xenon-widgets.js"></script>
-	<script src="./assets/js/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-	<script src="./assets/js/jvectormap/regions/jquery-jvectormap-world-mill-en.js"></script>
+	<script src="assets/js/datatables/dataTables.bootstrap.js"></script>
+	<script src="assets/js/datatables/yadcf/jquery.dataTables.yadcf.js"></script>
+	<script src="assets/js/datatables/tabletools/dataTables.tableTools.min.js"></script>
 
 
 	<!-- JavaScripts initializations and stuff -->
-	<script src="./assets/js/xenon-custom.js"></script>
+	<script src="assets/js/xenon-custom.js"></script>
 
 </body>
 </html>

@@ -12,14 +12,14 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class Filter
  */
-@WebServlet("/filter")
-public class Filter extends HttpServlet {
+@WebServlet("/details-all")
+public class Details_all extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Filter() {
+    public Details_all() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,7 +29,7 @@ public class Filter extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/file-overview.jsp");
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/details-all.jsp");
 		requestDispatcher.forward(request, response);
 	}
 
