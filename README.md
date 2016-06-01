@@ -1,5 +1,7 @@
 # Update
-2016-06-01(Version:1.0.11) FIXED:Update GUI.
+2016-06-01(Version:1.1.11) ADDED:Parse UA String to Browser name,version and so on.
+
+2016-02-04(Version:1.0.11) FIXED:Update GUI.
 
 2016-02-03(Version:1.0.10) FIXED:Update GUI.
 

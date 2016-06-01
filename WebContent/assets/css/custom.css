@@ -1,10 +1,12 @@
+@charset "utf-8";
 /**
  *
  * Apply your custom CSS here
  *
 */
 
-body {	
+body {
+	font-family: "微软雅黑";
 }
 
 a {
