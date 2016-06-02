@@ -1194,7 +1194,7 @@ List<String[]> list = (List<String[]>)application.getAttribute("logList");
 
 if(list != null){
 %>
-						<% for(int i=2;i < 202;i++){//list.size()
+						<% for(int i=2;i < 1000;i++){//list.size()
 String[] record = (String[])list.get(i);
 %>
 							<tr>

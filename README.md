@@ -1,5 +1,7 @@
 # Update
-2016-06-02(Version:1.2.0) ADDED:Display IP attribution.
+2016-06-02(Version:1.2.1) ADDED:Highlight green crawlers IP.
+
+2016-02-05(Version:1.2.0) ADDED:Display IP attribution.
 
 2016-02-04(Version:1.1.0) ADDED:Parse UA String to Browser name,version and so on.
 
@@ -15,11 +17,7 @@
 
 2016-01-29(Version:1.0.6) ADDED:Add Upload time and processing time on Overview Page.
 
-2016-01-28(Version:1.0.5) FIXED:Revise platform description on Overview Page.
-
 2016-01-27(Version:1.0.4) ADDED:Overview Page.
-  
-2016-01-26(Version:1.0.3) FIXED:Generate data table name by date,platform and hash.
   
 2016-01-25(Version:1.0.2) ADDED:Display the description of each field at the log info table.
   
