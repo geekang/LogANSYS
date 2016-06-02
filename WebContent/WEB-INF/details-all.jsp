@@ -1,3 +1,4 @@
+<%@page import="com.geekang.util.IP"%>
 <%@ page language="java" contentType="text/html;charset=utf-8"%>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
@@ -1193,7 +1194,7 @@ List<String[]> list = (List<String[]>)application.getAttribute("logList");
 
 if(list != null){
 %>
-						<% for(int i=2;i < list.size();i++){//list.size()
+						<% for(int i=2;i < 202;i++){//list.size()
 String[] record = (String[])list.get(i);
 %>
 							<tr>
@@ -1206,7 +1207,7 @@ String[] record = (String[])list.get(i);
 								//时间（日期）
 								out.println("<td><span class='' title='" + record[0] + "'>" + record[1] + "</span></td>");//<span class="label label-warning" title="2010-10-29">00:01:36</span>
 								//IP
-								out.println("<td><span class='' title='" + record[0] + "'>" + record[8] + "</span></td>");//<span class="label label-warning" title="2010-10-29">00:01:36</span>
+								out.println("<td>" + IP.getIPInfo(record[8]) + "</td>");//<span class="label label-warning" title="2010-10-29">00:01:36</span>
 								//方法
 								out.println("<td>" + record[3] + "</td>");
 								//URI（URI查询）
@@ -1214,7 +1215,8 @@ String[] record = (String[])list.get(i);
 								//状态码（子状态码/Win32状态）
 								out.println("<td><span class='' title='" + record[11] + "/" + record[12] + "'>" + record[10] + "</span></td>");
 								//UA
-								out.println("<td><span class='' title='" + record[9] + "'>" + UserAgent.parseUserAgentString(record[9]).getBrowser() + "</span></td>");
+								String ua = record[9].replaceAll("\\+", " ");
+								out.println("<td><span class='' title='" + ua + "'>" + UserAgent.parseUserAgentString(ua).getBrowser() + "</span></td>");
 								//Win32状态
 								//out.println("<td>" + record[12] + "</td>");
 								//用时
