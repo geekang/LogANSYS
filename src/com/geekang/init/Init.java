@@ -9,28 +9,30 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.TreeMap;
 
 import org.junit.Test;
 
-import com.geekang.db.MySQLConnector;
 import com.geekang.db.LogfileInfo;
+import com.geekang.db.MySQLConnector;
 import com.geekang.util.File;
-import com.geekang.util.Text;
 
 /**
  * 
  * @description Init
  * @author Geekang
  * @date 2016年1月24日
- * @update 2016年3月28日
- * @version 1.0.3
+ * @update 2016年6月6日
+ * @version 1.3.1
  */
 public class Init {
 
-	public static List<String[]> list = new ArrayList<String[]>();// log row
-	public static String[] fields = {};// fields in each row
-	static int fieldsNum;// fields number
+	public static HashMap<String,String> fileInfo = new HashMap<String,String>();// log row
+	public static List<TreeMap<String,String>> logList = new ArrayList<TreeMap<String,String>>();// log row
+	public static String[] fields = {};// 字段
+	static int fieldsNum;// 字段数量
 	static String firstLine;//first line
 	public static String filePath;
 	public static String startTime;
@@ -48,13 +50,13 @@ public class Init {
 	 * @param filePath
 	 * @return TODO
 	 */
-	public static List<String[]> InitLogFile(String filePath) {
+	public static List<TreeMap<String,String>> InitLogFile(String filePath) {
 
 		BufferedReader br;
 		String byteread = null;
 		String[] fieldsTEMP = null;
 		String[] entryTEMP = null;
-		boolean isEntry = false;
+		boolean isEntry = false;//是否是请求记录
 		boolean isFirst = true;
 
 		Init.filePath = filePath;
@@ -62,19 +64,25 @@ public class Init {
 		try {
 			br = new BufferedReader(new InputStreamReader(new FileInputStream(filePath)));
 
-			list.clear();
+			logList.clear();
 			
 			while ((byteread = br.readLine()) != null) {
 				
+				//#Software: Microsoft Internet Information Services 7.5
 				if(isFirst){
 					firstLine = byteread;
 					isFirst = false;
+					continue;
 				}
 				
+				//#Date: 2014-10-02 00:00:13
 				if (byteread.startsWith("#Date:")) {
 					startTime = byteread.split(" ")[1] + " " + byteread.split(" ")[2];
+					continue;
+					
 				}
 				
+				//#Fields: date time s-ip cs-method cs-uri-stem cs-uri-query s-port cs-username c-ip cs(User-Agent) sc-status sc-substatus sc-win32-status time-taken
 				if (byteread.startsWith("#Fields:")) {
 					fieldsTEMP = byteread.split(" ");
 					
@@ -82,14 +90,18 @@ public class Init {
 
 					fields = new String[fieldsNum];
 					System.arraycopy(fieldsTEMP, 1, fields, 0, fieldsNum);
-					for(int i = 0; i < fields.length; i++){
-						fields[i] = LogfileInfo.getLogfileHead(Text.logFileField2DB(fields[i]));
-					}
-					list.add(fields);
+//					for(int i = 0; i < fields.length; i++){
+//						fields[i] = LogfileInfo.getLogfileHead(Text.logFileField2DB(fields[i]));
+//						System.out.println(fields[i]);
+//					}
 					isEntry = true;
 					continue;
 				}
+				
+				//如果是请求记录
 				if (isEntry) {
+					
+					TreeMap<String, String> recordTEMP = new TreeMap<String,String>();
 					entryTEMP = byteread.split(" ");
 					
 					for(int i = 0; i < entryTEMP.length; i++){
@@ -98,15 +110,15 @@ public class Init {
 //							System.out.println(entryTEMP[i]);
 							entryTEMP[i] = entryTEMP[i].substring(0, 254);
 						}
+						recordTEMP.put(fields[i], entryTEMP[i]);
+//						System.out.println(recordTEMP.get(fields[i]));
 					}
-					
-					list.add(entryTEMP);
+					logList.add(recordTEMP);
 				}
 				
 			}
 			
 			endTime = entryTEMP[0] + " " + entryTEMP[1];
-			list.add(0,LogFileInfo());
 			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -118,7 +130,7 @@ public class Init {
 
 		SaveData2DB();// put the list to database
 
-		return list;
+		return logList;
 
 	}
 
@@ -152,10 +164,22 @@ public class Init {
 			connection.setAutoCommit(false);
 			preStmt = connection.prepareStatement(sql);
 			
-			for(int i = 1; i < list.size() - 1; i++){
-				for(int j = 0; j < fieldsNum; j++){
-					preStmt.setString(j + 1,list.get(i + 1)[j]);
-				}
+			for(int i = 0; i < logList.size(); i++){
+				preStmt.setString(1,logList.get(i).get("date"));
+				preStmt.setString(2,logList.get(i).get("time"));
+				preStmt.setString(3,logList.get(i).get("s-ip"));
+				preStmt.setString(4,logList.get(i).get("cs-method"));
+				preStmt.setString(5,logList.get(i).get("cs-uri-stem"));
+				preStmt.setString(6,logList.get(i).get("cs-uri-query"));
+				preStmt.setString(7,logList.get(i).get("s-port"));
+				preStmt.setString(8,logList.get(i).get("cs-username"));
+				preStmt.setString(9,logList.get(i).get("c-ip"));
+				preStmt.setString(10,logList.get(i).get("cs(User-Agent)"));
+				preStmt.setString(11,logList.get(i).get("sc-status"));
+				preStmt.setString(12,logList.get(i).get("sc-substatus"));
+				preStmt.setString(13,logList.get(i).get("sc-win32-status"));
+				preStmt.setString(14,logList.get(i).get("time-taken"));
+
 				preStmt.addBatch();//insert
 			}
 			preStmt.executeBatch();
@@ -184,23 +208,21 @@ public class Init {
 	 * @param TODO
 	 * @return TODO
 	 */
-	public static String[] LogFileInfo(){
-		
-		String[] logFileInfo = new String[6];
-		String[] fileName;
+	public static HashMap<String,String> LogFileInfo(){
 
-		fileName = filePath.split("\\\\");
-		logFileInfo[0] = fileName[fileName.length - 1];//file name
-		logFileInfo[1] = startTime;//start time
-		logFileInfo[2] = endTime;//start time
+		String[] fileName = filePath.split("\\\\");
+		
+		fileInfo.put("fileName", fileName[fileName.length - 1]);
+		fileInfo.put("startTime", startTime);
+		fileInfo.put("endTime", endTime);
 		if(firstLine.startsWith("#Software: Microsoft Internet Information Services")){
 			String[] temp = firstLine.split(": ");
-			logFileInfo[3] = temp[1];//Microsoft Internet Information Services 6.0
+			fileInfo.put("platform", temp[1]);
 		}
-		logFileInfo[4] = File.getFileLength(filePath);
-		logFileInfo[5] = Integer.toString(list.size() - 1);
+		fileInfo.put("fileSize", File.getFileSize(filePath));
+		fileInfo.put("requestNum", Integer.toString(logList.size()));
 		
-		return logFileInfo;
+		return fileInfo;
 	}
 	
 	

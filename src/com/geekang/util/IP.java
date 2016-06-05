@@ -44,7 +44,7 @@ public class IP {
 	private static String getColor(String info) {
 
 		if (info.contains("谷歌") || info.contains("百度") || info.contains("微软") || info.contains("雅虎")
-				|| info.contains("360") || info.contains("Microsoft")) {
+				|| info.contains("360") || info.contains("Microsoft") || info.contains("MSN") || info.contains("蜘蛛")) {
 			return "green";
 		}
 		return "";

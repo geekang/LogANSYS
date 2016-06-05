@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html;charset=utf-8"%>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.TreeMap" %>
 <%@ page import="eu.bitwalker.useragentutils.UserAgent" %>
 <%@ page trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html>
@@ -1139,6 +1140,7 @@
 							],
 							iDisplayLength: 30,
 							aLengthMenu: [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+							//bAutoWidth: true, //自适应宽度
 							//sScrollX: "120%",
 							//bScrollCollapse: true
 						});
@@ -1190,12 +1192,12 @@
 						
 						<tbody class="middle-align">
 						<%
-List<String[]> list = (List<String[]>)application.getAttribute("logList");
+						List<TreeMap<String,String>> list = (List<TreeMap<String,String>>)application.getAttribute("recordList");
 
 if(list != null){
 %>
-						<% for(int i=2;i < 1000;i++){//list.size()
-String[] record = (String[])list.get(i);
+						<% for(int i=0;i < list.size();i++){//list.size()
+//String[] record = (String[])list.get(i).get(arg0);
 %>
 							<tr>
 								<td>
@@ -1203,27 +1205,22 @@ String[] record = (String[])list.get(i);
 								</td>
 								<%
 								//序号
-								out.println("<td>" + (i - 1) + "</td>");
+								out.println("<td>" + (i + 1) + "</td>");
 								//时间（日期）
-								out.println("<td><span class='' title='" + record[0] + "'>" + record[1] + "</span></td>");//<span class="label label-warning" title="2010-10-29">00:01:36</span>
+								out.println("<td><span class='' title='" + list.get(i).get("date") + "'>" + list.get(i).get("time") + "</span></td>");//<span class="label label-warning" title="2010-10-29">00:01:36</span>
 								//IP
-								out.println("<td>" + IP.getIPInfo(record[8]) + "</td>");//<span class="label label-warning" title="2010-10-29">00:01:36</span>
+								out.println("<td>" + IP.getIPInfo(list.get(i).get("c-ip")) + "</td>");//<span class="label label-warning" title="2010-10-29">00:01:36</span>
 								//方法
-								out.println("<td>" + record[3] + "</td>");
+								out.println("<td>" + list.get(i).get("cs-method") + "</td>");
 								//URI（URI查询）
-								out.println("<td><span class='' title='" + record[5] + "'>" + record[4] + "</span></td>");//4
+								out.println("<td><span class='' title='" + list.get(i).get("cs-uri-query") + "'>" + list.get(i).get("cs-uri-stem") + "</span></td>");//4
 								//状态码（子状态码/Win32状态）
-								out.println("<td><span class='' title='" + record[11] + "/" + record[12] + "'>" + record[10] + "</span></td>");
+								out.println("<td><span class='' title='" + list.get(i).get("sc-substatus") + "/" + list.get(i).get("sc-win32-status") + "'>" + list.get(i).get("sc-status") + "</span></td>");
 								//UA
-								String ua = record[9].replaceAll("\\+", " ");
+								String ua = list.get(i).get("cs(User-Agent)").toString().replaceAll("\\+", " ");
 								out.println("<td><span class='' title='" + ua + "'>" + UserAgent.parseUserAgentString(ua).getBrowser() + "</span></td>");
-								//Win32状态
-								//out.println("<td>" + record[12] + "</td>");
 								//用时
-								out.println("<td>" + record[13] + "</td>");
-								for(int j = 2; j < record.length; j ++){
-									//out.println("<td>" + record[j] + "</td>");
-								}
+								out.println("<td>" + list.get(i).get("time-taken") + "</td>");
 
 								%>
 								<td>

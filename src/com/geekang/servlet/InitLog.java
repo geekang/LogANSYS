@@ -4,8 +4,10 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.TreeMap;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -128,9 +130,14 @@ public class InitLog extends HttpServlet {
 			System.out.println(ex);
 		}
 		
-		List<String[]> list = new ArrayList<String[]>();
+		List<TreeMap<String,String>> list = new ArrayList<TreeMap<String,String>>();
 		list = Init.InitLogFile(filePath + fileName);
-		application.setAttribute("logList", list);
+		application.setAttribute("recordList", list);
+		
+		HashMap<String,String> fileInfo = new HashMap<String,String>();
+		fileInfo = Init.LogFileInfo();
+		application.setAttribute("fileInfo", fileInfo);
+		
 		
 		response.sendRedirect("file-overview");
 		

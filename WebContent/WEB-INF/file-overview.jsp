@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html;charset=utf-8"%>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.HashMap" %>
 <%@ page trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -1099,7 +1100,7 @@
 					
 			</div>
 			<%
-List<String[]> list = (List<String[]>)application.getAttribute("logList");
+			HashMap<String,String> fileInfo = (HashMap<String,String>)application.getAttribute("fileInfo");
 String[] time = ((String[])application.getAttribute("time"));
 String[] logFileInfo;
 if(time[2] == null){
@@ -1107,15 +1108,12 @@ if(time[2] == null){
 }
 
 
-if(list != null){
-%>
-<%
-logFileInfo = list.get(0);
+if(fileInfo != null){
 %>
 			<div class="list-group">
 						<a href="#" class="list-group-item active">
 							<h4 class="list-group-item-heading">上传文件名</h4>
-							<p class="list-group-item-text"><%=logFileInfo[0] %></p>
+							<p class="list-group-item-text"><%=fileInfo.get("fileName") %></p>
 						</a>
 						<a href="#" class="list-group-item">
 							<h4 class="list-group-item-heading">上传时间</h4>
@@ -1123,19 +1121,19 @@ logFileInfo = list.get(0);
 						</a>
 						<a href="#" class="list-group-item">
 							<h4 class="list-group-item-heading">日志起始时间</h4>
-							<p class="list-group-item-text"><%=logFileInfo[1] %> 至 <%=logFileInfo[2] %></p>
+							<p class="list-group-item-text"><%=fileInfo.get("startTime") %> 至 <%=fileInfo.get("endTime") %></p>
 						</a>
 						<a href="#" class="list-group-item">
 							<h4 class="list-group-item-heading">Web平台</h4>
-							<p class="list-group-item-text"><%=logFileInfo[3] %></p>
+							<p class="list-group-item-text"><%=fileInfo.get("platform") %></p>
 						</a>
 						<a href="#" class="list-group-item">
 							<h4 class="list-group-item-heading">文件大小</h4>
-							<p class="list-group-item-text"><%=logFileInfo[4] %></p>
+							<p class="list-group-item-text"><%=fileInfo.get("fileSize") %></p>
 						</a>
 						<a href="#" class="list-group-item">
 							<h4 class="list-group-item-heading">请求数量</h4>
-							<p class="list-group-item-text"><%=logFileInfo[5] %></p>
+							<p class="list-group-item-text"><%=fileInfo.get("requestNum") %></p>
 						</a>
 						<a href="#" class="list-group-item">
 							<h4 class="list-group-item-heading">处理用时</h4>

@@ -1,5 +1,7 @@
 # Update
-2016-06-02(Version:1.2.1) ADDED:Highlight green crawlers IP.
+2016-06-06(Version:1.3.1) FIXED:优化日志初始化时的数据结构，将整体的List拆分为包含文件信息的HashMap和所有请求记录的ArrayList，方便JSP端调用。
+
+2016-02-06(Version:1.3.0) ADDED:Highlight green crawlers IP.
 
 2016-02-05(Version:1.2.0) ADDED:Display IP attribution.
 
@@ -8,10 +10,6 @@
 2016-02-03(Version:1.0.11) FIXED:Update GUI.
 
 2016-02-02(Version:1.0.10) FIXED:Update GUI.
-
-2016-02-01(Version:1.0.9) FIXED:Update GUI.
-
-2016-01-31(Version:1.0.8) FIXED:Optimizate visual effects.
 
 2016-01-30(Version:1.0.7) FIXED:Fixed processing time on Overview Page when refresh page twice or more.
 

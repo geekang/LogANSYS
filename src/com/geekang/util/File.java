@@ -3,7 +3,7 @@ package com.geekang.util;
 
 public class File {
 	
-	public static String getFileLength(String filePath){
+	public static String getFileSize(String filePath){
 		
 		long fileLength = 0;
 		
