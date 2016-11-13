@@ -18,6 +18,7 @@ import org.junit.Test;
 import me.geekang.db.LogfileInfo;
 import me.geekang.db.MySQLConnector;
 import me.geekang.util.File;
+import me.geekang.util.Text;
 
 /**
  * 
@@ -219,7 +220,8 @@ public class Init {
 			String[] temp = firstLine.split(": ");
 			fileInfo.put("platform", temp[1]);
 		}
-		fileInfo.put("fileSize", File.getFileSize(filePath));
+		//日志文件大小
+		fileInfo.put("fileSize", Text.byteConversion(File.getFileSize(filePath)));
 		fileInfo.put("requestNum", Integer.toString(logList.size()));
 		
 		return fileInfo;

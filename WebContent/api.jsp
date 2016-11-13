@@ -1,4 +1,4 @@
-<%@page import="com.geekang.util.IP"%>
+<%@page import="me.geekang.util.IP"%>
 <%@ page language="java" contentType="text/javascript;charset=utf-8"%>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
