@@ -1,4 +1,4 @@
-package com.geekang.servlet;
+package me.geekang.servlet;
 
 import java.io.IOException;
 

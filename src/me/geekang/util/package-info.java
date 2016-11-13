@@ -5,4 +5,4 @@
  * @author geekang
  *
  */
-package com.geekang.db;
+package me.geekang.util;

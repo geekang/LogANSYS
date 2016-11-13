@@ -1,4 +1,4 @@
-package com.geekang.util;
+package me.geekang.util;
 
 import java.text.SimpleDateFormat;
 

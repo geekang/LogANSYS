@@ -1,4 +1,4 @@
-package com.geekang.init;
+package me.geekang.init;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -15,9 +15,9 @@ import java.util.TreeMap;
 
 import org.junit.Test;
 
-import com.geekang.db.LogfileInfo;
-import com.geekang.db.MySQLConnector;
-import com.geekang.util.File;
+import me.geekang.db.LogfileInfo;
+import me.geekang.db.MySQLConnector;
+import me.geekang.util.File;
 
 /**
  * 

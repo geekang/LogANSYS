@@ -1,11 +1,11 @@
-package com.geekang.db;
+package me.geekang.db;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.geekang.util.Date;
+import me.geekang.util.Date;
 
 /**
  * 

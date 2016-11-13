@@ -1,4 +1,4 @@
-package com.geekang.servlet;
+package me.geekang.servlet;
 
 import java.io.File;
 import java.io.IOException;
@@ -20,8 +20,8 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
-import com.geekang.init.Init;
-import com.geekang.util.Date;
+import me.geekang.init.Init;
+import me.geekang.util.Date;
 
 /**
  * Servlet implementation class InitLog

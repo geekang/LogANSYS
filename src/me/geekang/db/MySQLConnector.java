@@ -1,4 +1,4 @@
-package com.geekang.db;
+package me.geekang.db;
 
 import java.net.URI;
 import java.net.URISyntaxException;
