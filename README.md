@@ -7,19 +7,19 @@
 
 2016-02-04(Version:1.1.0) ADDED:Parse UA String to Browser name,version and so on.
 
-2016-02-03(Version:1.0.11) FIXED:Update GUI.
+2016-02-03(Version:1.0.10) FIXED:Update GUI.
 
-2016-02-02(Version:1.0.10) FIXED:Update GUI.
+2016-02-02(Version:1.0.9) FIXED:Update GUI.
 
-2016-01-30(Version:1.0.7) FIXED:Fixed processing time on Overview Page when refresh page twice or more.
+2016-01-30(Version:1.0.6) FIXED:Fixed processing time on Overview Page when refresh page twice or more.
 
-2016-01-29(Version:1.0.6) ADDED:Add Upload time and processing time on Overview Page.
+2016-01-29(Version:1.0.5) ADDED:Add Upload time and processing time on Overview Page.
 
-2016-01-27(Version:1.0.4) ADDED:Overview Page.
+2016-01-27(Version:1.0.3) ADDED:Overview Page.
   
-2016-01-25(Version:1.0.2) ADDED:Display the description of each field at the log info table.
+2016-01-25(Version:1.0.1) ADDED:Display the description of each field at the log info table.
   
-2016-01-24(Version:1.0.1) ADDED:Transform Log File into structured data(insert into MySQL).
+2016-01-24(Version:1.0.0) ADDED:Transform Log File into structured data(insert into MySQL).
 
 # Introduction
 

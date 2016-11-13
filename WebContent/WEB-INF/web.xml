@@ -9,6 +9,6 @@
   </welcome-file-list>
   <context-param>
     <param-name>file-upload</param-name>
-    <param-value>F:\\test\\</param-value>
+    <param-value>G:\\test\\</param-value>
   </context-param>
 </web-app>

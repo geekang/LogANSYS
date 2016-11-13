@@ -10,7 +10,7 @@ import java.text.SimpleDateFormat;
  * @update 2016年3月28日
  * @version 1.0.2
  */
-public class Date {
+public final class Date {
 
 	/**
 	 * 
