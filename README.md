@@ -1,4 +1,6 @@
 # Update
+2017-2-5(Version:1.4.0.0) OPTI:Using the Spring MVC framework.
+
 2016-11-13(Version:1.3.2.2) ADDED:Add static utility method "byteConversion" to convert byte to KB,MB or GB.
 
 2016-11-13(Version:1.3.2.1) OPTI:Change package name "com.geekang..." into "me.geekang...".

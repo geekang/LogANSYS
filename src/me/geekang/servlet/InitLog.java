@@ -11,7 +11,6 @@ import java.util.TreeMap;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,20 +25,20 @@ import me.geekang.util.Date;
 /**
  * Servlet implementation class InitLog
  */
-@WebServlet("/upload")
-public class InitLog extends HttpServlet {
+// @WebServlet("/upload")
+public class InitLog {
 	private static final long serialVersionUID = 1L;
-	
+
 	private boolean isMultipart;
 	private String filePath;
-	private int maxFileSize = 50 * 1024 * 1024;//M
+	private int maxFileSize = 50 * 1024 * 1024;// M
 	private int maxMemSize = 4 * 1024;
 	private File file;
 	String fileName;
-	
+
 	public void init() {
 		// Get the file location where it would be stored.
-		filePath = getServletContext().getInitParameter("file-upload");
+		//filePath = getServletContext().getInitParameter("file-upload");
 	}
 
 	/**
@@ -66,18 +65,18 @@ public class InitLog extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		final ServletContext application = this.getServletContext();
-		
+
+		//final ServletContext application = this.getServletContext();
+
 		String[] time = new String[3];
 		time[0] = Long.toString(System.currentTimeMillis());
 		time[1] = Date.FormatDate(System.currentTimeMillis(), "yyyy-MM-dd hh:mm:ss");
-		
-		application.setAttribute("time", time);
-		
+
+		//application.setAttribute("time", time);
+
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
-		
+
 		isMultipart = ServletFileUpload.isMultipartContent(request);
 		response.setContentType("text/html");
 
@@ -92,7 +91,7 @@ public class InitLog extends HttpServlet {
 			out.println("</html>");
 			return;
 		}
-		
+
 		DiskFileItemFactory factory = new DiskFileItemFactory();
 		// maximum size that will be stored in memory
 		factory.setSizeThreshold(maxMemSize);
@@ -129,18 +128,17 @@ public class InitLog extends HttpServlet {
 		} catch (Exception ex) {
 			System.out.println(ex);
 		}
-		
-		List<TreeMap<String,String>> list = new ArrayList<TreeMap<String,String>>();
+
+		List<TreeMap<String, String>> list = new ArrayList<TreeMap<String, String>>();
 		list = Init.InitLogFile(filePath + fileName);
-		application.setAttribute("recordList", list);
-		
-		HashMap<String,String> fileInfo = new HashMap<String,String>();
+		//application.setAttribute("recordList", list);
+
+		HashMap<String, String> fileInfo = new HashMap<String, String>();
 		fileInfo = Init.LogFileInfo();
-		application.setAttribute("fileInfo", fileInfo);
-		
-		
+		//application.setAttribute("fileInfo", fileInfo);
+
 		response.sendRedirect("file-overview");
-		
+
 	}
 
 }

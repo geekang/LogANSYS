@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class Filter
  */
-@WebServlet("/details-all")
-public class Details_all extends HttpServlet {
+//@WebServlet("/details-all")
+public class Details_all  {
 	private static final long serialVersionUID = 1L;
        
     /**

@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class Overview
  */
-@WebServlet("/file-overview")
-public class File_overview extends HttpServlet {
+//@WebServlet("/file-overview")
+public class File_overview {
 	private static final long serialVersionUID = 1L;
 
 	/**

@@ -15,6 +15,7 @@ public class IP {
 
 		QQWryFile qqWryFile = QQWryFile.getInstance();
 		RandomAccessFile ipFile = qqWryFile.getIpFile();
+		System.out.println(ip);
 		QQWryRecord record = qqWryFile.find(ip, ipFile);
 		// System.out.println(Utils.ipToStr(record.getBeginIP()));
 		// System.out.println(Utils.ipToStr(record.getEndIP()));

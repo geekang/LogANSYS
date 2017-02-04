@@ -50,7 +50,7 @@ public final class Text {
 
 		// 将输入的目标单位统一转换为大写
 		targetUnit = targetUnit.toUpperCase();
-		// 保留两位小数
+		// 结果保留三位小数
 		DecimalFormat df = new DecimalFormat("#.###");
 
 		if ("K".equals(targetUnit)) {
