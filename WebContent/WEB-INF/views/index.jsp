@@ -13,9 +13,9 @@
 		<div class="container">
 			<h1>Welcome</h1>
 			
-			<form class="form">
-				<input type="text" placeholder="Username">
-				<input type="password" placeholder="Password">
+			<form class="form" method="POST">
+				<input type="text" placeholder="Username" name="userName">
+				<input type="password" placeholder="Password" name="password">
 				<button type="submit" id="login-button">Login</button>
 			</form>
 		</div>
@@ -38,7 +38,7 @@
 <script src="./assets/js/jquery-2.1.1.min.js" type="text/javascript"></script>
 <script>
 $('#login-button').click(function (event) {
-	event.preventDefault();
+	//event.preventDefault();
 	$('form').fadeOut(500);
 	$('.wrapper').addClass('form-success');
 });

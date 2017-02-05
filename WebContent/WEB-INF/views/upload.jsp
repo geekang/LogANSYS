@@ -9,7 +9,7 @@
 </head>
 <body>
 <p>Choose the file for uploading:
-  <form action="upload" method="post" enctype="multipart/form-data">
+  <form action="upload" method="POST" enctype="multipart/form-data">
     <input type=file name=file size=30 />
     <br>
     <input type=submit value=commit />
