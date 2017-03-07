@@ -5,7 +5,7 @@
 <%@ page import="java.util.TreeMap" %>
 <%@ page import="eu.bitwalker.useragentutils.UserAgent" %>
 <%@ page trimDirectiveWhitespaces="true" %>
-<jsp:include page="/WEB-INF/include/lef-nav.jsp"/>
+<jsp:include page="/WEB-INF/include/left-nav.jsp"/>
 		
 		<div class="main-content">
 					

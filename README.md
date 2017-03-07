@@ -1,4 +1,6 @@
 # Update
+2017-2-6(Version:1.4.1.2) OPTI:Optimized the upload process.
+
 2017-2-6(Version:1.4.1.1) OPTI:Optimized the upload page.
 
 2017-2-6(Version:1.4.1.0) ADDED:Added the user login function.
@@ -6,8 +8,6 @@
 2017-2-5(Version:1.4.0.0) OPTI:Using the Spring MVC framework.
 
 2016-11-13(Version:1.3.2.2) ADDED:Add static utility method "byteConversion" to convert byte to KB,MB or GB.
-
-2016-11-13(Version:1.3.2.0) OPTI:Add keyword "final" into class "com.geekang.util.Data".
 
 2016-02-06(Version:1.3.0.0) ADDED:Highlight green crawlers IP.
 

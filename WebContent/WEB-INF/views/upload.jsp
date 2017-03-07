@@ -49,7 +49,7 @@
 							var i = 1,
 								$example_dropzone_filetable = $("#example-dropzone-filetable"),
 								example_dropzone = $("#advancedDropzone").dropzone({
-								url: 'data/upload-file.php',
+								url: 'upload',
 								
 								// Events
 								addedfile: function(file)
@@ -82,13 +82,13 @@
 								
 								success: function(file)
 								{
-									file.fileEntryTd.find('td:last').html('<span class="text-success">Uploaded</span>');
+									file.fileEntryTd.find('td:last').html('<span class="text-success">成功</span>');
 									file.progressBar.removeClass('progress-bar-warning').addClass('progress-bar-success');
 								},
 								
 								error: function(file)
 								{
-									file.fileEntryTd.find('td:last').html('<span class="text-danger">Failed</span>');
+									file.fileEntryTd.find('td:last').html('<span class="text-danger">失败</span>');
 									file.progressBar.removeClass('progress-bar-warning').addClass('progress-bar-red');
 								}
 							});
