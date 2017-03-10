@@ -195,15 +195,15 @@
 				<ul id="main-menu" class="main-menu">
 					<!-- add class "multiple-expanded" to allow multiple submenus to open -->
 					<!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
-					<li>
+					<li class="l1">
 						<a href="overview">
 							<i class="linecons-cog"></i>
 							<span class="title">仪表盘</span>
 						</a>
 						<ul>
-							<li>
-								<a href="file-overview">
-									<span class="title">日志文件概略</span>
+							<li class="m1">
+								<a href="upload">
+									<span class="title">日志上传</span>
 								</a>
 							</li>
 							<li>
@@ -228,13 +228,13 @@
 							</li>
 						</ul>
 					</li>
-					<li class="active opened active expanded has-sub">
+					<li>
 						<a href="details">
 							<i class="linecons-desktop"></i>
 							<span class="title">详情</span>
 						</a>
 						<ul>
-							<li class="active">
+							<li>
 								<a href="details-all">
 									<span class="title">全部详情</span>
 								</a>

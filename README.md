@@ -1,5 +1,7 @@
 # Update
-2017-2-6(Version:1.4.1.2) OPTI:Optimized the upload process.
+2017-3-10(Version:1.4.1.3) OPTI:Menu <li> highLigh.
+
+2017-3-7(Version:1.4.1.2) OPTI:Optimized the upload process.
 
 2017-2-6(Version:1.4.1.1) OPTI:Optimized the upload page.
 

@@ -145,9 +145,8 @@
 				
 					<!-- Add your copyright text here -->
 					<div class="footer-text">
-						&copy; 2014 
-						<strong>Xenon</strong> 
-						More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>
+						&copy; 2017 
+						<strong>山东财经大学计算机科学与技术学院</strong> - 孙康
 					</div>
 					
 					
@@ -320,6 +319,10 @@
 
 	<!-- JavaScripts initializations and stuff -->
 	<script src="assets/js/xenon-custom.js"></script>
-
+<script>
+$("#main-menu li").removeClass("active opened active expanded");
+$(".l1").addClass("active opened active expanded");
+$(".l1 .m1").addClass("active");
+</script>
 </body>
 </html>
