@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html;charset=utf-8"%>
-<%@ page import="eu.bitwalker.useragentutils.UserAgent" %>
+<%@ page trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -206,9 +206,9 @@
 									<span class="title">日志上传</span>
 								</a>
 							</li>
-							<li>
-								<a href="dashboard-2.html">
-									<span class="title">Dashboard 2</span>
+							<li class="m2">
+								<a href="overview">
+									<span class="title">日志文件概略</span>
 								</a>
 							</li>
 							<li>

@@ -1,11 +1,13 @@
-package me.geekang.db;
+package me.geekang.service;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 
-import me.geekang.util.Date;
+import me.geekang.db.MySQLConnector;
+import me.geekang.var.Var;
 
 /**
  * 
@@ -16,6 +18,39 @@ import me.geekang.util.Date;
  * @version 1.0.2
  */
 public class LogfileInfo {
+	
+	/**
+	 * @description 取得日志文件信息
+	 * @author Geekang
+	 * @date 2016年1月26日
+	 * @update 2016年3月28日
+	 * @version 1.4.1.4
+	 * @param TODO
+	 * @return TODO
+	 */
+	public static HashMap<String, String> getLogFileInfo() {
+		
+		HashMap<String, String> fileInfo = new HashMap<String, String>();
+
+		//上传的文件名
+		fileInfo.put("fileName", Var.getFileName());
+		//上传时间
+		fileInfo.put("uploadTime", Var.getUploadTime());
+		//日志开始时间
+		fileInfo.put("startTime", Var.getStartTime());
+		//日志结束时间
+		fileInfo.put("endTime", Var.getEndTime());
+		//Web平台
+		fileInfo.put("platform", Var.getPlatform());
+		// 日志文件大小
+		fileInfo.put("fileSize", Var.getFileSize());
+		//请求数量
+		fileInfo.put("requestNum", Var.getRequestNum());
+		//该日志文件处理时间
+		fileInfo.put("processingTime", Var.getProcessingTime());
+
+		return fileInfo;
+	}
 
 	/**
 	 * 
@@ -59,29 +94,5 @@ public class LogfileInfo {
 		return desc;
 	}
 	
-	/**
-	 * 
-	 * 
-	 * @description Generate table name which format like "f+date_platform_hash".
-	 * @author Geekang
-	 * @date 2016年1月26日
-	 * @update 2016年1月26日
-	 * @version 1.0.1
-	 * @param filePath
-	 * @return String
-	 */
-	public static String generateTABLEName(String platform,String filePath){
-		
-		String tableName = "f";
-		
-		tableName = tableName + Date.getDate("yyyyMMdd");
-		if(platform.startsWith("#Software: Microsoft Internet Information Services")){
-			tableName = tableName + "_" + "iis";
-		} else {
-			tableName = tableName + "_" + "unknown";
-		}
-		tableName = tableName + "_" + System.currentTimeMillis();
-
-		return tableName;
-	}
+	
 }

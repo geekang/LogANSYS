@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html;charset=utf-8"%>
-<%@ page import="eu.bitwalker.useragentutils.UserAgent" %>
+<%@ page trimDirectiveWhitespaces="true" %>
 <nav class="navbar user-info-navbar" role="navigation">
 				
 				<!-- Left links for user info navbar -->
