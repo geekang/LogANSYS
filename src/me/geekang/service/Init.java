@@ -109,7 +109,8 @@ public class Init {
 						}
 						// 将IP地址的实际地理位置加入Map
 						if ("c-ip".equals(fields[i])) {
-							recordTEMP.put("c-ip", IP.getIPInfo(entryTEMP[i]));
+							recordTEMP.put("c-ip", entryTEMP[i]);
+							recordTEMP.put("ip", IP.getIPInfo(entryTEMP[i]));
 						} else if ("cs(User-Agent)".equals(fields[i])) {
 							recordTEMP.put("ua", UserAgent.parseUserAgentString(entryTEMP[i]).getBrowser().toString());
 							recordTEMP.put("cs(User-Agent)", entryTEMP[i].replaceAll("\\+", " "));

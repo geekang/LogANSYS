@@ -21,7 +21,7 @@ public class DetailsController {
 		return "details";
 	}
 	
-	@RequestMapping("tableajax")
+	@RequestMapping(value="tableajax",produces="text/html;charset=UTF-8")
 	@ResponseBody
 	public String tableDemoAjax(@RequestParam String aoData) {
 		return Details.tableAjax(aoData);

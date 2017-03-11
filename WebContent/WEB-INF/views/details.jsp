@@ -134,64 +134,6 @@
 								<th>封禁操作</th>
 							</tr>
 						</thead>
-						
-						<tbody class="middle-align">
-
-						<!--  -->
-						<c:forEach items="${map}" var="map" varStatus="s">
-							<tr>
-								<td>
-									<input type="checkbox" class="cbr">
-								</td>
-
-								<!-- 序号 -->
-								<td>${s.count}</td>
-								<!-- 时间（日期） -->
-								<td><span class='' title='${map.date}'><c:out value="${map.time}" /></span></td>
-								<!-- <span class="label label-warning" title="2010-10-29">00:01:36</span> -->
-								<!-- IP -->
-								<td><span title='${map["ipAddr"]}'>${map["c-ip"]}</span></td>
-								<!-- //方法 -->
-								<td>${map["cs-method"]}</td>
-								<!-- URI（URI查询） -->
-								<td><span class='' title='${map["cs-uri-query"]}'>${map["cs-uri-stem"]}</span></td>
-								<!-- 状态码（子状态码/Win32状态） -->
-								<td><span class='' title='${map["sc-substatus"]}/${map["sc-win32-status"]}'>${map["sc-status"]}</span></td>
-								<!-- //UA
-								String ua = list.get(i).get("cs(User-Agent)").toString().replaceAll("\\+", " ");UserAgent.parseUserAgentString(ua).getBrowser(); -->
-								<td><span class='' title='${map["cs(User-Agent)"]}'>${map["ua"]}</span></td>
-								<!-- //用时 -->
-								<td>${map["time-taken"]}</td>
-
-								<td>
-									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">IP</a>
-									
-									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">URI</a>
-									
-									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">UA</a>
-								</td>
-							</tr>
-							</c:forEach>
-							<!--  -->
-							<!--
-							
-							<tr>
-								<td>
-									<input type="checkbox" class="cbr">
-								</td>
-								<td><span class="label label-warning" title="2010-10-29">00:01:36</span></td>
-								<td><span class="label label-danger" title="山东济南联通">123.232.100.100</span></td>
-								<td>GET</td>
-								<td>
-									<a href="#" class="btn btn-warning btn-xs btn-icon icon-left">IP</a>
-									
-									<a href="#" class="btn btn-danger btn-xs btn-icon icon-left">URI</a>
-									
-									<a href="#" class="btn btn-info btn-xs btn-icon icon-left">UA</a>
-								</td>
-							</tr>
-							  -->
-						</tbody>
 					</table>
 					
 				</div>
