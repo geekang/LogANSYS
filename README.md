@@ -1,11 +1,11 @@
 # Update
+2017-3-12(Version:1.4.2.1) 优化：修改了小logo图片。
+
 2017-3-12(Version:1.4.2.0) 优化：日志详情页的前后端分页。
 
 2017-3-11(Version:1.4.1.5) 优化：日志详情页的后端实现。
 
 2017-3-10(Version:1.4.1.4) 优化：概略页的后台实现。
-
-2017-3-10(Version:1.4.1.3) OPTI:Menu <li> highLigh.
 
 2017-2-6(Version:1.4.1.0) ADDED:Added the user login function.
 

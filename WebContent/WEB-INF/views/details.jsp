@@ -64,15 +64,15 @@
 								{bSortable: true,"sWidth": "8%"},
 								{bSortable: false,"sWidth": "12%"},
 							],
-							iDisplayLength: 30,
-							aLengthMenu: [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
+							iDisplayLength: 50,
+							aLengthMenu: [[10, 25, 50, 100, -1], [10, 50, 100, 200, "All"]],
 							//bAutoWidth: true, //自适应宽度
 							//sScrollX: "120%",
 							//bScrollCollapse: true
 							"bProcessing": false, // 是否显示取数据时的那个等待提示
-                "bServerSide": true,//这个用来指明是通过服务端来取数据
-                "sAjaxSource": "details/tableajax",//这个是请求的地址
-                "fnServerData": retrieveData // 获取数据的处理函数
+							"bServerSide": true,//这个用来指明是通过服务端来取数据
+							"sAjaxSource": "details/tableajax",//这个是请求的地址
+							"fnServerData": retrieveData // 获取数据的处理函数
 						});
 						
 						// Replace checkboxes when they appear
