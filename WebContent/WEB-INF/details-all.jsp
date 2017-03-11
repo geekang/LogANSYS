@@ -697,9 +697,7 @@ if(list != null){
 
 
 	<!-- Imported scripts on this page -->
-	<script src="assets/js/datatables/dataTables.bootstrap.js"></script>
-	<script src="assets/js/datatables/yadcf/jquery.dataTables.yadcf.js"></script>
-	<script src="assets/js/datatables/tabletools/dataTables.tableTools.min.js"></script>
+	
 
 
 	<!-- JavaScripts initializations and stuff -->

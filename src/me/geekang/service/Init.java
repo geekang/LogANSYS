@@ -9,12 +9,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.TreeMap;
 
+import eu.bitwalker.useragentutils.UserAgent;
 import me.geekang.db.MySQLConnector;
 import me.geekang.util.Date;
+import me.geekang.util.IP;
 import me.geekang.var.Var;
 
 /**
@@ -26,7 +27,7 @@ import me.geekang.var.Var;
  * @version 1.3.1
  */
 public class Init {
-																					// row
+
 	public static List<TreeMap<String, String>> logList = new ArrayList<TreeMap<String, String>>();// log
 																									// row
 	public static String[] fields = {};// 字段
@@ -45,7 +46,7 @@ public class Init {
 	 * @param filePath
 	 * @return TODO
 	 */
-	public static List<TreeMap<String, String>> InitLogFile(String filePath) {
+	public static void InitLogFile(String filePath) {
 
 		BufferedReader br;
 		String byteread = null;
@@ -106,8 +107,15 @@ public class Init {
 							// System.out.println(entryTEMP[i]);
 							entryTEMP[i] = entryTEMP[i].substring(0, 254);
 						}
-						recordTEMP.put(fields[i], entryTEMP[i]);
-						// System.out.println(recordTEMP.get(fields[i]));
+						// 将IP地址的实际地理位置加入Map
+						if ("c-ip".equals(fields[i])) {
+							recordTEMP.put("c-ip", IP.getIPInfo(entryTEMP[i]));
+						} else if ("cs(User-Agent)".equals(fields[i])) {
+							recordTEMP.put("ua", UserAgent.parseUserAgentString(entryTEMP[i]).getBrowser().toString());
+							recordTEMP.put("cs(User-Agent)", entryTEMP[i].replaceAll("\\+", " "));
+						} else {
+							recordTEMP.put(fields[i], entryTEMP[i]);
+						}
 					}
 					logList.add(recordTEMP);
 				}
@@ -115,7 +123,7 @@ public class Init {
 			}
 
 			Var.setEndTime(entryTEMP[0] + " " + entryTEMP[1]);
-			
+
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -127,7 +135,8 @@ public class Init {
 		SaveData2DB();// put the list to database
 
 		Var.setRequestNum(logList.size());
-		return logList;
+		Var.setLogList(logList);
+		// return logList;
 
 	}
 

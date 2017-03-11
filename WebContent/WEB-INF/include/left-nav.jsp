@@ -211,31 +211,16 @@
 									<span class="title">日志文件概略</span>
 								</a>
 							</li>
-							<li>
-								<a href="dashboard-3.html">
-									<span class="title">Dashboard 3</span>
-								</a>
-							</li>
-							<li>
-								<a href="dashboard-4.html">
-									<span class="title">Dashboard 4</span>
-								</a>
-							</li>
-							<li>
-								<a href="skin-generator.html">
-									<span class="title">Skin Generator</span>
-								</a>
-							</li>
 						</ul>
 					</li>
-					<li>
+					<li class="l2">
 						<a href="details">
 							<i class="linecons-desktop"></i>
 							<span class="title">详情</span>
 						</a>
 						<ul>
-							<li>
-								<a href="details-all">
+							<li class="m1">
+								<a href="details">
 									<span class="title">全部详情</span>
 								</a>
 							</li>

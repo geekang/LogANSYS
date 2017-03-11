@@ -1,8 +1,4 @@
-<%@ page import="me.geekang.util.IP"%>
 <%@ page language="java" contentType="text/html;charset=utf-8"%>
-<%@ page import="java.util.List" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="java.util.TreeMap" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 <jsp:include page="/WEB-INF/include/left-nav.jsp"/>

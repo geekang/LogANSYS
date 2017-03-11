@@ -6,6 +6,20 @@ import com.glodon.miracle.qqwry.QQWryFile;
 import com.glodon.miracle.qqwry.QQWryRecord;
 
 public class IP {
+	
+	/**
+	 * 获取IP实际地理位置
+	 * @param ip
+	 * @return
+	 */
+	public static String getIpAddr(String ip){
+		
+		QQWryFile qqWryFile = QQWryFile.getInstance();
+		RandomAccessFile ipFile = qqWryFile.getIpFile();
+		
+		QQWryRecord record = qqWryFile.find(ip, ipFile);
+		return record.getCountry() + " " + record.getArea();
+	}
 
 	public static String getIPInfo(String ip) {
 
@@ -15,12 +29,12 @@ public class IP {
 
 		QQWryFile qqWryFile = QQWryFile.getInstance();
 		RandomAccessFile ipFile = qqWryFile.getIpFile();
-		System.out.println(ip);
+		
 		QQWryRecord record = qqWryFile.find(ip, ipFile);
 		// System.out.println(Utils.ipToStr(record.getBeginIP()));
 		// System.out.println(Utils.ipToStr(record.getEndIP()));
 		// System.out.println(record.getCountry());
-		// System.out.println(record.getArea());
+//		 System.out.println(record.getArea());
 
 		info = record.getCountry() + " " + record.getArea();
 		color = getColor(info);
