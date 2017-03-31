@@ -52,7 +52,7 @@ public class IP {
 		default:
 		}
 
-		return "<span class='" + className + "' title='" + info + "'>" + ip + "</span>";// label
+		return "<span class='ip-span " + className + "' title='" + info + "'>" + ip + "</span>";// label
 		// label-danger
 	}
 

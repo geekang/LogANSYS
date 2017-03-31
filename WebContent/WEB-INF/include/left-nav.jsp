@@ -21,6 +21,7 @@
 	<link rel="stylesheet" href="assets/css/xenon-components.css">
 	<link rel="stylesheet" href="assets/css/xenon-skins.css">
 	<link rel="stylesheet" href="assets/css/custom.css">
+	<link rel="stylesheet" href="assets/css/toastr.min.css">
 
 	<script src="assets/js/jquery-1.11.1.min.js"></script>
 
@@ -221,7 +222,7 @@
 						<ul>
 							<li class="m1">
 								<a href="details">
-									<span class="title">全部详情</span>
+									<span class="title">日志详情</span>
 								</a>
 							</li>
 							<li>

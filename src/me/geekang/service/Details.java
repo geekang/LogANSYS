@@ -38,16 +38,16 @@ public class Details {
 			String time = "<span class='' title='" + logList.get(i).get("date") + "'>" + logList.get(i).get("time")
 					+ "</span>";
 			String ip = logList.get(i).get("ip");
-			String method = logList.get(i).get("cs-method");
-			String uri = "<span class='' title='" + logList.get(i).get("cs-uri-query") + "'>"
+			String method = "<span class='m-span'>" + logList.get(i).get("cs-method") + "</span>";
+			String uri = "<span class='url-span' title='" + logList.get(i).get("cs-uri-query") + "'>"
 					+ logList.get(i).get("cs-uri-stem") + "</span>";
 			String stat = "<span class='' title='" + logList.get(i).get("sc-substatus") + "/"
 					+ logList.get(i).get("sc-win32-status") + "'>" + logList.get(i).get("sc-status") + "</span>";
-			String col7 = "<span class='' title='" + logList.get(i).get("cs(User-Agent)") + "'>"
+			String ua = "<span class='ua-span' title='" + logList.get(i).get("cs(User-Agent)") + "'>"
 					+ logList.get(i).get("ua") + "</span>";
 			String col8 = "123";
-			String col9 = "<a href='#' class='btn btn-warning btn-xs btn-icon icon-left'>IP</a><a href='#' class='btn btn-danger btn-xs btn-icon icon-left'>URI</a><a href='#' class='btn btn-info btn-xs btn-icon icon-left'>UA</a>";
-			String[] d = { col1, i + 1 + "", time, ip, method, uri, stat, col7, col8, col9 };
+			String col9 = "<button class='btn btn-red btn-xs' onclick=\"showModel(this)\">黑名单</button><button class='btn btn-info btn-xs'>白名单</button>";
+			String[] d = { col1, i + 1 + "", time, ip, method, uri, stat, ua, col8, col9 };
 			lst.add(d);
 		}
 

@@ -5,7 +5,7 @@
 <div class="page-title">
 				
 				<div class="title-env">
-					<h1 class="title">全部详情</h1>
+					<h1 class="title">日志详情</h1>
 					<p class="description">All Details</p>
 				</div>
 				
@@ -21,7 +21,7 @@
 								</li>
 							<li class="active">
 						
-										<strong>全部详情</strong>
+										<strong>日志详情</strong>
 								</li>
 								</ol>
 								
@@ -131,13 +131,13 @@
 								<th>状态</th>
 								<th>UA</th>
 								<th>用时</th>
-								<th>封禁操作</th>
+								<th>操作</th>
 							</tr>
 						</thead>
 					</table>
 					
 				</div>
-			</div>
+			</div>			
 <jsp:include page="/WEB-INF/include/footer.jsp"/>
 <script src="assets/js/datatables/js/jquery.dataTables.min.js"></script>
 <script src="assets/js/datatables/dataTables.bootstrap.js"></script>
@@ -145,8 +145,174 @@
 <script src="assets/js/datatables/tabletools/dataTables.tableTools.min.js"></script>
 <script>
 $("#main-menu li").removeClass("active opened active expanded");
-$(".l1").addClass("active opened active expanded");
-$(".l1 .m1").addClass("active");
+$(".l2").addClass("active opened active expanded");
+$(".l2 .m1").addClass("active");
+</script>
+		<!-- Modal 1(Long Modal)-->
+	<div class="modal fade" id="modal-1">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title">添加组合黑名单</h4>
+				</div>
+				
+				<div class="modal-body">
+				
+				<div class="row">
+								
+								<div class="col-md-12">
+									<div class="alert alert-warning">
+										<strong>注意</strong> 该操作会封禁被选中的项目。
+									</div>
+								</div>
+								
+							</div>
+							
+					<div class="row">
+					
+					<div class="col-md-6">
+					
+							
+							<div class="form-group">
+								<label for="field-2" class="control-label">IP</label>
+								<div class="form-group">
+									<label>
+										<input type="checkbox" name="ip" class="iswitch iswitch-danger" value="">
+										<span id="model-span-ip"></span>
+									</label>
+								</div>
+								
+							</div>	
+						
+						</div>
+						
+						<div class="col-md-6">
+							
+							<div class="form-group">
+								<label for="field-2" class="control-label">Method</label>
+								<div class="form-group">
+									<label>
+										<input type="checkbox" name="m" class="iswitch iswitch-danger" value="">
+										<span id="model-span-m"></span>
+									</label>
+								</div>
+								
+							</div>	
+						
+						</div>
+					</div>
+				
+					<div class="row">
+						<div class="col-md-12">
+							
+							<div class="form-group">
+								<label for="field-3" class="control-label">User-Agent</label>
+								<pre id="ua-pre" class="alert-default" style="cursor: pointer;"></pre>
+								<input type="hidden" name="ua" value="">
+							</div>
+							
+						</div>
+					</div>
+				
+					<div class="row">
+						<div class="col-md-12">
+							
+							<div class="form-group">
+								<label for="field-3" class="control-label">URL</label>
+								<pre id="url-pre" class="alert-default" style="cursor: pointer;"></pre>
+								<input type="hidden" name="url" value="">
+							</div>	
+							
+						</div>
+					</div>
+				
+					<div class="row">
+						<div class="col-md-12">
+							
+							<div class="form-group no-margin">
+								<label for="field-7" class="control-label">备注</label>
+								<textarea name="remarks" class="form-control autogrow" id="remarks" placeholder="填写封禁原因等" style="resize:none"></textarea>
+							</div>	
+							
+						</div>
+</div>
+					
+				</div>
+				
+				<div class="modal-footer">
+					<button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+					<button type="button" class="btn btn-info" onclick="update()">添加组合黑名单</button>
+				</div>
+			</div>
+		</div>
+	</div>
+<script>
+var i = 0;
+$("#url-pre").click(function(){
+	if(i % 2 == 0){
+		$(this).removeClass("alert-default").addClass("alert-danger");
+	} else {
+		$(this).removeClass("alert-danger").addClass("alert-default");
+	}
+	i++;
+});
+var j = 0;
+$("#ua-pre").click(function(){
+	if(j % 2 == 0){
+		$(this).removeClass("alert-default").addClass("alert-danger");
+	} else {
+		$(this).removeClass("alert-danger").addClass("alert-default");
+	}
+	j++;
+});
+//触发模态框的同时调用此方法  
+function showModel(obj) {  
+	$("#model-span-ip").text($(obj).parent().siblings().find(".ip-span").text()).siblings("input").val($(obj).parent().siblings().find(".ip-span").text());
+	$("#model-span-m").text($(obj).parent().siblings().find(".m-span").text()).siblings("input").val($(obj).parent().siblings().find(".m-span").text());
+	$("#ua-pre").html($(obj).parent().siblings().find(".ua-span").attr("title")).siblings().find("input").val($(obj).parent().siblings().find(".ua-span").attr("title"));
+	$("#url-pre").html($(obj).parent().siblings().find(".url-span").text() + "?" + $(obj).parent().siblings().find(".url-span").attr("title")).siblings().find("input").val($(obj).parent().siblings().find(".url-span").text() + "?" + $(obj).parent().siblings().find(".url-span").attr("title"));
+    //获取表格中的一行数据  
+    //var stuno = document.getElementById("table").rows[id].cells[0].innerText;  
+    //var pass = document.getElementById("table").rows[id].cells[1].innerText;  
+    //var name = document.getElementById("table").rows[id].cells[2].innerText;  
+    //var sex = document.getElementById("table").rows[id].cells[3].innerText;  
+    //向模态框中传值  
+    //$('#stuno').val(stuno);  
+    //$('#pass').val(pass);  
+    //$('#stuname').val(name);  
+    //if (sex == '女') {  
+    //    document.getElementById('women').checked = true;  
+    //} else {  
+    //    document.getElementById('man').checked = true;  
+    //}  
+    $("#modal-1").modal('show', {backdrop: 'static'});
+} 
+//提交更改  
+function update() {  
+    //获取模态框数据  
+    var ip = typeof($('input:checkbox[name="ip"]:checked').val())=="undefined"?"":$('input:checkbox[name="ip"]:checked').val();  
+    var m = typeof($('input:checkbox[name="m"]:checked').val())=="undefined"?"":$('input:checkbox[name="m"]:checked').val();
+    var ua = j % 2 == 0?"":$("#ua-pre").html();
+    var url = i % 2 == 0?"":$("#url-pre").html();
+    var remarks = $("#remarks").val();
+    $.ajax({  
+        type: "post",  
+        url: "details/blacklist",  
+        data: "ip=" + encodeURIComponent(ip) + "&m=" + encodeURIComponent(m) + "&ua=" + encodeURIComponent(ua) + "&url=" + encodeURIComponent(url) + "&remarks=" + encodeURIComponent(remarks),  
+        dataType: 'json',
+        contentType: "application/x-www-form-urlencoded; charset=utf-8",  
+        success: function(result) {  
+        	toastr.success('添加黑名单成功');
+        },
+        error: function(result) {  
+        	toastr.error('添加黑名单失败');
+        }
+        
+    });
+    $('#modal-1').modal('toggle');
+}
 </script>
 </body>
 </html>

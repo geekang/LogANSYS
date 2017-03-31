@@ -29,8 +29,6 @@ public class UploadController {
 		Var.setPath("G:/test/" + profilePicture.getOriginalFilename());
 		long uploadTime = System.currentTimeMillis();
 		Var.setUploadTime(Date.FormatDate(uploadTime, "yyyy-MM-dd hh:mm:ss"));
-		Init.InitLogFile(Var.getPath());
-		Var.setFileSize(Var.getPath());
 		Var.setProcessingTime(System.currentTimeMillis() - uploadTime + "");
 	    try {
 			profilePicture.transferTo(new File(Var.getPath()));
@@ -41,6 +39,8 @@ public class UploadController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	    Init.InitLogFile(Var.getPath());
+	    Var.setFileSize(Var.getPath());
 		return "redirect:/upload";
 	}
 }
