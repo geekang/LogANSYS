@@ -46,7 +46,7 @@ public class Details {
 			String ua = "<span class='ua-span' title='" + logList.get(i).get("cs(User-Agent)") + "'>"
 					+ logList.get(i).get("ua") + "</span>";
 			String col8 = "123";
-			String col9 = "<button class='btn btn-red btn-xs' onclick=\"showModel(this)\">黑名单</button><button class='btn btn-info btn-xs'>白名单</button>";
+			String col9 = "<button class='btn btn-red btn-xs' onclick=\"showModel1(this)\">黑名单</button><button class='btn btn-info btn-xs' onclick=\"showModel2(this)\">白名单</button>";
 			String[] d = { col1, i + 1 + "", time, ip, method, uri, stat, ua, col8, col9 };
 			lst.add(d);
 		}
