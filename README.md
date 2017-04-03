@@ -1,4 +1,6 @@
 # Update
+2017-4-4(Version:2.4.0.0) 
+
 2017-4-4(Version:2.3.0.0) 新增：删除黑名单功能。
 
 2017-4-4(Version:2.2.0.0) 新增：编辑白名单功能。
@@ -14,10 +16,6 @@
 2017-3-31(Version:1.4.3.0) 新增：添加组合黑名单功能。
 
 2017-2-6(Version:1.4.1.0) ADDED:Added the user login function.
-
-2016-02-06(Version:1.3.0.0) ADDED:Highlight green crawlers IP.
-
-2016-02-05(Version:1.2.0.0) ADDED:Display IP attribution.
   
 2016-01-24(Version:1.0.0.0) 新增：将日志文件转换为结构化文本存储在MySQL数据库。
 

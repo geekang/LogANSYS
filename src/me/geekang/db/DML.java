@@ -184,4 +184,36 @@ public class DML {
 			e.printStackTrace();
 		}
 	}
+	
+	public static void whiteListDelete(String id) {
+
+		Connection connection;
+		String sql;
+		PreparedStatement preStmt;
+		String tableName = "white_list";
+
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			connection = MySQLConnector.getConnect();
+			
+			sql = "DELETE FROM " + tableName
+					+ " WHERE id=?";
+			connection.setAutoCommit(false);
+			preStmt = connection.prepareStatement(sql);
+
+			preStmt.setInt(1, Integer.parseInt(id));
+
+			preStmt.execute();
+			connection.commit();
+
+			preStmt.close();
+			connection.close();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }

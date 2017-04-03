@@ -245,6 +245,26 @@ $(".l2 .m3").addClass("active");
 			</div>
 		</div>
 	</div>
+	<div class="modal fade" id="del">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title">确认</h4>
+				</div>
+				
+				<div class="modal-body">
+					确认删除此白名单记录吗？
+				</div>
+				<span id="id-del" style="display:none;"></span>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
+					<button type="button" class="btn btn-info" onclick="delWhiteList()">确认</button>
+				</div>
+			</div>
+		</div>
+	</div>
 <script>
 var i = 0;
 $("#url-pre").click(function(){
@@ -273,28 +293,6 @@ function edit(obj) {
 	$("#url-pre").html($(obj).parent().siblings().find(".url-span").text() + "?" + $(obj).parent().siblings().find(".url-span").attr("title")).siblings().find("input").val($(obj).parent().siblings().find(".url-span").text() + "?" + $(obj).parent().siblings().find(".url-span").attr("title"));
 	$("#remarks").val($(obj).parent().siblings().find(".remarks-span").html());
 	$("#edit").modal('show', {backdrop: 'static'});
-} 
-//触发模态框的同时调用此方法  
-function showModel2(obj) {  
-	$("#model2-span-ip").text($(obj).parent().siblings().find(".ip-span").text()).siblings("input").val($(obj).parent().siblings().find(".ip-span").text());
-	$("#model2-span-m").text($(obj).parent().siblings().find(".m-span").text()).siblings("input").val($(obj).parent().siblings().find(".m-span").text());
-	$("#ua-pre2").html($(obj).parent().siblings().find(".ua-span").attr("title")).siblings().find("input").val($(obj).parent().siblings().find(".ua-span").attr("title"));
-	$("#url-pre2").html($(obj).parent().siblings().find(".url-span").text() + "?" + $(obj).parent().siblings().find(".url-span").attr("title")).siblings().find("input").val($(obj).parent().siblings().find(".url-span").text() + "?" + $(obj).parent().siblings().find(".url-span").attr("title"));
-    //获取表格中的一行数据  
-    //var stuno = document.getElementById("table").rows[id].cells[0].innerText;  
-    //var pass = document.getElementById("table").rows[id].cells[1].innerText;  
-    //var name = document.getElementById("table").rows[id].cells[2].innerText;  
-    //var sex = document.getElementById("table").rows[id].cells[3].innerText;  
-    //向模态框中传值  
-    //$('#stuno').val(stuno);  
-    //$('#pass').val(pass);  
-    //$('#stuname').val(name);  
-    //if (sex == '女') {  
-    //    document.getElementById('women').checked = true;  
-    //} else {  
-    //    document.getElementById('man').checked = true;  
-    //}  
-    $("#modal-2").modal('show', {backdrop: 'static'});
 }
 //提交更改  
 function editWhiteList() {  
@@ -321,29 +319,30 @@ function editWhiteList() {
     });
     $('#edit').modal('toggle');
 }
-//提交更改  
-function addWhiteList() {  
+//删除
+function del(obj) {  
+	$("#id-del").text($(obj).parent().siblings().find(".id-span").text())
+	$("#del").modal('show', {backdrop: 'static'});
+}
+//提交删除
+function delWhiteList() {  
     //获取模态框数据  
-    var ip = typeof($('#modal-2 input:checkbox[name="ip"]:checked').val())=="undefined"?"":$('#modal-2 input:checkbox[name="ip"]:checked').val();  
-    var m = typeof($('#modal-2 input:checkbox[name="m"]:checked').val())=="undefined"?"":$('#modal-2 input:checkbox[name="m"]:checked').val();
-    var ua = j2 % 2 == 0?"":$("#ua-pre2").html();
-    var url = i2 % 2 == 0?"":$("#url-pre2").html();
-    var remarks = $("#remarks2").val();
+    var id = $("#id-del").text();
     $.ajax({  
         type: "post",  
-        url: "details/whitelist",  
-        data: "ip=" + encodeURIComponent(ip) + "&m=" + encodeURIComponent(m) + "&ua=" + encodeURIComponent(ua) + "&url=" + encodeURIComponent(url) + "&remarks=" + encodeURIComponent(remarks),  
+        url: "whitelist/delete",  
+        data: "id=" + encodeURIComponent(id),
         dataType: 'json',
         contentType: "application/x-www-form-urlencoded; charset=utf-8",  
         success: function(result) {  
-        	toastr.success('添加白名单成功');
+        	toastr.success('删除白名单成功');
         },
         error: function(result) {  
-        	toastr.error('添加白名单失败');
+        	toastr.error('删除白名单失败');
         }
         
     });
-    $('#modal-2').modal('toggle');
+    $('#del').modal('toggle');
 }
 </script>
 </body>
