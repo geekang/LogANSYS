@@ -1,4 +1,6 @@
 # Update
+2017-4-4(Version:2.1.0.0) 新增：编辑黑名单功能。
+
 2017-4-3(Version:2.0.0.0) 新增：白名单查询功能。
 
 2017-4-3(Version:1.4.5.0) 新增：黑名单查询功能。
@@ -14,8 +16,6 @@
 2016-02-05(Version:1.2.0.0) ADDED:Display IP attribution.
 
 2016-02-04(Version:1.1.0.0) ADDED:Parse "UA" String to browser name,version and so on.
-  
-2016-01-25(Version:1.0.1.0) 新增：在数据库表中显示每个字段的描述。
   
 2016-01-24(Version:1.0.0.0) 新增：将日志文件转换为结构化文本存储在MySQL数据库。
 
