@@ -2,10 +2,7 @@ package me.geekang.db;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 public class DML {
@@ -68,6 +65,38 @@ public class DML {
 			preStmt.setString(4, items.get("url"));
 			preStmt.setString(5, items.get("remarks"));
 			preStmt.setInt(6, Integer.parseInt(items.get("id")));
+
+			preStmt.execute();
+			connection.commit();
+
+			preStmt.close();
+			connection.close();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public static void blackListDelete(String id) {
+
+		Connection connection;
+		String sql;
+		PreparedStatement preStmt;
+		String tableName = "black_list";
+
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			connection = MySQLConnector.getConnect();
+			
+			sql = "DELETE FROM " + tableName
+					+ " WHERE id=?";
+			connection.setAutoCommit(false);
+			preStmt = connection.prepareStatement(sql);
+
+			preStmt.setInt(1, Integer.parseInt(id));
 
 			preStmt.execute();
 			connection.commit();
