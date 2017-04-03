@@ -32,19 +32,20 @@ public class WhitelistController {
 		return Whitelist.tableAjax(aoData);
 	}
 
-	@RequestMapping(value = "blacklist", method = POST, produces = "text/json;charset=UTF-8")
+	@RequestMapping(value = "edit", method = POST, produces = "text/json;charset=UTF-8")
 	@ResponseBody
-	public String blacklist(@RequestParam("ip") String ip, @RequestParam("m") String m, @RequestParam("ua") String ua,
+	public String blacklist(@RequestParam("id") String id,@RequestParam("ip") String ip, @RequestParam("m") String m, @RequestParam("ua") String ua,
 			@RequestParam("url") String url, @RequestParam("remarks") String remarks) {
 
 		Map<String,String> items = new HashMap<String,String>();
+		items.put("id", id);
 		items.put("ip", ip);
 		items.put("m", m);
 		items.put("ua", ua);
 		items.put("url", url);
 		items.put("remarks", remarks);
 		
-		DML.blackListInsert(items);
+		DML.whiteListUpdate(items);
 		return "{}";
 	}
 	

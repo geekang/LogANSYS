@@ -15,7 +15,7 @@ public class Whitelist {
 
 		JSONArray jsonarray = JSONArray.fromObject(aoData);
 
-		Var.setBlackList(DQL.executeQuery("SELECT ip,method,ua,url,remarks FROM white_list"));
+		Var.setBlackList(DQL.executeQuery("SELECT id,ip,method,ua,url,remarks FROM white_list"));
 
 		String sEcho = null;
 		int iDisplayStart = 0; // 起始索引
@@ -38,12 +38,12 @@ public class Whitelist {
 		List<HashMap<String, String>> whiteList = Var.getBlackList();
 		for (int i = 0; i < whiteList.size(); i++) {
 			String col1 = "<input type='checkbox' class='cbr'>";
-			String ip = whiteList.get(i).get("ip");
-			String method = whiteList.get(i).get("method");
-			String ua = whiteList.get(i).get("ua");
-			String url = whiteList.get(i).get("url");
-			String remarks = whiteList.get(i).get("remarks");
-			String col7 = "<button class='btn btn-red btn-xs' onclick=\"showModel1(this)\">黑名单</button><button class='btn btn-info btn-xs' onclick=\"showModel2(this)\">白名单</button>";
+			String ip = "<span class='id-span' style='display:none'>" + whiteList.get(i).get("id") + "</span><span class='ip-span'>" + whiteList.get(i).get("ip") + "</span>";
+			String method = "<span class='m-span'>" + whiteList.get(i).get("method") + "</span>";
+			String ua = "<span class='ua-span'>" + whiteList.get(i).get("ua") + "</span>";
+			String url = "<span class='url-span'>" + whiteList.get(i).get("url") + "</span>";
+			String remarks = "<span class='remarks-span'>" + whiteList.get(i).get("remarks") + "</span>";
+			String col7 = "<button class='btn btn-red btn-xs' onclick=\"edit(this)\">编辑</button><button class='btn btn-info btn-xs' onclick=\"del(this)\">删除</button>";
 			String[] d = { col1, i + 1 + "", ip, method, ua, url, remarks, col7 };
 			lst.add(d);
 		}

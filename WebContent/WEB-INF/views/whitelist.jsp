@@ -145,13 +145,13 @@ $(".l2").addClass("active opened active expanded");
 $(".l2 .m3").addClass("active");
 </script>
 		<!-- Modal 1(Long Modal)-->
-	<div class="modal fade" id="modal-1">
+	<div class="modal fade" id="edit">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title">添加组合黑名单</h4>
+					<h4 class="modal-title">编辑组合白名单</h4>
 				</div>
 				
 				<div class="modal-body">
@@ -160,7 +160,7 @@ $(".l2 .m3").addClass("active");
 								
 								<div class="col-md-12">
 									<div class="alert alert-warning">
-										<strong>注意</strong> 该操作会封禁被选中的项目。
+										<strong>注意</strong> 该操作会更改已保存的白名单记录。
 									</div>
 								</div>
 								
@@ -175,7 +175,8 @@ $(".l2 .m3").addClass("active");
 								<label for="field-2" class="control-label">IP</label>
 								<div class="form-group">
 									<label>
-										<input type="checkbox" name="ip" class="iswitch iswitch-danger" value="">
+										<input type="checkbox" name="ip" class="iswitch iswitch-danger" value="" checked>
+										<span id="model-span-id" style="display:none;"></span>
 										<span id="model-span-ip"></span>
 									</label>
 								</div>
@@ -190,7 +191,7 @@ $(".l2 .m3").addClass("active");
 								<label for="field-2" class="control-label">Method</label>
 								<div class="form-group">
 									<label>
-										<input type="checkbox" name="m" class="iswitch iswitch-danger" value="">
+										<input type="checkbox" name="m" class="iswitch iswitch-danger" value="" checked>
 										<span id="model-span-m"></span>
 									</label>
 								</div>
@@ -205,7 +206,7 @@ $(".l2 .m3").addClass("active");
 							
 							<div class="form-group">
 								<label for="field-3" class="control-label">User-Agent</label>
-								<pre id="ua-pre" class="alert-default" style="cursor: pointer;"></pre>
+								<pre id="ua-pre" class="alert-danger" style="cursor: pointer;"></pre>
 								<input type="hidden" name="ua" value="">
 							</div>
 							
@@ -217,7 +218,7 @@ $(".l2 .m3").addClass("active");
 							
 							<div class="form-group">
 								<label for="field-3" class="control-label">URL</label>
-								<pre id="url-pre" class="alert-default" style="cursor: pointer;"></pre>
+								<pre id="url-pre" class="alert-danger" style="cursor: pointer;"></pre>
 								<input type="hidden" name="url" value="">
 							</div>	
 							
@@ -239,107 +240,7 @@ $(".l2 .m3").addClass("active");
 				
 				<div class="modal-footer">
 					<button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
-					<button type="button" class="btn btn-info" onclick="addBlackList()">添加组合黑名单</button>
-				</div>
-			</div>
-		</div>
-	</div>
-			<!-- Modal 2(Long Modal)-->
-	<div class="modal fade" id="modal-2">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title">添加组合白名单</h4>
-				</div>
-				
-				<div class="modal-body">
-				
-				<div class="row">
-								
-								<div class="col-md-12">
-									<div class="alert alert-success">
-										<strong>注意</strong> 该操作会信任被选中的项目。
-									</div>
-								</div>
-								
-							</div>
-							
-					<div class="row">
-					
-					<div class="col-md-6">
-					
-							
-							<div class="form-group">
-								<label for="field-2" class="control-label">IP</label>
-								<div class="form-group">
-									<label>
-										<input type="checkbox" name="ip" class="iswitch iswitch-success" value="">
-										<span id="model2-span-ip"></span>
-									</label>
-								</div>
-								
-							</div>	
-						
-						</div>
-						
-						<div class="col-md-6">
-							
-							<div class="form-group">
-								<label for="field-2" class="control-label">Method</label>
-								<div class="form-group">
-									<label>
-										<input type="checkbox" name="m" class="iswitch iswitch-success" value="">
-										<span id="model2-span-m"></span>
-									</label>
-								</div>
-								
-							</div>	
-						
-						</div>
-					</div>
-				
-					<div class="row">
-						<div class="col-md-12">
-							
-							<div class="form-group">
-								<label for="field-3" class="control-label">User-Agent</label>
-								<pre id="ua-pre2" class="alert-default" style="cursor: pointer;"></pre>
-								<input type="hidden" name="ua" value="">
-							</div>
-							
-						</div>
-					</div>
-				
-					<div class="row">
-						<div class="col-md-12">
-							
-							<div class="form-group">
-								<label for="field-3" class="control-label">URL</label>
-								<pre id="url-pre2" class="alert-default" style="cursor: pointer;"></pre>
-								<input type="hidden" name="url" value="">
-							</div>	
-							
-						</div>
-					</div>
-				
-					<div class="row">
-						<div class="col-md-12">
-							
-							<div class="form-group no-margin">
-								<label for="field-7" class="control-label">备注</label>
-								<textarea name="remarks" class="form-control autogrow" id="remarks2" placeholder="填写封禁原因等" style="resize:none"></textarea>
-							</div>	
-							
-						</div>
-</div>
-					
-				</div>
-				
-				<div class="modal-footer">
-					<button type="button" class="btn btn-white" data-dismiss="modal">关闭</button>
-					<button type="button" class="btn btn-info" onclick="addWhiteList()">添加组合白名单</button>
+					<button type="button" class="btn btn-info" onclick="editWhiteList()">编辑组合白名单</button>
 				</div>
 			</div>
 		</div>
@@ -347,7 +248,7 @@ $(".l2 .m3").addClass("active");
 <script>
 var i = 0;
 $("#url-pre").click(function(){
-	if(i % 2 == 0){
+	if(i % 2 == 1){
 		$(this).removeClass("alert-default").addClass("alert-danger");
 	} else {
 		$(this).removeClass("alert-danger").addClass("alert-default");
@@ -356,53 +257,22 @@ $("#url-pre").click(function(){
 });
 var j = 0;
 $("#ua-pre").click(function(){
-	if(j % 2 == 0){
+	if(j % 2 == 1){
 		$(this).removeClass("alert-default").addClass("alert-danger");
 	} else {
 		$(this).removeClass("alert-danger").addClass("alert-default");
 	}
 	j++;
 });
-
-var i2 = 0;
-$("#url-pre2").click(function(){
-	if(i2 % 2 == 0){
-		$(this).removeClass("alert-default").addClass("alert-success");
-	} else {
-		$(this).removeClass("alert-success").addClass("alert-default");
-	}
-	i2++;
-});
-var j2 = 0;
-$("#ua-pre2").click(function(){
-	if(j2 % 2 == 0){
-		$(this).removeClass("alert-default").addClass("alert-success");
-	} else {
-		$(this).removeClass("alert-success").addClass("alert-default");
-	}
-	j2++;
-});
 //触发模态框的同时调用此方法  
-function showModel1(obj) {  
+function edit(obj) {  
+	$("#model-span-id").text($(obj).parent().siblings().find(".id-span").text());
 	$("#model-span-ip").text($(obj).parent().siblings().find(".ip-span").text()).siblings("input").val($(obj).parent().siblings().find(".ip-span").text());
 	$("#model-span-m").text($(obj).parent().siblings().find(".m-span").text()).siblings("input").val($(obj).parent().siblings().find(".m-span").text());
-	$("#ua-pre").html($(obj).parent().siblings().find(".ua-span").attr("title")).siblings().find("input").val($(obj).parent().siblings().find(".ua-span").attr("title"));
+	$("#ua-pre").html($(obj).parent().siblings().find(".ua-span").html()).siblings().find("input").val($(obj).parent().siblings().find(".ua-span").html());
 	$("#url-pre").html($(obj).parent().siblings().find(".url-span").text() + "?" + $(obj).parent().siblings().find(".url-span").attr("title")).siblings().find("input").val($(obj).parent().siblings().find(".url-span").text() + "?" + $(obj).parent().siblings().find(".url-span").attr("title"));
-    //获取表格中的一行数据  
-    //var stuno = document.getElementById("table").rows[id].cells[0].innerText;  
-    //var pass = document.getElementById("table").rows[id].cells[1].innerText;  
-    //var name = document.getElementById("table").rows[id].cells[2].innerText;  
-    //var sex = document.getElementById("table").rows[id].cells[3].innerText;  
-    //向模态框中传值  
-    //$('#stuno').val(stuno);  
-    //$('#pass').val(pass);  
-    //$('#stuname').val(name);  
-    //if (sex == '女') {  
-    //    document.getElementById('women').checked = true;  
-    //} else {  
-    //    document.getElementById('man').checked = true;  
-    //}  
-    $("#modal-1").modal('show', {backdrop: 'static'});
+	$("#remarks").val($(obj).parent().siblings().find(".remarks-span").html());
+	$("#edit").modal('show', {backdrop: 'static'});
 } 
 //触发模态框的同时调用此方法  
 function showModel2(obj) {  
@@ -427,28 +297,29 @@ function showModel2(obj) {
     $("#modal-2").modal('show', {backdrop: 'static'});
 }
 //提交更改  
-function addBlackList() {  
+function editWhiteList() {  
     //获取模态框数据  
+    var id = $('#model-span-id').text();  
     var ip = typeof($('input:checkbox[name="ip"]:checked').val())=="undefined"?"":$('input:checkbox[name="ip"]:checked').val();  
     var m = typeof($('input:checkbox[name="m"]:checked').val())=="undefined"?"":$('input:checkbox[name="m"]:checked').val();
-    var ua = j % 2 == 0?"":$("#ua-pre").html();
-    var url = i % 2 == 0?"":$("#url-pre").html();
+    var ua = j % 2 == 1?"":$("#ua-pre").html();
+    var url = i % 2 == 1?"":$("#url-pre").html();
     var remarks = $("#remarks").val();
     $.ajax({  
         type: "post",  
-        url: "details/blacklist",  
-        data: "ip=" + encodeURIComponent(ip) + "&m=" + encodeURIComponent(m) + "&ua=" + encodeURIComponent(ua) + "&url=" + encodeURIComponent(url) + "&remarks=" + encodeURIComponent(remarks),  
+        url: "whitelist/edit",  
+        data: "id=" + encodeURIComponent(id) + "&ip=" + encodeURIComponent(ip) + "&m=" + encodeURIComponent(m) + "&ua=" + encodeURIComponent(ua) + "&url=" + encodeURIComponent(url) + "&remarks=" + encodeURIComponent(remarks),  
         dataType: 'json',
         contentType: "application/x-www-form-urlencoded; charset=utf-8",  
         success: function(result) {  
-        	toastr.success('添加黑名单成功');
+        	toastr.success('编辑白名单成功');
         },
         error: function(result) {  
-        	toastr.error('添加黑名单失败');
+        	toastr.error('编辑白名单失败');
         }
         
     });
-    $('#modal-1').modal('toggle');
+    $('#edit').modal('toggle');
 }
 //提交更改  
 function addWhiteList() {  

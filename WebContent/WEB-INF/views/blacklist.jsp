@@ -312,10 +312,10 @@ function editBlackList() {
         dataType: 'json',
         contentType: "application/x-www-form-urlencoded; charset=utf-8",  
         success: function(result) {  
-        	toastr.success('添加黑名单成功');
+        	toastr.success('编辑黑名单成功');
         },
         error: function(result) {  
-        	toastr.error('添加黑名单失败');
+        	toastr.error('编辑黑名单失败');
         }
         
     });
