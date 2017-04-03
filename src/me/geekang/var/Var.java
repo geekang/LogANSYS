@@ -1,5 +1,6 @@
 package me.geekang.var;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.TreeMap;
 
@@ -18,6 +19,7 @@ public final class Var {
 	private static String requestNum;
 	private static String processingTime;
 	private static List<TreeMap<String, String>> logList;
+	private static List<HashMap<String,String>> blackList;
 
 	public static String getPath() {
 		return path;
@@ -34,9 +36,7 @@ public final class Var {
 
 	public static void setFileName(String path) {
 		Var.fileName = new java.io.File(path).getName();
-	}
-
-	
+	}	
 
 	public static String getUploadTime() {
 		return uploadTime;
@@ -105,5 +105,13 @@ public final class Var {
 
 	public static void setLogList(List<TreeMap<String, String>> logList) {
 		Var.logList = logList;
+	}
+	
+	public static List<HashMap<String,String>> getBlackList() {
+		return blackList;
+	}
+
+	public static void setBlackList(List<HashMap<String,String>> blackList) {
+		Var.blackList = blackList;
 	}
 }

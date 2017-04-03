@@ -1,9 +1,9 @@
 # Update
+2017-4-3(Version:1.4.5.0) 新增：黑名单查询功能。
+
 2017-3-31(Version:1.4.4.0) 新增：添加组合白名单功能。
 
 2017-3-31(Version:1.4.3.0) 新增：添加组合黑名单功能。
-
-2017-3-12(Version:1.4.2.0) 优化：日志详情页的前后端分页。
 
 2017-2-6(Version:1.4.1.0) ADDED:Added the user login function.
 

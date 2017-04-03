@@ -225,9 +225,9 @@
 									<span class="title">日志详情</span>
 								</a>
 							</li>
-							<li>
-								<a href="layout-collapsed-sidebar.html">
-									<span class="title">Collapsed Sidebar</span>
+							<li class="m2">
+								<a href="blacklist">
+									<span class="title">黑名单</span>
 								</a>
 							</li>
 							<li>
