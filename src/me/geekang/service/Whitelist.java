@@ -9,13 +9,13 @@ import me.geekang.var.Var;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
-public class Blacklist {
+public class Whitelist {
 
 	public static String tableAjax(String aoData) {
 
 		JSONArray jsonarray = JSONArray.fromObject(aoData);
 
-		Var.setBlackList(DQL.executeQuery("SELECT ip,method,ua,url,remarks FROM black_list"));
+		Var.setBlackList(DQL.executeQuery("SELECT ip,method,ua,url,remarks FROM white_list"));
 
 		String sEcho = null;
 		int iDisplayStart = 0; // 起始索引
@@ -35,14 +35,14 @@ public class Blacklist {
 
 		// 生成所有的日志数据
 		List<String[]> lst = new ArrayList<String[]>();
-		List<HashMap<String, String>> blackList = Var.getBlackList();
-		for (int i = 0; i < blackList.size(); i++) {
+		List<HashMap<String, String>> whiteList = Var.getBlackList();
+		for (int i = 0; i < whiteList.size(); i++) {
 			String col1 = "<input type='checkbox' class='cbr'>";
-			String ip = blackList.get(i).get("ip");
-			String method = blackList.get(i).get("method");
-			String ua = blackList.get(i).get("ua");
-			String url = blackList.get(i).get("url");
-			String remarks = blackList.get(i).get("remarks");
+			String ip = whiteList.get(i).get("ip");
+			String method = whiteList.get(i).get("method");
+			String ua = whiteList.get(i).get("ua");
+			String url = whiteList.get(i).get("url");
+			String remarks = whiteList.get(i).get("remarks");
 			String col7 = "<button class='btn btn-red btn-xs' onclick=\"showModel1(this)\">黑名单</button><button class='btn btn-info btn-xs' onclick=\"showModel2(this)\">白名单</button>";
 			String[] d = { col1, i + 1 + "", ip, method, ua, url, remarks, col7 };
 			lst.add(d);

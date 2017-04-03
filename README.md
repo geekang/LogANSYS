@@ -1,4 +1,6 @@
 # Update
+2017-4-3(Version:2.0.0.0) 新增：白名单查询功能。
+
 2017-4-3(Version:1.4.5.0) 新增：黑名单查询功能。
 
 2017-3-31(Version:1.4.4.0) 新增：添加组合白名单功能。
@@ -6,8 +8,6 @@
 2017-3-31(Version:1.4.3.0) 新增：添加组合黑名单功能。
 
 2017-2-6(Version:1.4.1.0) ADDED:Added the user login function.
-
-2016-11-13(Version:1.3.2.2) ADDED:Add static utility method "byteConversion" to convert byte to KB,MB or GB.
 
 2016-02-06(Version:1.3.0.0) ADDED:Highlight green crawlers IP.
 

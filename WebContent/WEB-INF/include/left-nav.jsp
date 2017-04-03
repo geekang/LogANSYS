@@ -230,9 +230,9 @@
 									<span class="title">黑名单</span>
 								</a>
 							</li>
-							<li>
-								<a href="layout-static-sidebar.html">
-									<span class="title">Static Sidebar</span>
+							<li class="m3">
+								<a href="whitelist">
+									<span class="title">白名单</span>
 								</a>
 							</li>
 							<li>

@@ -20,6 +20,7 @@ public final class Var {
 	private static String processingTime;
 	private static List<TreeMap<String, String>> logList;
 	private static List<HashMap<String,String>> blackList;
+	private static List<HashMap<String,String>> whiteList;
 
 	public static String getPath() {
 		return path;
@@ -113,5 +114,13 @@ public final class Var {
 
 	public static void setBlackList(List<HashMap<String,String>> blackList) {
 		Var.blackList = blackList;
+	}
+	
+	public static List<HashMap<String,String>> getWhiteList() {
+		return whiteList;
+	}
+
+	public static void setWhiteList(List<HashMap<String,String>> whiteList) {
+		Var.whiteList = whiteList;
 	}
 }
