@@ -18,6 +18,7 @@ public class RankingStatusController {
 	public String index(Model model){
 		model.addAttribute("map", Ranking.status());
 		model.addAttribute("map500", Ranking.status500());
+		model.addAttribute("map404", Ranking.status404());
 		return "ranking-status";
 	}
 }

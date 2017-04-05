@@ -94,6 +94,40 @@
 					</div>
 				</div>
 			</div>
+			
+						<div class="row">
+				<div class="col-md-12">
+					
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							404状态码页面 Top 5
+						</div>
+						
+						<table class="table">
+							<thead>
+								<tr>
+									<th width="10%">序号</th>
+									<th width="50%">地址</th>
+									<th>次数</th>
+								</tr>
+							</thead>
+							<tbody>
+							<c:forEach var="map" items="${map404}" varStatus="status">
+							
+								<tr>
+									<td class="middle-align">${status.index + 1}</td>
+									<td class="middle-align">${map.key}</td>
+									<td>
+										<a href="javascript:;" class="btn btn-primary btn-single btn-sm">${map.value}</a>
+									</td>
+								</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+						
+					</div>
+				</div>
+			</div>
 <jsp:include page="/WEB-INF/include/footer.jsp"/>
 <script>
 $("#main-menu li").removeClass("active opened active expanded");
