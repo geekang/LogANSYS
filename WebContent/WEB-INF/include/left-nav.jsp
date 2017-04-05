@@ -248,9 +248,9 @@
 									<span class="title">页面排行</span>
 								</a>
 							</li>
-							<li>
-								<a href="ui-buttons.html">
-									<span class="title">Buttons</span>
+							<li class="m2">
+								<a href="ranking-ip">
+									<span class="title">IP排行</span>
 								</a>
 							</li>
 							<li>
