@@ -65,5 +65,18 @@ public class Ranking {
 		}
 		return pageMap;
 	}
+	
+	public static LinkedHashMap<String, String> status() {
+
+		List<HashMap<String, String>> pageList = DQL
+				.executeQuery("SELECT count(cs_uri_stem) AS c,sc_status FROM " + Var.getLastedTable()
+						+ " GROUP BY sc_status ORDER BY count(cs_uri_stem) DESC LIMIT 100");
+		LinkedHashMap<String, String> pageMap = new LinkedHashMap<String, String>();
+
+		for (int i = 0; i < pageList.size(); i++) {
+			pageMap.put(pageList.get(i).get("sc_status"), pageList.get(i).get("c"));
+		}
+		return pageMap;
+	}
 
 }

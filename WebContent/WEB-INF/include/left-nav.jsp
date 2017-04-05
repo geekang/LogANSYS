@@ -258,9 +258,9 @@
 									<span class="title">UA排行</span>
 								</a>
 							</li>
-							<li>
-								<a href="ui-modals.html">
-									<span class="title">Modals</span>
+							<li class="m4">
+								<a href="ranking-status">
+									<span class="title">状态码排行</span>
 								</a>
 							</li>
 							<li>
