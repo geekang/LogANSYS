@@ -114,5 +114,23 @@ public class Ranking {
 		}
 		return pageMap;
 	}
+	
+	public static LinkedHashMap<String, String> status403() {
+
+		List<HashMap<String, String>> pageList = DQL
+				.executeQuery("SELECT count(c_ip) AS c,cs_uri_stem,cs_uri_query FROM " + Var.getLastedTable()
+						+ " WHERE sc_status='403' GROUP BY cs_uri_stem,cs_uri_query ORDER BY count(c_ip) DESC LIMIT 5");
+		LinkedHashMap<String, String> pageMap = new LinkedHashMap<String, String>();
+
+		for (int i = 0; i < pageList.size(); i++) {
+			String url = pageList.get(i).get("cs_uri_stem");
+			if (!"-".equals(pageList.get(i).get("cs_uri_query"))) {
+				url = pageList.get(i).get("cs_uri_stem") + "?" + pageList.get(i).get("cs_uri_query");
+			}
+
+			pageMap.put(url, pageList.get(i).get("c"));
+		}
+		return pageMap;
+	}
 
 }
