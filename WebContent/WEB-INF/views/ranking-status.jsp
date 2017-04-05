@@ -29,6 +29,11 @@
 			</div>
 <div class="row">
 				<div class="col-md-12">
+				<div id="echarts-status" style="height:500px;"></div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
 					
 					<div class="panel panel-default">
 						<div class="panel-heading">
@@ -167,5 +172,58 @@ $("#main-menu li").removeClass("active opened active expanded");
 $(".l3").addClass("active opened active expanded");
 $(".l3 .m4").addClass("active");
 </script>
+<script src="assets/js/echarts.min.js"></script>
+<script src="assets/js/china.js"></script>
+<script type="text/javascript">
+// 基于准备好的dom，初始化echarts实例
+var myChart = echarts.init(document.getElementById('echarts-status'));
+option = {
+	    backgroundColor: '#2c343c',
+	    visualMap: {
+	        show: false,
+	        min: 80,
+	        max: 600,
+	        inRange: {
+	            colorLightness: [0, 1]
+	        }
+	    },
+	    series : [
+	        {
+	            name: '状态码分布',
+	            type: 'pie',
+	            radius: '55%',
+	            data:[
+	            	<c:forEach var="map" items="${map}" varStatus="status">
+	            	{value:${map.value}, name:'${map.key}'},
+					</c:forEach>
+	            ],
+	            roseType: 'angle',
+	            label: {
+	                normal: {
+	                    textStyle: {
+	                        color: 'rgba(255, 255, 255, 0.3)'
+	                    }
+	                }
+	            },
+	            labelLine: {
+	                normal: {
+	                    lineStyle: {
+	                        color: 'rgba(255, 255, 255, 0.3)'
+	                    }
+	                }
+	            },
+	            itemStyle: {
+	                normal: {
+	                    color: '#c23531',
+	                    shadowBlur: 200,
+	                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+	                }
+	            }
+	        }
+	    ]
+	};
+// 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
 </body>
 </html>
