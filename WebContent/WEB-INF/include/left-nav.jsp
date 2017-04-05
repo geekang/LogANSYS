@@ -235,67 +235,17 @@
 									<span class="title">白名单</span>
 								</a>
 							</li>
-							<li>
-								<a href="layout-horizontal-menu.html">
-									<span class="title">Horizontal Menu</span>
-								</a>
-							</li>
-							<li>
-								<a href="layout-horizontal-plus-sidebar.html">
-									<span class="title">Horizontal &amp; Sidebar Menu</span>
-								</a>
-							</li>
-							<li>
-								<a href="layout-horizontal-menu-click-to-open-subs.html">
-									<span class="title">Horizontal Open On Click</span>
-								</a>
-							</li>
-							<li>
-								<a href="layout-horizontal-menu-min.html">
-									<span class="title">Horizontal Menu Minimal</span>
-								</a>
-							</li>
-							<li>
-								<a href="layout-right-sidebar.html">
-									<span class="title">Right Sidebar</span>
-								</a>
-							</li>
-							<li>
-								<a href="layout-chat-open.html">
-									<span class="title">Chat Open</span>
-								</a>
-							</li>
-							<li>
-								<a href="layout-horizontal-sidebar-menu-collapsed-right.html">
-									<span class="title">Both Menus &amp; Collapsed</span>
-								</a>
-							</li>
-							<li>
-								<a href="layout-boxed.html">
-									<span class="title">Boxed Layout</span>
-								</a>
-							</li>
-							<li>
-								<a href="layout-boxed-horizontal-menu.html">
-									<span class="title">Boxed &amp; Horizontal Menu</span>
-								</a>
-							</li>
-							<li>
-								<a href="http://www.cssmoban.com">
-									<span class="title">weidea.net</span>
-								</a>
-							</li>
 						</ul>
 					</li>
-					<li>
-						<a href="ui-panels.html">
+					<li class="l3">
+						<a href="ranking">
 							<i class="linecons-note"></i>
-							<span class="title">UI Elements</span>
+							<span class="title">访问排行</span>
 						</a>
 						<ul>
-							<li>
-								<a href="ui-panels.html">
-									<span class="title">Panels</span>
+							<li class="m1">
+								<a href="ranking-page">
+									<span class="title">页面排行</span>
 								</a>
 							</li>
 							<li>
