@@ -26,10 +26,10 @@ public class UploadController {
 	@RequestMapping(method=POST)
 	public String upload(@RequestParam("file") MultipartFile profilePicture){
 
-		Var.setPath("G:/test/" + profilePicture.getOriginalFilename());
 		long uploadTime = System.currentTimeMillis();
+		Var.setPath("G:/test/" + profilePicture.getOriginalFilename());
 		Var.setUploadTime(Date.FormatDate(uploadTime, "yyyy-MM-dd hh:mm:ss"));
-		Var.setProcessingTime(System.currentTimeMillis() - uploadTime + "");
+	
 	    try {
 			profilePicture.transferTo(new File(Var.getPath()));
 		} catch (IllegalStateException e) {
@@ -41,6 +41,8 @@ public class UploadController {
 		}
 	    Init.InitLogFile(Var.getPath());
 	    Var.setFileSize(Var.getPath());
+	    
+	    Var.setProcessingTime(System.currentTimeMillis() - uploadTime + "");
 		return "redirect:/upload";
 	}
 }

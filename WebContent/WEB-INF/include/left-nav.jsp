@@ -160,11 +160,11 @@
 					
 					<!-- logo -->
 					<div class="logo">
-						<a href="dashboard-1.html" class="logo-expanded">
+						<a href="" class="logo-expanded">
 							<img src="assets/images/logo@2x.png" width="" alt="" />
 						</a>
 						
-						<a href="dashboard-1.html" class="logo-collapsed">
+						<a href="" class="logo-collapsed">
 							<img src="assets/images/logo-collapsed@2x.png" width="40" alt="" />
 						</a>
 					</div>
@@ -182,12 +182,12 @@
 					</div>
 					
 					<!-- This will open the popup with user profile settings, you can use for any purpose, just be creative -->
-					<div class="settings-icon">
+					<!-- <div class="settings-icon">
 						<a href="#" data-toggle="settings-pane" data-animate="true">
 							<i class="linecons-cog"></i>
 						</a>
 					</div>
-					
+					 -->
 								
 				</header>
 						
@@ -276,18 +276,9 @@
 									<span class="title">请求地域分布</span>
 								</a>
 							</li>
-							<li>
-								<a href="tables-responsive.html">
-									<span class="title">Responsive Table</span>
-								</a>
-							</li>
-							<li>
-								<a href="tables-datatables.html">
-									<span class="title">Data Tables</span>
-								</a>
-							</li>
 						</ul>
 					</li>
+				<!-- 
 					<li>
 						<a href="forms-native.html">
 							<i class="linecons-params"></i>
@@ -605,7 +596,7 @@
 								</a>
 							</li>
 						</ul>
-					</li>
+					</li> -->
 				</ul>
 						
 			</div>

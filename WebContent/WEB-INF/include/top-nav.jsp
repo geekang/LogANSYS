@@ -10,7 +10,7 @@
 							<i class="fa-bars"></i>
 						</a>
 					</li>
-					
+					<!-- 
 					<li class="dropdown hover-line">
 						<a href="#" data-toggle="dropdown">
 							<i class="fa-envelope-o"></i>
@@ -22,7 +22,7 @@
 									
 								<ul class="dropdown-menu-list list-unstyled ps-scrollbar">
 								
-									<li class="active"><!-- "active" class means message is unread -->
+									<li class="active">
 										<a href="#">
 											<span class="line">
 												<strong>Luc Chartier</strong>
@@ -74,9 +74,7 @@
 										</a>
 									</li>
 									
-									<!-- Repeated -->
-									
-									<li class="active"><!-- "active" class means message is unread -->
+									<li class="active">
 										<a href="#">
 											<span class="line">
 												<strong>Luc Chartier</strong>
@@ -140,7 +138,7 @@
 							</li>
 						</ul>
 					</li>
-					
+					 
 					<li class="dropdown hover-line">
 						<a href="#" data-toggle="dropdown">
 							<i class="fa-bell-o"></i>
@@ -251,14 +249,15 @@
 							</li>
 						</ul>
 					</li>
-					
+					-->
 				</ul>
 				
 				
 				<!-- Right links for user info navbar -->
+				<!--
 				<ul class="user-info-menu right-links list-inline list-unstyled">
 					
-					<li class="search-form"><!-- You can add "always-visible" to show make the search input visible -->
+					<li class="search-form">
 						
 						<form method="get" action="extra-search.html">
 							<input type="text" name="s" class="form-control search-field" placeholder="Type to search..." />
@@ -320,5 +319,5 @@
 					</li>
 					
 				</ul>
-				
+				-->
 			</nav>

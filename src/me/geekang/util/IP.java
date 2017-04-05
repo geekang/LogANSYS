@@ -16,8 +16,9 @@ public class IP {
 	 * @return
 	 */
 	public static String getIpAddr(String ip){
-		
+//		long uploadTime = System.currentTimeMillis();
 		QQWryRecord record = qqWryFile.find(ip, ipFile);
+//		System.out.println(System.currentTimeMillis() - uploadTime + "");
 		return record.getCountry() + " " + record.getArea();
 	}
 
