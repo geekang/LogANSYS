@@ -253,9 +253,9 @@
 									<span class="title">IP排行</span>
 								</a>
 							</li>
-							<li>
-								<a href="ui-tabs-accordions.html">
-									<span class="title">Tabs &amp; Accordions</span>
+							<li class="m3">
+								<a href="ranking-ua">
+									<span class="title">UA排行</span>
 								</a>
 							</li>
 							<li>

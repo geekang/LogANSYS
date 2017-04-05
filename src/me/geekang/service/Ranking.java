@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 
+import eu.bitwalker.useragentutils.UserAgent;
 import me.geekang.db.DQL;
 import me.geekang.util.IP;
 import me.geekang.var.Var;
@@ -42,6 +43,23 @@ public class Ranking {
 			}
 			String ip = "<span class='ip-span " + ipColor + "' title='"
 					+ IP.getIpAddr(pageList.get(i).get("c_ip")) + "'>" + pageList.get(i).get("c_ip") + "</span>";;
+
+			pageMap.put(ip, pageList.get(i).get("c"));
+		}
+		return pageMap;
+	}
+	
+	public static LinkedHashMap<String, String> ua() {
+
+		List<HashMap<String, String>> pageList = DQL
+				.executeQuery("SELECT count(cs_uri_stem) AS c,cs_ua FROM " + Var.getLastedTable()
+						+ " GROUP BY cs_ua ORDER BY count(cs_uri_stem) DESC LIMIT 100");
+		LinkedHashMap<String, String> pageMap = new LinkedHashMap<String, String>();
+
+		for (int i = 0; i < pageList.size(); i++) {
+
+			String ip = "<span class='ip-span' title='"
+					+ UserAgent.parseUserAgentString(pageList.get(i).get("cs_ua")).getBrowser().toString() + "'>" + pageList.get(i).get("cs_ua") + "</span>";;
 
 			pageMap.put(ip, pageList.get(i).get("c"));
 		}
