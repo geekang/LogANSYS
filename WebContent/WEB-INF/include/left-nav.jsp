@@ -263,87 +263,17 @@
 									<span class="title">状态码排行</span>
 								</a>
 							</li>
-							<li>
-								<a href="ui-breadcrumbs.html">
-									<span class="title">Breadcrumbs</span>
-								</a>
-							</li>
-							<li>
-								<a href="ui-blockquotes.html">
-									<span class="title">Blockquotes</span>
-								</a>
-							</li>
-							<li>
-								<a href="ui-progressbars.html">
-									<span class="title">Progress Bars</span>
-								</a>
-							</li>
-							<li>
-								<a href="ui-navbars.html">
-									<span class="title">Navbars</span>
-								</a>
-							</li>
-							<li>
-								<a href="ui-alerts.html">
-									<span class="title">Alerts</span>
-								</a>
-							</li>
-							<li>
-								<a href="ui-pagination.html">
-									<span class="title">Pagination</span>
-								</a>
-							</li>
-							<li>
-								<a href="ui-typography.html">
-									<span class="title">Typography</span>
-								</a>
-							</li>
-							<li>
-								<a href="ui-other-elements.html">
-									<span class="title">Other Elements</span>
-								</a>
-							</li>
 						</ul>
 					</li>
-					<li>
-						<a href="ui-widgets.html">
-							<i class="linecons-star"></i>
-							<span class="title">Widgets</span>
-						</a>
-					</li>
-					<li>
-						<a href="mailbox-main.html">
-							<i class="linecons-mail"></i>
-							<span class="title">Mailbox</span>
-							<span class="label label-success pull-right">5</span>
-						</a>
-						<ul>
-							<li>
-								<a href="mailbox-main.html">
-									<span class="title">Inbox</span>
-								</a>
-							</li>
-							<li>
-								<a href="mailbox-compose.html">
-									<span class="title">Compose Message</span>
-								</a>
-							</li>
-							<li>
-								<a href="mailbox-message.html">
-									<span class="title">View Message</span>
-								</a>
-							</li>
-						</ul>
-					</li>
-					<li class="">
-						<a href="tables-basic.html">
+					<li class="l4">
+						<a href="sum">
 							<i class="linecons-database"></i>
-							<span class="title">Tables</span>
+							<span class="title">概要</span>
 						</a>
 						<ul>
-							<li>
-								<a href="tables-basic.html">
-									<span class="title">Basic Tables</span>
+							<li class="m1">
+								<a href="sum-area">
+									<span class="title">请求地域分布</span>
 								</a>
 							</li>
 							<li>

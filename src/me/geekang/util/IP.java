@@ -7,15 +7,15 @@ import com.glodon.miracle.qqwry.QQWryRecord;
 
 public class IP {
 	
+	static QQWryFile qqWryFile = QQWryFile.getInstance();
+	static RandomAccessFile ipFile = qqWryFile.getIpFile();
+	
 	/**
 	 * 获取IP实际地理位置
 	 * @param ip
 	 * @return
 	 */
 	public static String getIpAddr(String ip){
-		
-		QQWryFile qqWryFile = QQWryFile.getInstance();
-		RandomAccessFile ipFile = qqWryFile.getIpFile();
 		
 		QQWryRecord record = qqWryFile.find(ip, ipFile);
 		return record.getCountry() + " " + record.getArea();
