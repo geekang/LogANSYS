@@ -17,6 +17,7 @@ public class RankingStatusController {
 	@RequestMapping(method=GET)
 	public String index(Model model){
 		model.addAttribute("map", Ranking.status());
+		model.addAttribute("map500", Ranking.status500());
 		return "ranking-status";
 	}
 }
