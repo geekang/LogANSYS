@@ -1,9 +1,12 @@
 package me.geekang.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import java.util.TreeMap;
 
+import eu.bitwalker.useragentutils.UserAgent;
+import me.geekang.db.DQL;
+import me.geekang.util.IP;
 import me.geekang.var.Var;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -13,6 +16,10 @@ public class Details {
 	public static String tableAjax(String aoData) {
 
 		JSONArray jsonarray = JSONArray.fromObject(aoData);
+
+		Var.setLogList(DQL.executeQuery(
+				"SELECT date,time,s_ip,cs_method,cs_uri_stem,cs_uri_query,s_port,cs_username,c_ip,cs_ua,sc_status,sc_substatus,sc_win32_status FROM "
+						+ Var.getLastedTable()));
 
 		String sEcho = null;
 		int iDisplayStart = 0; // 起始索引
@@ -32,30 +39,165 @@ public class Details {
 
 		// 生成所有的日志数据
 		List<String[]> lst = new ArrayList<String[]>();
-		List<TreeMap<String, String>> logList = Var.getLogList();
+		List<HashMap<String, String>> logList = Var.getLogList();
+
+		List<HashMap<String, String>> whiteList = DQL
+				.executeQuery("SELECT id,ip,method,ua,url,remarks FROM white_list");
+		List<HashMap<String, String>> blackList = DQL
+				.executeQuery("SELECT id,ip,method,ua,url,remarks FROM black_list");
+		
+		String ipColor = "";
+		String methodColor = "";
+		String uaColor = "";
+		String urlColor = "";
+
 		for (int i = 0; i < logList.size(); i++) {
+			String color = "";
+			String ipColorT = IP.getIPInfo(logList.get(i).get("c_ip"));
+			String methodColorT = "";
+			String uaColorT = "";
+			String urlColorT = "";
+			for(int j = 0; j < whiteList.size(); j++){
+				color = "";
+				methodColorT = "";
+				uaColorT = "";
+				urlColorT = "";
+				
+				if((!"".equals(whiteList.get(j).get("ip"))) && whiteList.get(j).get("ip").equals(logList.get(i).get("c_ip"))){
+					color = "success";
+					ipColorT = "success";
+				}else{
+					color = "default";
+				}
+				if((!"".equals(whiteList.get(j).get("method"))) && whiteList.get(j).get("method").equals(logList.get(i).get("cs_method"))){
+					color = "success";
+					methodColorT = "success";
+				}else{
+					color = "default";
+				}
+				if((!"".equals(whiteList.get(j).get("ua"))) && whiteList.get(j).get("ua").equals(logList.get(i).get("cs_ua"))){
+					color = "success";
+					uaColorT = "success";
+				}else{
+					color = "default";
+				}
+				String url = logList.get(i).get("cs_uri_stem") + "?" + logList.get(i).get("cs_uri_query");
+				if((!"".equals(whiteList.get(j).get("url"))) && whiteList.get(j).get("url").equals(url)){
+					color = "success";
+					urlColorT = "success";
+				}else{
+					color = "default";
+				}
+				
+				ipColor =  IP.getIPInfo(logList.get(i).get("c_ip"));
+				if("success".equals(color)){
+					if("success".equals(ipColorT)){
+						ipColor = "success";
+					}
+					if("success".equals(methodColorT)){
+						methodColor = "success";
+					}
+					if("success".equals(uaColorT)){
+						uaColor = "success";
+					}
+					if("success".equals(urlColorT)){
+						urlColor = "success";
+					}
+					break;
+				}
+			}
+			for(int j = 0; j < blackList.size(); j++){
+				color = "";
+				methodColorT = "";
+				uaColorT = "";
+				urlColorT = "";
+				
+				if((!"".equals(blackList.get(j).get("ip"))) && blackList.get(j).get("ip").equals(logList.get(i).get("c_ip"))){
+					color = "danger";
+					ipColorT = "danger";
+				}else{
+					color = "default";
+				}
+				if((!"".equals(blackList.get(j).get("method"))) && blackList.get(j).get("method").equals(logList.get(i).get("cs_method"))){
+					color = "danger";
+					methodColorT = "danger";
+				}else{
+					color = "default";
+				}
+				if((!"".equals(blackList.get(j).get("ua"))) && blackList.get(j).get("ua").equals(logList.get(i).get("cs_ua"))){
+					color = "danger";
+					uaColorT = "danger";
+				}else{
+					color = "default";
+				}
+				String url = logList.get(i).get("cs_uri_stem") + "?" + logList.get(i).get("cs_uri_query");
+				if((!"".equals(blackList.get(j).get("url"))) && blackList.get(j).get("url").equals(url)){
+					color = "danger";
+					urlColorT = "danger";
+				}else{
+					color = "default";
+				}
+				
+				ipColor =  IP.getIPInfo(logList.get(i).get("c_ip"));
+				if("danger".equals(color)){
+					if("danger".equals(ipColorT)){
+						ipColor = "danger";
+					}
+					if("danger".equals(methodColorT)){
+						methodColor = "danger";
+					}
+					if("danger".equals(uaColorT)){
+						uaColor = "danger";
+					}
+					if("danger".equals(urlColorT)){
+						urlColor = "danger";
+					}
+					break;
+				}
+				
+				
+			}
+			
+			if(!"".equals(ipColor)){
+				ipColor = "label label-" + ipColor;
+			}
+			if(!"".equals(methodColor)){
+				methodColor = "label label-" + methodColor;
+			}
+			if(!"".equals(uaColor)){
+				uaColor = "label label-" + uaColor;
+			}
+			if(!"".equals(urlColor)){
+				urlColor = "label label-" + urlColor;
+			}
+			
 			String col1 = "<input type='checkbox' class='cbr'>";
 			String time = "<span class='' title='" + logList.get(i).get("date") + "'>" + logList.get(i).get("time")
 					+ "</span>";
-			String ip = logList.get(i).get("ip");
-			String method = "<span class='m-span'>" + logList.get(i).get("cs-method") + "</span>";
-			String uri = "<span class='url-span' title='" + logList.get(i).get("cs-uri-query") + "'>"
-					+ logList.get(i).get("cs-uri-stem") + "</span>";
-			String stat = "<span class='' title='" + logList.get(i).get("sc-substatus") + "/"
-					+ logList.get(i).get("sc-win32-status") + "'>" + logList.get(i).get("sc-status") + "</span>";
-			String ua = "<span class='ua-span' title='" + logList.get(i).get("cs(User-Agent)") + "'>"
-					+ logList.get(i).get("ua") + "</span>";
-			String col8 = "123";
+			String ip = "<span class='ip-span " + ipColor + "' title='"
+					+ IP.getIpAddr(logList.get(i).get("c_ip")) + "'>" + logList.get(i).get("c_ip") + "</span>";
+			String method = "<span class='m-span " + methodColor + "'>" + logList.get(i).get("cs_method") + "</span>";
+			String uri = "<span class='url-span " + urlColor + "' title='" + logList.get(i).get("cs_uri_query") + "'>"
+					+ logList.get(i).get("cs_uri_stem") + "</span>";
+			String stat = "<span class='' title='" + logList.get(i).get("sc_substatus") + "/"
+					+ logList.get(i).get("sc_win32_status") + "'>" + logList.get(i).get("sc_status") + "</span>";
+			String ua = "<span class='ua-span " + uaColor + "' title='" + logList.get(i).get("cs_ua") + "'>"
+					+ UserAgent.parseUserAgentString(logList.get(i).get("cs_ua")).getBrowser().toString() + "</span>";
+			String col8 = "-1";
 			String col9 = "<button class='btn btn-red btn-xs' onclick=\"showModel1(this)\">黑名单</button><button class='btn btn-info btn-xs' onclick=\"showModel2(this)\">白名单</button>";
 			String[] d = { col1, i + 1 + "", time, ip, method, uri, stat, ua, col8, col9 };
 			lst.add(d);
+			
+			methodColor = "";
+			uaColor = "";
+			urlColor = "";
 		}
 
 		JSONObject getObj = new JSONObject();
 		getObj.put("sEcho", sEcho);// 不知道这个值有什么用,有知道的请告知一下
 		getObj.put("iTotalRecords", lst.size());// 实际的行数
 		getObj.put("iTotalDisplayRecords", lst.size());// 显示的行数,这个要和上面写的一样
-		
+
 		if (lst.size() > (iDisplayStart + iDisplayLength)) {
 			getObj.put("aaData", lst.subList(iDisplayStart, iDisplayStart + iDisplayLength));
 		} else {

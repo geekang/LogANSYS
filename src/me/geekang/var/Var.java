@@ -2,7 +2,6 @@ package me.geekang.var;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.TreeMap;
 
 import me.geekang.util.File;
 import me.geekang.util.Text;
@@ -18,9 +17,18 @@ public final class Var {
 	private static String fileSize;
 	private static String requestNum;
 	private static String processingTime;
-	private static List<TreeMap<String, String>> logList;
+	private static List<HashMap<String,String>> logList;
 	private static List<HashMap<String,String>> blackList;
 	private static List<HashMap<String,String>> whiteList;
+	private static String lastedTable;
+	
+	public static String getLastedTable() {
+		return lastedTable;
+	}
+
+	public static void setLastedTable(String lastedTable) {
+		Var.lastedTable = lastedTable;
+	}
 
 	public static String getPath() {
 		return path;
@@ -100,11 +108,11 @@ public final class Var {
 		Var.processingTime = processingTime;
 	}
 	
-	public static List<TreeMap<String, String>> getLogList() {
+	public static List<HashMap<String,String>> getLogList() {
 		return logList;
 	}
 
-	public static void setLogList(List<TreeMap<String, String>> logList) {
+	public static void setLogList(List<HashMap<String,String>> logList) {
 		Var.logList = logList;
 	}
 	

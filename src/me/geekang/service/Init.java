@@ -12,10 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 
-import eu.bitwalker.useragentutils.UserAgent;
 import me.geekang.db.MySQLConnector;
 import me.geekang.util.Date;
-import me.geekang.util.IP;
 import me.geekang.var.Var;
 
 /**
@@ -110,9 +108,7 @@ public class Init {
 						// 将IP地址的实际地理位置加入Map
 						if ("c-ip".equals(fields[i])) {
 							recordTEMP.put("c-ip", entryTEMP[i]);
-							recordTEMP.put("ip", IP.getIPInfo(entryTEMP[i]));
 						} else if ("cs(User-Agent)".equals(fields[i])) {
-							recordTEMP.put("ua", UserAgent.parseUserAgentString(entryTEMP[i]).getBrowser().toString());
 							recordTEMP.put("cs(User-Agent)", entryTEMP[i].replaceAll("\\+", " "));
 						} else {
 							recordTEMP.put(fields[i], entryTEMP[i]);
@@ -136,7 +132,6 @@ public class Init {
 		SaveData2DB();// put the list to database
 
 		Var.setRequestNum(logList.size());
-		Var.setLogList(logList);
 		// return logList;
 
 	}
@@ -164,12 +159,12 @@ public class Init {
 			tableName = generateTABLEName(Var.getPlatform(), "");
 
 			sql = "CREATE TABLE " + tableName
-					+ "(record_id int NOT NULL AUTO_INCREMENT,date varchar(255),time varchar(255),s_ip varchar(255),cs_method varchar(255),cs_uri_stem varchar(255),cs_uri_query varchar(255),s_port varchar(255),cs_username varchar(255),c_ip varchar(255),csUser_Agent varchar(255),sc_status varchar(255),sc_substatus varchar(255),sc_win32_status varchar(255),time_taken varchar(255),PRIMARY KEY (record_id))";
+					+ "(record_id int NOT NULL AUTO_INCREMENT,date varchar(255),time varchar(255),s_ip varchar(255),cs_method varchar(255),cs_uri_stem varchar(255),cs_uri_query varchar(255),s_port varchar(255),cs_username varchar(255),c_ip varchar(255),cs_ua varchar(255),sc_status varchar(255),sc_substatus varchar(255),sc_win32_status varchar(255),time_taken varchar(255),PRIMARY KEY (record_id))";
 			preStmt = connection.prepareStatement(sql);
 			preStmt.executeUpdate();// create table
 
 			sql = "INSERT INTO " + tableName
-					+ "(date,time,s_ip,cs_method,cs_uri_stem,cs_uri_query,s_port,cs_username,c_ip,csUser_Agent,sc_status,sc_substatus,sc_win32_status,time_taken) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+					+ "(date,time,s_ip,cs_method,cs_uri_stem,cs_uri_query,s_port,cs_username,c_ip,cs_ua,sc_status,sc_substatus,sc_win32_status,time_taken) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			connection.setAutoCommit(false);
 			preStmt = connection.prepareStatement(sql);
 
@@ -226,6 +221,8 @@ public class Init {
 			tableName = tableName + "_" + "unknown";
 		}
 		tableName = tableName + "_" + System.currentTimeMillis();
+		
+		Var.setLastedTable(tableName);
 
 		return tableName;
 	}

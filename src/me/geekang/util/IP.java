@@ -25,7 +25,7 @@ public class IP {
 
 		String info = null;
 		String color = null;
-		String className = null;
+		String className = "";
 
 		QQWryFile qqWryFile = QQWryFile.getInstance();
 		RandomAccessFile ipFile = qqWryFile.getIpFile();
@@ -41,18 +41,17 @@ public class IP {
 
 		switch (color) {
 		case "green":
-			className = "label label-success";
+			className = "success";
 			break;
 		case "orange":
-			className = "label label-warning";
+			className = "warning";
 			break;
 		case "red":
-			className = "label label-danger";
+			className = "danger";
 			break;
 		default:
 		}
-
-		return "<span class='ip-span " + className + "' title='" + info + "'>" + ip + "</span>";// label
+		return className;// label
 		// label-danger
 	}
 
