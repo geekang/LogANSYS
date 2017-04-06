@@ -57,6 +57,7 @@ public class Details {
 			String methodColorT = "";
 			String uaColorT = "";
 			String urlColorT = "";
+			ipColor =  ipColorT;
 			for(int j = 0; j < whiteList.size(); j++){
 				color = "";
 				methodColorT = "";
@@ -89,7 +90,7 @@ public class Details {
 					color = "default";
 				}
 				
-				ipColor =  IP.getIPInfo(logList.get(i).get("c_ip"));
+				
 				if("success".equals(color)){
 					if("success".equals(ipColorT)){
 						ipColor = "success";
@@ -137,8 +138,7 @@ public class Details {
 				}else{
 					color = "default";
 				}
-				
-				ipColor =  IP.getIPInfo(logList.get(i).get("c_ip"));
+
 				if("danger".equals(color)){
 					if("danger".equals(ipColorT)){
 						ipColor = "danger";

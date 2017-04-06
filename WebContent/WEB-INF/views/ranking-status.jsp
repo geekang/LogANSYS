@@ -178,47 +178,58 @@ $(".l3 .m4").addClass("active");
 // 基于准备好的dom，初始化echarts实例
 var myChart = echarts.init(document.getElementById('echarts-status'));
 option = {
-	    backgroundColor: '#2c343c',
-	    visualMap: {
-	        show: false,
-	        min: 80,
-	        max: 600,
-	        inRange: {
-	            colorLightness: [0, 1]
+	    title : {
+	        text: '页面各状态码',
+	        subtext: '南丁格尔玫瑰图',
+	        x:'center'
+	    },
+	    tooltip : {
+	        trigger: 'item',
+	        formatter: "{a} <br/>{b} : {c} ({d}%)"
+	    },
+	    legend: {
+	        x : 'center',
+	        y : 'bottom',
+	        data:[<c:forEach var="map" items="${map}" varStatus="status">'${map.key}-${map.value}',</c:forEach>]
+	    },
+	    toolbox: {
+	        show : true,
+	        feature : {
+	            mark : {show: true},
+	            dataView : {show: true, readOnly: false},
+	            magicType : {
+	                show: true,
+	                type: ['pie', 'funnel']
+	            },
+	            restore : {show: true},
+	            saveAsImage : {show: true}
 	        }
 	    },
+	    calculable : true,
 	    series : [
 	        {
-	            name: '状态码分布',
-	            type: 'pie',
-	            radius: '55%',
+	            name:'半径模式',
+	            type:'pie',
+	            radius : [30, 110],
+	            center : ['25%', '50%'],
+	            roseType : 'radius',
 	            data:[
 	            	<c:forEach var="map" items="${map}" varStatus="status">
 	            	{value:${map.value}, name:'${map.key}'},
 					</c:forEach>
-	            ],
-	            roseType: 'angle',
-	            label: {
-	                normal: {
-	                    textStyle: {
-	                        color: 'rgba(255, 255, 255, 0.3)'
-	                    }
-	                }
-	            },
-	            labelLine: {
-	                normal: {
-	                    lineStyle: {
-	                        color: 'rgba(255, 255, 255, 0.3)'
-	                    }
-	                }
-	            },
-	            itemStyle: {
-	                normal: {
-	                    color: '#c23531',
-	                    shadowBlur: 200,
-	                    shadowColor: 'rgba(0, 0, 0, 0.5)'
-	                }
-	            }
+	            ]
+	        },
+	        {
+	            name:'面积模式',
+	            type:'pie',
+	            radius : [30, 110],
+	            center : ['75%', '50%'],
+	            roseType : 'area',
+	            data:[
+	            	<c:forEach var="map" items="${map}" varStatus="status">
+	            	{value:${map.value}, name:'${map.key}'},
+					</c:forEach>
+	            ]
 	        }
 	    ]
 	};

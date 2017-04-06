@@ -276,6 +276,11 @@
 									<span class="title">请求地域分布</span>
 								</a>
 							</li>
+							<li class="m2">
+								<a href="sum-flow">
+									<span class="title">流量折线图</span>
+								</a>
+							</li>
 						</ul>
 					</li>
 				<!-- 
