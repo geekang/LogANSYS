@@ -28,7 +28,7 @@ public class SumAreaController {
 			next = map.get(iterator.next());
 			max = max > next ? max : next;
 		}
-		max = max / 700 * 600;
+		max = max / 1000 * 100;
 
 		model.addAttribute("map", map);
 		model.addAttribute("max", max);
