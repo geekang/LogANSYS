@@ -95,7 +95,7 @@ public class Init {
 				}
 
 				// 如果该行是请求记录
-				if (isEntry) {
+				if (isEntry && !byteread.startsWith("#")) {
 
 					TreeMap<String, String> recordTEMP = new TreeMap<String, String>();
 					// 拆分字段

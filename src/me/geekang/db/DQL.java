@@ -17,12 +17,12 @@ public class DQL {
 	 * @param sql
 	 * @return
 	 */
-	public static List<HashMap<String,String>> executeQuery(String sql) {
+	public static List<HashMap<String, String>> executeQuery(String sql) {
 
 		Connection conn = null;
 		ResultSet rs = null;
 		PreparedStatement prepstmt = null;
-		List<HashMap<String,String>> resultList = new ArrayList<HashMap<String,String>>();
+		List<HashMap<String, String>> resultList = new ArrayList<HashMap<String, String>>();
 
 		try {
 			try {
@@ -41,10 +41,10 @@ public class DQL {
 			ResultSetMetaData rsmd = rs.getMetaData();
 
 			while (rs.next()) {
-				HashMap<String,String> row = new HashMap<String,String>();
+				HashMap<String, String> row = new HashMap<String, String>();
 
-				for (int i = 0; i < columnCount; i++) {
-					row.put(rsmd.getColumnName(i + 1),rs.getObject(i + 1).toString());
+				for (int i = 1; i <= columnCount; i++) {
+					row.put(rsmd.getColumnName(i), rs.getObject(i).toString());
 				}
 				resultList.add(row);
 			}
