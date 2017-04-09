@@ -19,18 +19,18 @@ public class SumAreaController {
 
 	@RequestMapping(method = GET)
 	public String index(Model model) {
-		HashMap<String, Integer> area = Sum.area();
+		HashMap<String, Integer> map = Sum.area();
 		int max = 0;
 		int next = 0;
 
-		Iterator<String> iterator = area.keySet().iterator();
+		Iterator<String> iterator = map.keySet().iterator();
 		if (iterator.hasNext()) {
-			next = area.get(iterator.next());
+			next = map.get(iterator.next());
 			max = max > next ? max : next;
 		}
 		max = max / 700 * 600;
 
-		model.addAttribute("map", Sum.area());
+		model.addAttribute("map", map);
 		model.addAttribute("max", max);
 		return "sum-area";
 	}

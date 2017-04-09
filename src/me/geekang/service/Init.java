@@ -55,7 +55,7 @@ public class Init {
 		boolean isFirst = true;
 
 		try {
-			br = new BufferedReader(new InputStreamReader(new FileInputStream(filePath),File.getCharset(filePath)));
+			br = new BufferedReader(new InputStreamReader(new FileInputStream(filePath), File.getCharset(filePath)));
 
 			logList.clear();
 
@@ -157,7 +157,7 @@ public class Init {
 			tableName = generateTABLEName(Var.getPlatform(), "");
 
 			sql = "CREATE TABLE " + tableName
-					+ "(record_id int NOT NULL AUTO_INCREMENT,date varchar(255),time varchar(255),s_ip varchar(255),cs_method varchar(255),cs_uri_stem varchar(255),cs_uri_query varchar(255),s_port varchar(255),cs_username varchar(255),c_ip varchar(255),cs_ua varchar(255),sc_status varchar(255),sc_substatus varchar(255),sc_win32_status varchar(255),time_taken varchar(255),PRIMARY KEY (record_id))";
+					+ "(record_id int NOT NULL AUTO_INCREMENT,date varchar(255) NOT NULL,time varchar(255) NOT NULL,s_ip varchar(255) NOT NULL,cs_method varchar(255) NOT NULL,cs_uri_stem varchar(255) NOT NULL,cs_uri_query varchar(255) NOT NULL,s_port varchar(255) NOT NULL,cs_username varchar(255) NOT NULL,c_ip varchar(255) NOT NULL,cs_ua varchar(255) NOT NULL,sc_status varchar(255) NOT NULL,sc_substatus varchar(255) NOT NULL,sc_win32_status varchar(255) NOT NULL,time_taken varchar(255) NOT NULL,PRIMARY KEY (record_id))";
 			preStmt = connection.prepareStatement(sql);
 			preStmt.executeUpdate();// create table
 
@@ -180,7 +180,7 @@ public class Init {
 				preStmt.setString(11, logList.get(i).get("sc-status"));
 				preStmt.setString(12, logList.get(i).get("sc-substatus"));
 				preStmt.setString(13, logList.get(i).get("sc-win32-status"));
-				preStmt.setString(14, logList.get(i).get("time-taken"));
+				preStmt.setString(14, logList.get(i).get("time-taken") == null ? "" : logList.get(i).get("time-taken"));
 
 				preStmt.addBatch();// insert
 			}

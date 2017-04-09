@@ -42,7 +42,6 @@ public class DQL {
 
 			while (rs.next()) {
 				HashMap<String, String> row = new HashMap<String, String>();
-
 				for (int i = 1; i <= columnCount; i++) {
 					row.put(rsmd.getColumnName(i), rs.getObject(i).toString());
 				}
