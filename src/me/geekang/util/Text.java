@@ -17,8 +17,7 @@ public final class Text {
 	/**
 	 * 将字节转换成其他单位
 	 * 
-	 * @param byteSize
-	 *            字节大小
+	 * @param byteSize 字节大小
 	 * @return 换算结果
 	 */
 	public static String byteConversion(long byteSize) {

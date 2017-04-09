@@ -24,14 +24,14 @@ public class UploadController {
 	}
 	
 	@RequestMapping(method=POST)
-	public String upload(@RequestParam("file") MultipartFile profilePicture){
+	public String upload(@RequestParam("file") MultipartFile logFile){
 
 		long uploadTime = System.currentTimeMillis();
-		Var.setPath("G:/test/" + profilePicture.getOriginalFilename());
+		Var.setPath("G:/test/" + logFile.getOriginalFilename());
 		Var.setUploadTime(Date.FormatDate(uploadTime, "yyyy-MM-dd hh:mm:ss"));
 	
 	    try {
-			profilePicture.transferTo(new File(Var.getPath()));
+	    	logFile.transferTo(new File(Var.getPath()));
 		} catch (IllegalStateException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

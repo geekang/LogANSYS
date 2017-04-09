@@ -14,6 +14,7 @@ import java.util.TreeMap;
 
 import me.geekang.db.MySQLConnector;
 import me.geekang.util.Date;
+import me.geekang.util.File;
 import me.geekang.var.Var;
 
 /**
@@ -54,7 +55,7 @@ public class Init {
 		boolean isFirst = true;
 
 		try {
-			br = new BufferedReader(new InputStreamReader(new FileInputStream(filePath)));
+			br = new BufferedReader(new InputStreamReader(new FileInputStream(filePath),File.getCharset(filePath)));
 
 			logList.clear();
 
@@ -93,22 +94,20 @@ public class Init {
 					continue;
 				}
 
-				// 如果是请求记录
+				// 如果该行是请求记录
 				if (isEntry) {
 
 					TreeMap<String, String> recordTEMP = new TreeMap<String, String>();
+					// 拆分字段
 					entryTEMP = byteread.split(" ");
 
 					for (int i = 0; i < entryTEMP.length; i++) {
-						// System.out.println(entryTEMP[i].length());
+						// 限制每个字段的长度
 						if (entryTEMP[i].length() > 255) {
-							// System.out.println(entryTEMP[i]);
 							entryTEMP[i] = entryTEMP[i].substring(0, 254);
 						}
-						// 将IP地址的实际地理位置加入Map
-						if ("c-ip".equals(fields[i])) {
-							recordTEMP.put("c-ip", entryTEMP[i]);
-						} else if ("cs(User-Agent)".equals(fields[i])) {
+						// 将UA中的“+”替换为一个空格
+						if ("cs(User-Agent)".equals(fields[i])) {
 							recordTEMP.put("cs(User-Agent)", entryTEMP[i].replaceAll("\\+", " "));
 						} else {
 							recordTEMP.put(fields[i], entryTEMP[i]);
@@ -116,7 +115,6 @@ public class Init {
 					}
 					logList.add(recordTEMP);
 				}
-
 			}
 
 			Var.setEndTime(entryTEMP[0] + " " + entryTEMP[1]);
@@ -221,7 +219,7 @@ public class Init {
 			tableName = tableName + "_" + "unknown";
 		}
 		tableName = tableName + "_" + System.currentTimeMillis();
-		
+
 		Var.setLastedTable(tableName);
 
 		return tableName;

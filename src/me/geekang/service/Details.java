@@ -194,7 +194,7 @@ public class Details {
 		}
 
 		JSONObject getObj = new JSONObject();
-		getObj.put("sEcho", sEcho);// 不知道这个值有什么用,有知道的请告知一下
+		getObj.put("sEcho", sEcho);
 		getObj.put("iTotalRecords", lst.size());// 实际的行数
 		getObj.put("iTotalDisplayRecords", lst.size());// 显示的行数,这个要和上面写的一样
 
