@@ -51,7 +51,7 @@ public class Sum {
 		location.put("澳门",0);
 
 		for(int i = 0;i < ipList.size(); i++){
-			String ipLocation = IP.getIpAddr(ipList.get(i).get("c_ip"));
+			String ipLocation = IP.getIpCountry(ipList.get(i).get("c_ip"));
 			
 			if(ipLocation.contains("北京")){
 				location.put("北京",location.get("北京") + 1);

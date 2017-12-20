@@ -11,15 +11,25 @@ public class IP {
 	static RandomAccessFile ipFile = qqWryFile.getIpFile();
 	
 	/**
-	 * 获取IP实际地理位置
+	 * 获取IP地理位置和运营商信息
 	 * @param ip
-	 * @return
+	 * @return IP地理位置和运营商信息
 	 */
-	public static String getIpAddr(String ip){
-//		long uploadTime = System.currentTimeMillis();
+	public static String getIpInfo(String ip){
+		
 		QQWryRecord record = qqWryFile.find(ip, ipFile);
-//		System.out.println(System.currentTimeMillis() - uploadTime + "");
 		return record.getCountry() + " " + record.getArea();
+	}
+	
+	/**
+	 * 获取IP所在城市
+	 * @param ip
+	 * @return IP所在城市
+	 */
+	public static String getIpCountry(String ip){
+		
+		QQWryRecord record = qqWryFile.find(ip, ipFile);
+		return record.getCountry();
 	}
 
 	public static String getIPInfo(String ip) {
@@ -38,6 +48,7 @@ public class IP {
 //		 System.out.println(record.getArea());
 
 		info = record.getCountry() + " " + record.getArea();
+		
 		color = getColor(info);
 
 		switch (color) {

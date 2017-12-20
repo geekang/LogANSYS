@@ -10,7 +10,6 @@
 							<i class="fa-bars"></i>
 						</a>
 					</li>
-					<!-- 
 					<li class="dropdown hover-line">
 						<a href="#" data-toggle="dropdown">
 							<i class="fa-envelope-o"></i>
@@ -249,12 +248,10 @@
 							</li>
 						</ul>
 					</li>
-					-->
 				</ul>
 				
 				
 				<!-- Right links for user info navbar -->
-				<!--
 				<ul class="user-info-menu right-links list-inline list-unstyled">
 					
 					<li class="search-form">
@@ -319,5 +316,4 @@
 					</li>
 					
 				</ul>
-				-->
 			</nav>

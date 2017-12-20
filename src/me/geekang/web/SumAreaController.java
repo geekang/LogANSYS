@@ -24,7 +24,7 @@ public class SumAreaController {
 		int next = 0;
 
 		Iterator<String> iterator = map.keySet().iterator();
-		if (iterator.hasNext()) {
+		while (iterator.hasNext()) {
 			next = map.get(iterator.next());
 			max = max > next ? max : next;
 		}

@@ -17,10 +17,6 @@ public class Details {
 
 		JSONArray jsonarray = JSONArray.fromObject(aoData);
 
-		Var.setLogList(DQL.executeQuery(
-				"SELECT date,time,s_ip,cs_method,cs_uri_stem,cs_uri_query,s_port,cs_username,c_ip,cs_ua,sc_status,sc_substatus,sc_win32_status FROM "
-						+ Var.getLastedTable()));
-
 		String sEcho = null;
 		int iDisplayStart = 0; // 起始索引
 		int iDisplayLength = 0; // 每页显示的行数
@@ -36,6 +32,10 @@ public class Details {
 			if (obj.get("name").equals("iDisplayLength"))
 				iDisplayLength = obj.getInt("value");
 		}
+		
+		Var.setLogList(DQL.executeQuery(
+				"SELECT date,time,s_ip,cs_method,cs_uri_stem,cs_uri_query,s_port,cs_username,c_ip,cs_ua,sc_status,sc_substatus,sc_win32_status FROM "
+						+ Var.getLastedTable() +" LIMIT " + iDisplayStart + "," + iDisplayLength));
 
 		// 生成所有的日志数据
 		List<String[]> lst = new ArrayList<String[]>();
@@ -175,7 +175,7 @@ public class Details {
 			String time = "<span class='' title='" + logList.get(i).get("date") + "'>" + logList.get(i).get("time")
 					+ "</span>";
 			String ip = "<span class='ip-span " + ipColor + "' title='"
-					+ IP.getIpAddr(logList.get(i).get("c_ip")) + "'>" + logList.get(i).get("c_ip") + "</span>";
+					+ IP.getIpInfo(logList.get(i).get("c_ip")) + "'>" + logList.get(i).get("c_ip") + "</span>";
 			String method = "<span class='m-span " + methodColor + "'>" + logList.get(i).get("cs_method") + "</span>";
 			String uri = "<span class='url-span " + urlColor + "' title='" + logList.get(i).get("cs_uri_query") + "'>"
 					+ logList.get(i).get("cs_uri_stem") + "</span>";
@@ -192,17 +192,22 @@ public class Details {
 			uaColor = "";
 			urlColor = "";
 		}
+		
+		int listTotalSize = Integer.parseInt(DQL.executeQuery("SELECT COUNT(*) AS 'count' FROM " + Var.getLastedTable()).get(0).get("count"));
 
 		JSONObject getObj = new JSONObject();
 		getObj.put("sEcho", sEcho);
-		getObj.put("iTotalRecords", lst.size());// 实际的行数
-		getObj.put("iTotalDisplayRecords", lst.size());// 显示的行数,这个要和上面写的一样
-
-		if (lst.size() > (iDisplayStart + iDisplayLength)) {
-			getObj.put("aaData", lst.subList(iDisplayStart, iDisplayStart + iDisplayLength));
-		} else {
-			getObj.put("aaData", lst.subList(iDisplayStart, lst.size()));
-		}
+		getObj.put("iTotalRecords", listTotalSize);// 实际的行数
+		getObj.put("iTotalDisplayRecords", listTotalSize);// 显示的行数,这个要和上面写的一样
+		
+//		if (listTotalSize > (iDisplayStart + iDisplayLength)) {
+//			getObj.put("aaData", lst.subList(iDisplayStart, iDisplayStart + iDisplayLength));
+//		} else {
+//			getObj.put("aaData", lst.subList(iDisplayStart, listTotalSize));
+//		}
+		
+		getObj.put("aaData", lst);
+		
 		return getObj.toString();
 	}
 }

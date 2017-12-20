@@ -182,12 +182,11 @@
 					</div>
 					
 					<!-- This will open the popup with user profile settings, you can use for any purpose, just be creative -->
-					<!-- <div class="settings-icon">
+					<div class="settings-icon">
 						<a href="#" data-toggle="settings-pane" data-animate="true">
 							<i class="linecons-cog"></i>
 						</a>
 					</div>
-					 -->
 								
 				</header>
 						
@@ -283,7 +282,6 @@
 							</li>
 						</ul>
 					</li>
-				<!-- 
 					<li>
 						<a href="forms-native.html">
 							<i class="linecons-params"></i>
@@ -601,7 +599,7 @@
 								</a>
 							</li>
 						</ul>
-					</li> -->
+					</li>
 				</ul>
 						
 			</div>

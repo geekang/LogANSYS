@@ -42,7 +42,7 @@ public class Ranking {
 				ipColor = "label label-" + ipColor;
 			}
 			String ip = "<span class='ip-span " + ipColor + "' title='"
-					+ IP.getIpAddr(pageList.get(i).get("c_ip")) + "'>" + pageList.get(i).get("c_ip") + "</span>";;
+					+ IP.getIpInfo(pageList.get(i).get("c_ip")) + "'>" + pageList.get(i).get("c_ip") + "</span>";;
 
 			pageMap.put(ip, pageList.get(i).get("c"));
 		}
