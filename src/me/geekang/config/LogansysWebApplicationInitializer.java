@@ -5,7 +5,12 @@ import javax.servlet.ServletRegistration.Dynamic;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-public class LogansysSWebApplicationInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+/**
+ * 
+ * @author Geekang
+ *
+ */
+public class LogansysWebApplicationInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
@@ -21,8 +26,14 @@ public class LogansysSWebApplicationInitializer extends AbstractAnnotationConfig
 	protected String[] getServletMappings() {
 		return new String[] { "/" };
 	}
-
-	// 上传
+	
+	/**
+	 * 上传
+	 * <p>Title: customizeRegistration</p>   
+	 * <p>Description: </p>   
+	 * @param registration   
+	 * @see org.springframework.web.servlet.support.AbstractDispatcherServletInitializer#customizeRegistration(javax.servlet.ServletRegistration.Dynamic)
+	 */
 	@Override
 	protected void customizeRegistration(Dynamic registration) {
 		registration.setMultipartConfig(new MultipartConfigElement("G:/test", 209715200, 419430400, 0));

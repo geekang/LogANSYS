@@ -15,10 +15,15 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 
-//启用Spring MVC
+/**
+ * 
+ * @ClassName:  WebConfig   
+ * @Description:TODO 
+ * @author: Geekang
+ * @date:   2018年1月17日 下午11:51:02   
+ *
+ */
 @EnableWebMvc
-
-//启用组件扫描
 @ComponentScan("me.geekang.web")
 public class WebConfig extends WebMvcConfigurerAdapter {
 

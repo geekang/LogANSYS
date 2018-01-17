@@ -1,5 +1,7 @@
 package me.geekang.service;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -194,12 +196,21 @@ public class Details {
 			
 			String uriTitle = null;
 			String uriValue = null;
-			if("-".equals(logList.get(i).get("cs_uri_query"))){
+			String uriQuery = null;
+			String uriStem = null;
+			try {
+				uriQuery = URLDecoder.decode(logList.get(i).get("cs_uri_query"),"UTF-8");
+				uriStem = URLDecoder.decode(logList.get(i).get("cs_uri_stem"),"UTF-8");
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			if("-".equals(uriQuery)){
 				uriTitle = "";
-				uriValue = logList.get(i).get("cs_uri_stem");
+				uriValue = uriStem;
 			} else {
-				uriTitle = "title='" + logList.get(i).get("cs_uri_query") + "'";
-				uriValue = "<strong>" + logList.get(i).get("cs_uri_stem") + "</strong>?" + logList.get(i).get("cs_uri_query");
+				uriTitle = "title='" + uriQuery + "'";
+				uriValue = "<strong>" + uriStem + "</strong>?" + uriQuery;
 			}
 			String uri = "<span class='url-span " + urlColor + "'" + uriTitle + "'>"
 					+ uriValue + "</span>";
