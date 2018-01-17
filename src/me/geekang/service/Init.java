@@ -45,7 +45,7 @@ public class Init {
 	 * @param filePath
 	 * @return TODO
 	 */
-	public static void InitLogFile(String filePath) {
+	public static void initLogFile(String filePath) {
 
 		BufferedReader br;
 		String byteread = null;
@@ -127,7 +127,7 @@ public class Init {
 			e.printStackTrace();
 		}
 
-		SaveData2DB();// put the list to database
+		saveData2DB();// put the list to database
 
 		Var.setRequestNum(logList.size());
 		// return logList;
@@ -143,7 +143,7 @@ public class Init {
 	 * @update 2016年1月28日
 	 * @version 1.0.3
 	 */
-	private static void SaveData2DB() {
+	private static void saveData2DB() {
 
 		Connection connection;
 		String sql;
@@ -213,7 +213,7 @@ public class Init {
 	private static String generateTABLEName(String platform, String filePath) {
 
 		String tableName = "f" + Date.getDate("yyyyMMdd");
-		if (platform.contains("Microsoft Internet Information Services")) {
+		if (platform != null && platform.contains("Microsoft Internet Information Services")) {
 			tableName = tableName + "_" + "iis";
 		} else {
 			tableName = tableName + "_" + "unknown";

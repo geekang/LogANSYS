@@ -40,8 +40,8 @@ public final class Date {
 	 * @param Timestamp,format
 	 * @return String
 	 */
-	public static String FormatDate(long Timestamp,String format){
+	public static String formatDate(long timestamp,String format){
 
-		return new SimpleDateFormat(format).format(new java.util.Date(Timestamp * 1));
+		return new SimpleDateFormat(format).format(new java.util.Date(timestamp * 1));
 	}
 }

@@ -9,6 +9,11 @@ import me.geekang.var.Var;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
+/**
+ * 
+ * @author Geekang
+ *
+ */
 public class Blacklist {
 
 	public static String tableAjax(String aoData) {
@@ -23,14 +28,17 @@ public class Blacklist {
 
 		for (int i = 0; i < jsonarray.size(); i++) {
 			JSONObject obj = (JSONObject) jsonarray.get(i);
-			if (obj.get("name").equals("sEcho"))
+			if (obj.get("name").equals("sEcho")) {
 				sEcho = obj.get("value").toString();
+			}
 
-			if (obj.get("name").equals("iDisplayStart"))
+			if (obj.get("name").equals("iDisplayStart")) {
 				iDisplayStart = obj.getInt("value");
+			}
 
-			if (obj.get("name").equals("iDisplayLength"))
+			if (obj.get("name").equals("iDisplayLength")) {
 				iDisplayLength = obj.getInt("value");
+			}
 		}
 
 		// 生成所有的日志数据
@@ -38,7 +46,8 @@ public class Blacklist {
 		List<HashMap<String, String>> blackList = Var.getBlackList();
 		for (int i = 0; i < blackList.size(); i++) {
 			String col1 = "<input type='checkbox' class='cbr'>";
-			String ip = "<span class='id-span' style='display:none'>" + blackList.get(i).get("id") + "</span><span class='ip-span'>" + blackList.get(i).get("ip") + "</span>";
+			String ip = "<span class='id-span' style='display:none'>" + blackList.get(i).get("id")
+					+ "</span><span class='ip-span'>" + blackList.get(i).get("ip") + "</span>";
 			String method = "<span class='m-span'>" + blackList.get(i).get("method") + "</span>";
 			String ua = "<span class='ua-span'>" + blackList.get(i).get("ua") + "</span>";
 			String url = "<span class='url-span'>" + blackList.get(i).get("url") + "</span>";

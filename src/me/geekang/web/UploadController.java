@@ -28,7 +28,7 @@ public class UploadController {
 
 		long uploadTime = System.currentTimeMillis();
 		Var.setPath("G:/test/" + logFile.getOriginalFilename());
-		Var.setUploadTime(Date.FormatDate(uploadTime, "yyyy-MM-dd hh:mm:ss"));
+		Var.setUploadTime(Date.formatDate(uploadTime, "yyyy-MM-dd hh:mm:ss"));
 	
 	    try {
 	    	logFile.transferTo(new File(Var.getPath()));
@@ -39,7 +39,7 @@ public class UploadController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	    Init.InitLogFile(Var.getPath());
+	    Init.initLogFile(Var.getPath());
 	    Var.setFileSize(Var.getPath());
 	    
 	    Var.setProcessingTime(System.currentTimeMillis() - uploadTime + "");

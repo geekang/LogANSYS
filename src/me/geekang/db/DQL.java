@@ -41,7 +41,7 @@ public class DQL {
 			ResultSetMetaData rsmd = rs.getMetaData();
 
 			while (rs.next()) {
-				HashMap<String, String> row = new HashMap<String, String>();
+				HashMap<String, String> row = new HashMap<String, String>(10);
 				for (int i = 1; i <= columnCount; i++) {
 					row.put(rsmd.getColumnName(i), rs.getObject(i).toString());
 				}
@@ -49,7 +49,7 @@ public class DQL {
 			}
 
 			return resultList;
-
+ 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
