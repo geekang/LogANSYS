@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import me.geekang.db.DML;
+import me.geekang.db.Dml;
 import me.geekang.service.Details;
 import me.geekang.var.Var;
 
@@ -44,7 +44,7 @@ public class DetailsController {
 		items.put("url", url);
 		items.put("remarks", remarks);
 		
-		DML.blackListInsert(items);
+		Dml.blackListInsert(items);
 		return "{}";
 	}
 	
@@ -60,7 +60,7 @@ public class DetailsController {
 		items.put("url", url);
 		items.put("remarks", remarks);
 		
-		DML.whiteListInsert(items);
+		Dml.whiteListInsert(items);
 		return "{}";
 	}
 }

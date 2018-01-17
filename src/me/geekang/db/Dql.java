@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class DQL {
+public class Dql {
 
 	/**
 	 * 执行SQL语句(SELECT)
@@ -31,7 +31,7 @@ public class DQL {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			conn = MySQLConnector.getConnect();
+			conn = MysqlConnector.getConnect();
 
 			prepstmt = conn.prepareStatement(sql);
 

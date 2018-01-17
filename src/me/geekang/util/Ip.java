@@ -5,7 +5,7 @@ import java.io.RandomAccessFile;
 import com.glodon.miracle.qqwry.QQWryFile;
 import com.glodon.miracle.qqwry.QQWryRecord;
 
-public class IP {
+public class Ip {
 	
 	static QQWryFile qqWryFile = QQWryFile.getInstance();
 	static RandomAccessFile ipFile = qqWryFile.getIpFile();

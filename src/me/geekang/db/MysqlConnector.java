@@ -13,7 +13,7 @@ import java.sql.SQLException;
  * @version 1.0.0
  * 
  */
-public class MySQLConnector {
+public class MysqlConnector {
 
 	static String url = null;
 	
@@ -21,7 +21,7 @@ public class MySQLConnector {
 
 	static Connection connection = null;
 
-	public MySQLConnector() {
+	public MysqlConnector() {
 
 	}
 

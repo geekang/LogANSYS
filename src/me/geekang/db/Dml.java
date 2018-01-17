@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Map;
 
-public class DML {
+public class Dml {
 
 	public static void blackListInsert(Map<String,String> items) {
 
@@ -16,7 +16,7 @@ public class DML {
 
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			connection = MySQLConnector.getConnect();
+			connection = MysqlConnector.getConnect();
 			
 			sql = "INSERT INTO " + tableName
 					+ "(ip,method,ua,url,remarks) VALUES (?,?,?,?,?)";
@@ -52,7 +52,7 @@ public class DML {
 
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			connection = MySQLConnector.getConnect();
+			connection = MysqlConnector.getConnect();
 			
 			sql = "UPDATE " + tableName
 					+ " SET ip=?,method=?,ua=?,url=?,remarks=? WHERE id=?";
@@ -89,7 +89,7 @@ public class DML {
 
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			connection = MySQLConnector.getConnect();
+			connection = MysqlConnector.getConnect();
 			
 			sql = "DELETE FROM " + tableName
 					+ " WHERE id=?";
@@ -121,7 +121,7 @@ public class DML {
 
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			connection = MySQLConnector.getConnect();
+			connection = MysqlConnector.getConnect();
 			
 			sql = "UPDATE " + tableName
 					+ " SET ip=?,method=?,ua=?,url=?,remarks=? WHERE id=?";
@@ -158,7 +158,7 @@ public class DML {
 
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			connection = MySQLConnector.getConnect();
+			connection = MysqlConnector.getConnect();
 			
 			sql = "INSERT INTO " + tableName
 					+ "(ip,method,ua,url,remarks) VALUES (?,?,?,?,?)";
@@ -194,7 +194,7 @@ public class DML {
 
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			connection = MySQLConnector.getConnect();
+			connection = MysqlConnector.getConnect();
 			
 			sql = "DELETE FROM " + tableName
 					+ " WHERE id=?";

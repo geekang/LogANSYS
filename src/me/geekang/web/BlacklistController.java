@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import me.geekang.db.DML;
+import me.geekang.db.Dml;
 import me.geekang.service.Blacklist;
 import me.geekang.var.Var;
 
@@ -45,7 +45,7 @@ public class BlacklistController {
 		items.put("url", url);
 		items.put("remarks", remarks);
 		
-		DML.blackListUpdate(items);
+		Dml.blackListUpdate(items);
 		return "{}";
 	}
 	
@@ -53,7 +53,7 @@ public class BlacklistController {
 	@ResponseBody
 	public String whitelist(@RequestParam("id") String id) {
 		
-		DML.blackListDelete(id);
+		Dml.blackListDelete(id);
 		return "{}";
 	}
 }

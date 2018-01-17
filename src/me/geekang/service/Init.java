@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 
-import me.geekang.db.MySQLConnector;
+import me.geekang.db.MysqlConnector;
 import me.geekang.util.Date;
 import me.geekang.util.File;
 import me.geekang.var.Var;
@@ -152,7 +152,7 @@ public class Init {
 
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			connection = MySQLConnector.getConnect();
+			connection = MysqlConnector.getConnect();
 
 			tableName = generateTABLEName(Var.getPlatform(), "");
 

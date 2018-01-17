@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import me.geekang.db.DQL;
+import me.geekang.db.Dql;
 import me.geekang.var.Var;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -15,7 +15,7 @@ public class Whitelist {
 
 		JSONArray jsonarray = JSONArray.fromObject(aoData);
 
-		Var.setBlackList(DQL.executeQuery("SELECT id,ip,method,ua,url,remarks FROM white_list"));
+		Var.setBlackList(Dql.executeQuery("SELECT id,ip,method,ua,url,remarks FROM white_list"));
 
 		String sEcho = null;
 		int iDisplayStart = 0; // 起始索引

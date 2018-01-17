@@ -4,15 +4,15 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-import me.geekang.db.DQL;
-import me.geekang.util.IP;
+import me.geekang.db.Dql;
+import me.geekang.util.Ip;
 import me.geekang.var.Var;
 
 public class Sum {
 
 	public static HashMap<String, Integer> area() {
 
-		List<HashMap<String, String>> ipList = DQL
+		List<HashMap<String, String>> ipList = Dql
 				.executeQuery("SELECT c_ip FROM " + Var.getLastedTable());
 		HashMap<String, Integer> location = new HashMap<String, Integer>();
 		location.put("北京",0);
@@ -51,7 +51,7 @@ public class Sum {
 		location.put("澳门",0);
 
 		for(int i = 0;i < ipList.size(); i++){
-			String ipLocation = IP.getIpCountry(ipList.get(i).get("c_ip"));
+			String ipLocation = Ip.getIpCountry(ipList.get(i).get("c_ip"));
 			
 			if(ipLocation.contains("北京")){
 				location.put("北京",location.get("北京") + 1);
@@ -196,7 +196,7 @@ public class Sum {
 	
 	public static HashMap<String, Integer> flow() {
 
-		List<HashMap<String, String>> timeList = DQL
+		List<HashMap<String, String>> timeList = Dql
 				.executeQuery("SELECT time FROM " + Var.getLastedTable());
 		LinkedHashMap<String, Integer> time = new LinkedHashMap<String, Integer>();
 		
@@ -331,7 +331,7 @@ public class Sum {
 	
 	public static HashMap<String, Integer> flow200301304() {
 
-		List<HashMap<String, String>> timeList = DQL
+		List<HashMap<String, String>> timeList = Dql
 				.executeQuery("SELECT time FROM " + Var.getLastedTable() + " WHERE sc_status='200' or sc_status='301' or sc_status='304'");
 		LinkedHashMap<String, Integer> time = new LinkedHashMap<String, Integer>();
 		
@@ -466,7 +466,7 @@ public class Sum {
 	
 	public static HashMap<String, Integer> flow404() {
 
-		List<HashMap<String, String>> timeList = DQL
+		List<HashMap<String, String>> timeList = Dql
 				.executeQuery("SELECT time FROM " + Var.getLastedTable() + " WHERE sc_status='404'");
 		LinkedHashMap<String, Integer> time = new LinkedHashMap<String, Integer>();
 		
@@ -601,7 +601,7 @@ public class Sum {
 	
 	public static HashMap<String, Integer> flow500() {
 
-		List<HashMap<String, String>> timeList = DQL
+		List<HashMap<String, String>> timeList = Dql
 				.executeQuery("SELECT time FROM " + Var.getLastedTable() + " WHERE sc_status='500'");
 		LinkedHashMap<String, Integer> time = new LinkedHashMap<String, Integer>();
 		

@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 
-import me.geekang.db.MySQLConnector;
+import me.geekang.db.MysqlConnector;
 import me.geekang.var.Var;
 
 /**
@@ -72,7 +72,7 @@ public class LogfileInfo {
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			connection = MySQLConnector.getConnect();
+			connection = MysqlConnector.getConnect();
 			
 			sql = "SELECT description FROM logfile_head WHERE field='" + fileHead + "'";
 			preStmt = connection.prepareStatement(sql);

@@ -5,8 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 
 import eu.bitwalker.useragentutils.UserAgent;
-import me.geekang.db.DQL;
-import me.geekang.util.IP;
+import me.geekang.db.Dql;
+import me.geekang.util.Ip;
 import me.geekang.var.Var;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -43,7 +43,7 @@ public class Details {
 			}
 		}
 
-		Var.setLogList(DQL.executeQuery(
+		Var.setLogList(Dql.executeQuery(
 				"SELECT date,time,s_ip,cs_method,cs_uri_stem,cs_uri_query,s_port,cs_username,c_ip,cs_ua,sc_status,sc_substatus,sc_win32_status FROM "
 						+ Var.getLastedTable() + " LIMIT " + iDisplayStart + "," + iDisplayLength));
 
@@ -51,9 +51,9 @@ public class Details {
 		List<String[]> lst = new ArrayList<String[]>();
 		List<HashMap<String, String>> logList = Var.getLogList();
 
-		List<HashMap<String, String>> whiteList = DQL
+		List<HashMap<String, String>> whiteList = Dql
 				.executeQuery("SELECT id,ip,method,ua,url,remarks FROM white_list");
-		List<HashMap<String, String>> blackList = DQL
+		List<HashMap<String, String>> blackList = Dql
 				.executeQuery("SELECT id,ip,method,ua,url,remarks FROM black_list");
 
 		String ipColor = "";
@@ -63,7 +63,7 @@ public class Details {
 
 		for (int i = 0; i < logList.size(); i++) {
 			String color = "";
-			String ipColorT = IP.getIPInfo(logList.get(i).get("c_ip"));
+			String ipColorT = Ip.getIPInfo(logList.get(i).get("c_ip"));
 			String methodColorT = "";
 			String uaColorT = "";
 			String urlColorT = "";
@@ -188,18 +188,21 @@ public class Details {
 			String col1 = "<input type='checkbox' class='cbr'>";
 			String time = "<span class='' title='" + logList.get(i).get("date") + "'>" + logList.get(i).get("time")
 					+ "</span>";
-			String ip = "<span class='ip-span " + ipColor + "' title='" + IP.getIpInfo(logList.get(i).get("c_ip"))
+			String ip = "<span class='ip-span " + ipColor + "' title='" + Ip.getIpInfo(logList.get(i).get("c_ip"))
 					+ "'>" + logList.get(i).get("c_ip") + "</span>";
 			String method = "<span class='m-span " + methodColor + "'>" + logList.get(i).get("cs_method") + "</span>";
 			
 			String uriTitle = null;
+			String uriValue = null;
 			if("-".equals(logList.get(i).get("cs_uri_query"))){
 				uriTitle = "";
+				uriValue = logList.get(i).get("cs_uri_stem");
 			} else {
 				uriTitle = "title='" + logList.get(i).get("cs_uri_query") + "'";
+				uriValue = "<strong>" + logList.get(i).get("cs_uri_stem") + "</strong>?" + logList.get(i).get("cs_uri_query");
 			}
 			String uri = "<span class='url-span " + urlColor + "'" + uriTitle + "'>"
-					+ logList.get(i).get("cs_uri_stem") + "</span>";
+					+ uriValue + "</span>";
 			
 			String stat = "<span class='' title='" + logList.get(i).get("sc_substatus") + "/"
 					+ logList.get(i).get("sc_win32_status") + "'>" + logList.get(i).get("sc_status") + "</span>";
@@ -216,7 +219,7 @@ public class Details {
 		}
 
 		int listTotalSize = Integer.parseInt(
-				DQL.executeQuery("SELECT COUNT(*) AS 'count' FROM " + Var.getLastedTable()).get(0).get("count"));
+				Dql.executeQuery("SELECT COUNT(*) AS 'count' FROM " + Var.getLastedTable()).get(0).get("count"));
 
 		JSONObject getObj = new JSONObject();
 		getObj.put("sEcho", sEcho);
