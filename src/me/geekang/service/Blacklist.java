@@ -23,8 +23,10 @@ public class Blacklist {
 		Var.setBlackList(Dql.executeQuery("SELECT id,ip,method,ua,url,remarks FROM black_list"));
 
 		String sEcho = null;
-		int iDisplayStart = 0; // 起始索引
-		int iDisplayLength = 0; // 每页显示的行数
+		//起始索引
+		int iDisplayStart = 0;
+		//每页显示的行数
+		int iDisplayLength = 0;
 
 		for (int i = 0; i < jsonarray.size(); i++) {
 			JSONObject obj = (JSONObject) jsonarray.get(i);
@@ -58,8 +60,10 @@ public class Blacklist {
 		}
 
 		JSONObject getObj = new JSONObject();
-		getObj.put("sEcho", sEcho);// 不知道这个值有什么用,有知道的请告知一下
-		getObj.put("iTotalRecords", lst.size());// 实际的行数
+		//不知道这个值有什么用,有知道的请告知一下
+		//getObj.put("sEcho", "1000");
+		//实际的行数
+		getObj.put("iTotalRecords", lst.size());
 		getObj.put("iTotalDisplayRecords", lst.size());// 显示的行数,这个要和上面写的一样
 
 		if (lst.size() > (iDisplayStart + iDisplayLength)) {

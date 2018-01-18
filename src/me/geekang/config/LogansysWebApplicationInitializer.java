@@ -39,8 +39,9 @@ public class LogansysWebApplicationInitializer extends AbstractAnnotationConfigD
 	@Override
 	protected void customizeRegistration(Dynamic registration) {
 		
+		//判断操作系统类型，以便设置上传目录
 		String osName = "os.name";
-		String windows = "windows";
+		String windows = "Windows";
 		if(System.getProperty(osName).contains(windows)) {
 			Var.setUnix(false);
 		} else {

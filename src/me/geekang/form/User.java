@@ -1,5 +1,13 @@
 package me.geekang.form;
 
+/**
+ * 
+ * @ClassName:  User   
+ * @Description:TODO 
+ * @author: Geekang
+ * @date:   2018年1月18日 下午8:44:15   
+ *
+ */
 public class User {
 	
 	private String userName;

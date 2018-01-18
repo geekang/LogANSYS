@@ -391,7 +391,8 @@ function showModel1(obj) {
 	$("#model-span-ip").text($(obj).parent().siblings().find(".ip-span").text()).siblings("input").val($(obj).parent().siblings().find(".ip-span").text());
 	$("#model-span-m").text($(obj).parent().siblings().find(".m-span").text()).siblings("input").val($(obj).parent().siblings().find(".m-span").text());
 	$("#ua-pre").html($(obj).parent().siblings().find(".ua-span").attr("title")).siblings().find("input").val($(obj).parent().siblings().find(".ua-span").attr("title"));
-	$("#url-pre").html($(obj).parent().siblings().find(".url-span").text() + "?" + $(obj).parent().siblings().find(".url-span").attr("title")).siblings().find("input").val($(obj).parent().siblings().find(".url-span").text() + "?" + $(obj).parent().siblings().find(".url-span").attr("title"));
+	$("#url-pre").html($(obj).parent().siblings().find(".url-span").text()).siblings().find("input").val($(obj).parent().siblings().find(".url-span").text());
+	//$("#url-pre").html($(obj).parent().siblings().find(".url-span").text()/ + "?" + $(obj).parent().siblings().find(".url-span").attr("title")).siblings().find("input").val($(obj).parent().siblings().find(".url-span").text() + "?" + $(obj).parent().siblings().find(".url-span").attr("title"));
     //获取表格中的一行数据  
     //var stuno = document.getElementById("table").rows[id].cells[0].innerText;  
     //var pass = document.getElementById("table").rows[id].cells[1].innerText;  
