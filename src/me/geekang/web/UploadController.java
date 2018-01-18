@@ -27,7 +27,7 @@ public class UploadController {
 	public String upload(@RequestParam("file") MultipartFile logFile){
 
 		long uploadTime = System.currentTimeMillis();
-		Var.setPath("G:/test/" + logFile.getOriginalFilename());
+		Var.setPath(Var.getUploadPathPerfix() + logFile.getOriginalFilename());
 		Var.setUploadTime(Date.formatDate(uploadTime, "yyyy-MM-dd hh:mm:ss"));
 	
 	    try {

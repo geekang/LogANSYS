@@ -48,7 +48,11 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 		configurer.enable();
 	}
 
-	// 上传
+	/**
+	 * 上传
+	 * @return
+	 * @throws IOException
+	 */
 	@Bean
 	public MultipartResolver multipartResolver() throws IOException {
 		return new StandardServletMultipartResolver();

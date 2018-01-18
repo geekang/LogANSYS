@@ -5,6 +5,8 @@ import javax.servlet.ServletRegistration.Dynamic;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+import me.geekang.var.Var;
+
 /**
  * 
  * @author Geekang
@@ -36,7 +38,16 @@ public class LogansysWebApplicationInitializer extends AbstractAnnotationConfigD
 	 */
 	@Override
 	protected void customizeRegistration(Dynamic registration) {
-		registration.setMultipartConfig(new MultipartConfigElement("G:/test", 209715200, 419430400, 0));
+		
+		String osName = "os.name";
+		String windows = "windows";
+		if(System.getProperty(osName).contains(windows)) {
+			Var.setUnix(false);
+		} else {
+			Var.setUnix(true);
+		}
+		
+		registration.setMultipartConfig(new MultipartConfigElement(Var.getUploadPathPerfix(), 209715200, 419430400, 0));
 	}
 
 }

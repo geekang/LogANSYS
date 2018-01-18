@@ -5,6 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Map;
 
+/**
+ * 
+ * @author Geekang
+ *
+ */
 public class Dml {
 
 	public static void blackListInsert(Map<String,String> items) {

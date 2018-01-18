@@ -9,6 +9,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * 
+ * @author Geekang
+ *
+ */
 public class Dql {
 
 	/**

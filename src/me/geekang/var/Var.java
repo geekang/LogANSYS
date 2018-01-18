@@ -8,6 +8,7 @@ import me.geekang.util.Text;
 
 public final class Var {
 
+	private static boolean isUnix;
 	private static String path;
 	private static String fileName;
 	private static String uploadTime;
@@ -21,6 +22,22 @@ public final class Var {
 	private static List<HashMap<String,String>> blackList;
 	private static List<HashMap<String,String>> whiteList;
 	private static String lastedTable;
+	
+	public static String getUploadPathPerfix() {
+		if(Var.isUnix()) {
+			return "/tmp/";
+		} else {
+			return "G:/test/";
+		}
+	}
+	
+	public static boolean isUnix() {
+		return isUnix;
+	}
+	
+	public static void setUnix(boolean isUnix) {
+		Var.isUnix = isUnix;
+	}
 	
 	public static String getLastedTable() {
 		return lastedTable;
