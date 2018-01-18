@@ -58,91 +58,111 @@ public class Details {
 		List<HashMap<String, String>> blackList = Dql
 				.executeQuery("SELECT id,ip,method,ua,url,remarks FROM black_list");
 
-		String ipColor = "";
-		String methodColor = "";
-		String uaColor = "";
-		String urlColor = "";
+		String color;
+		String ipColor;
+		String methodColor;
+		String uaColor;
+		String urlColor;
 
 		for (int i = 0; i < logList.size(); i++) {
-			String color = "";
-			String ipColorT = Ip.getIPInfo(logList.get(i).get("c_ip"));
-			String methodColorT = "";
-			String uaColorT = "";
-			String urlColorT = "";
-			ipColor = ipColorT;
-			for (int j = 0; j < whiteList.size(); j++) {
-				color = "";
-				methodColorT = "";
-				uaColorT = "";
-				urlColorT = "";
-				
-				if ((!"".equals(whiteList.get(j).get("ip")))
-						&& whiteList.get(j).get("ip").equals(logList.get(i).get("c_ip"))) {
-					color = "success";
-					ipColorT = "success";
-				} else {
-					color = "default";
-				}
-				if ((!"".equals(whiteList.get(j).get("method")))
-						&& whiteList.get(j).get("method").equals(logList.get(i).get("cs_method"))) {
-					color = "success";
-					methodColorT = "success";
-				} else {
-					color = "default";
-				}
-				if ((!"".equals(whiteList.get(j).get("ua")))
-						&& whiteList.get(j).get("ua").equals(logList.get(i).get("cs_ua"))) {
-					color = "success";
-					uaColorT = "success";
-				} else {
-					color = "default";
-				}
-				String url = logList.get(i).get("cs_uri_stem") + "?" + logList.get(i).get("cs_uri_query");
-				if ((!"".equals(whiteList.get(j).get("url"))) && whiteList.get(j).get("url").equals(url)) {
-					color = "success";
-					urlColorT = "success";
-				} else {
-					color = "default";
-				}
-
-				if ("success".equals(color)) {
-					if ("success".equals(ipColorT)) {
-						ipColor = "success";
-					}
-					if ("success".equals(methodColorT)) {
-						methodColor = "success";
-					}
-					if ("success".equals(uaColorT)) {
-						uaColor = "success";
-					}
-					if ("success".equals(urlColorT)) {
-						urlColor = "success";
-					}
-					break;
-				}
-			}
+			color = "";
+			ipColor = "";
+//			String ipColorT = Ip.getIPInfo(logList.get(i).get("c_ip"));
+			methodColor = "";
+			uaColor = "";
+			urlColor = "";
 			
-			if (!"".equals(ipColor)) {
-				ipColor = "label label-" + ipColor;
-			}
-			if (!"".equals(methodColor)) {
-				methodColor = "label label-" + methodColor;
-			}
-			if (!"".equals(uaColor)) {
-				uaColor = "label label-" + uaColor;
-			}
-			if (!"".equals(urlColor)) {
-				urlColor = "label label-" + urlColor;
+			
+			for (int j = 0; j < whiteList.size(); j++) {
+				
+				//危险标记
+				boolean isSafety = false;
+				
+				//初始化黑名单列表项目名称
+				String[] whiteListItems = {"ip","method","ua","url"};
+				
+				//声明项目颜色
+				String[] itemsColor = new String[whiteListItems.length];
+				
+				/*
+				 * 初始化日志列表项目名称、危险项目标记
+				 */
+				String[] logListItemValues = new String[whiteListItems.length];
+				Boolean[] isSafetyItems = new Boolean[whiteListItems.length];
+				logListItemValues[0] = logList.get(i).get("c_ip");
+				logListItemValues[1] = logList.get(i).get("cs_method");
+				logListItemValues[2] = logList.get(i).get("cs_ua");
+				if("-".equals(logList.get(i).get("cs_uri_query"))){
+					logListItemValues[3] = logList.get(i).get("cs_uri_stem");
+				} else {
+					logListItemValues[3] = logList.get(i).get("cs_uri_stem") + "?" + logList.get(i).get("cs_uri_query");
+				}
+				for(int k = 0; k < whiteListItems.length; k++){
+					isSafetyItems[k] = false;
+				}				
+				
+				//设置危险项目标记
+				for(int k = 0; k < whiteListItems.length; k++){
+					
+					if(whiteList.get(j).get(whiteListItems[k]).isEmpty()){
+						continue;
+					}
+					if(whiteList.get(j).get(whiteListItems[k]).equals(logListItemValues[k])){
+						isSafetyItems[k] = true;
+					}
+				}
+				
+				//判定是否为危险请求
+				for(int k = 0; k < whiteListItems.length; k++){
+					if(!whiteList.get(j).get(whiteListItems[k]).isEmpty()){
+						if(isSafetyItems[k]){
+							isSafety = true;
+						} else {
+							isSafety = false;
+							break;
+						}
+					}
+				}
+				
+				//设定颜色
+				if(isSafety){
+					for(int k = 0; k < whiteListItems.length; k++){
+						if(isSafetyItems[k]){
+							itemsColor[k] = "success";
+						} else {
+							itemsColor[k] = "default";
+						}
+					}
+				}
+				
+				/*
+				 * 更改HTML标签class
+				 */
+				if(isSafety){
+					if(isSafetyItems[0]){
+						ipColor = "label label-" + itemsColor[0];
+					}
+					if(isSafetyItems[1]){
+						methodColor = "label label-" + itemsColor[1];
+					}
+					if(isSafetyItems[2]){
+						uaColor = "label label-" + itemsColor[2];
+					}
+					if(isSafetyItems[3]){
+						urlColor = "label label-" + itemsColor[3];
+					}
+					
+					if(isSafety){
+						break;
+					}
+				}
+				
 			}
 			
 			for (int j = 0; j < blackList.size(); j++) {
 				
 				//危险标记
 				boolean isDangerous = false;
-				
-				methodColorT = "";
-				uaColorT = "";
-				urlColorT = "";
 				
 				//初始化黑名单列表项目名称
 				String[] blackListItems = {"ip","method","ua","url"};
@@ -204,24 +224,28 @@ public class Details {
 				/*
 				 * 更改HTML标签class
 				 */
-				if(isDangerousItems[0]){
-					ipColor = "label label-" + itemsColor[0];
-				}
-				if(isDangerousItems[1]){
-					methodColor = "label label-" + itemsColor[1];
-				}
-				if(isDangerousItems[2]){
-					uaColor = "label label-" + itemsColor[2];
-				}
-				if(isDangerousItems[3]){
-					urlColor = "label label-" + itemsColor[3];
+				if(isDangerous){
+					if(isDangerousItems[0]){
+						ipColor = "label label-" + itemsColor[0];
+					}
+					if(isDangerousItems[1]){
+						methodColor = "label label-" + itemsColor[1];
+					}
+					if(isDangerousItems[2]){
+						uaColor = "label label-" + itemsColor[2];
+					}
+					if(isDangerousItems[3]){
+						urlColor = "label label-" + itemsColor[3];
+					}
+					if(isDangerous){
+						break;
+					}
 				}
 				
-				if(isDangerous){
-					break;
-				}
-			}			
-
+				
+				
+			}
+			
 			String col1 = "<input type='checkbox' class='cbr'>";
 			String time = "<span class='' title='" + logList.get(i).get("date") + "'>" + logList.get(i).get("time")
 					+ "</span>";
@@ -270,7 +294,8 @@ public class Details {
 
 		JSONObject getObj = new JSONObject();
 		getObj.put("sEcho", sEcho);
-		getObj.put("iTotalRecords", listTotalSize);// 实际的行数
+		//实际的行数
+		getObj.put("iTotalRecords", listTotalSize);
 		getObj.put("iTotalDisplayRecords", listTotalSize);// 显示的行数,这个要和上面写的一样
 
 		getObj.put("aaData", lst);

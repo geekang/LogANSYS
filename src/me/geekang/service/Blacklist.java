@@ -64,7 +64,8 @@ public class Blacklist {
 		//getObj.put("sEcho", "1000");
 		//实际的行数
 		getObj.put("iTotalRecords", lst.size());
-		getObj.put("iTotalDisplayRecords", lst.size());// 显示的行数,这个要和上面写的一样
+		//显示的行数,这个要和上面写的一样
+		getObj.put("iTotalDisplayRecords", lst.size());
 
 		if (lst.size() > (iDisplayStart + iDisplayLength)) {
 			getObj.put("aaData", lst.subList(iDisplayStart, iDisplayStart + iDisplayLength));

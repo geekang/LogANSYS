@@ -414,7 +414,7 @@ function showModel2(obj) {
 	$("#model2-span-ip").text($(obj).parent().siblings().find(".ip-span").text()).siblings("input").val($(obj).parent().siblings().find(".ip-span").text());
 	$("#model2-span-m").text($(obj).parent().siblings().find(".m-span").text()).siblings("input").val($(obj).parent().siblings().find(".m-span").text());
 	$("#ua-pre2").html($(obj).parent().siblings().find(".ua-span").attr("title")).siblings().find("input").val($(obj).parent().siblings().find(".ua-span").attr("title"));
-	$("#url-pre2").html($(obj).parent().siblings().find(".url-span").text() + "?" + $(obj).parent().siblings().find(".url-span").attr("title")).siblings().find("input").val($(obj).parent().siblings().find(".url-span").text() + "?" + $(obj).parent().siblings().find(".url-span").attr("title"));
+	$("#url-pre2").html($(obj).parent().siblings().find(".url-span").text()).siblings().find("input").val($(obj).parent().siblings().find(".url-span").text());
     //获取表格中的一行数据  
     //var stuno = document.getElementById("table").rows[id].cells[0].innerText;  
     //var pass = document.getElementById("table").rows[id].cells[1].innerText;  
