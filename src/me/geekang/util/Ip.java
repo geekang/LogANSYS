@@ -31,49 +31,44 @@ public class Ip {
 		QQWryRecord record = qqWryFile.find(ip, ipFile);
 		return record.getCountry();
 	}
-
-	public static String getIPInfo(String ip) {
-
-		String info = null;
-		String color = null;
-		String className = "";
-
+	
+	public static String ipFilter(String ip) {
+		
+		//IP信息
+		String info;
+		//提示颜色（green/orange/red）
+		String color = new String();
+		//输出class
+		String className;
+		
+		/*
+		 * 获得IP信息
+		 */
 		QQWryFile qqWryFile = QQWryFile.getInstance();
 		RandomAccessFile ipFile = qqWryFile.getIpFile();
-		
 		QQWryRecord record = qqWryFile.find(ip, ipFile);
-		// System.out.println(Utils.ipToStr(record.getBeginIP()));
-		// System.out.println(Utils.ipToStr(record.getEndIP()));
-		// System.out.println(record.getCountry());
-//		 System.out.println(record.getArea());
-
 		info = record.getCountry() + " " + record.getArea();
 		
-		color = getColor(info);
-
-		switch (color) {
-		case "green":
-			className = "success";
-			break;
-		case "orange":
-			className = "warning";
-			break;
-		case "red":
-			className = "danger";
-			break;
-		default:
-		}
-		return className;// label
-		// label-danger
-	}
-
-	private static String getColor(String info) {
-
+		//判断是否为搜索引擎
 		if (info.contains("谷歌") || info.contains("百度") || info.contains("微软") || info.contains("雅虎")
 				|| info.contains("360") || info.contains("Microsoft") || info.contains("MSN") || info.contains("蜘蛛")) {
-			return "green";
+			color =  "green";
 		}
-		return "";
+		
+		switch (color) {
+		case "green":
+			className = "label label-success";
+			break;
+		case "orange":
+			className = "label label-warning";
+			break;
+		case "red":
+			className = "label label-danger";
+			break;
+		default:
+			className = "";
+		}
+		return className;
 	}
 
 }

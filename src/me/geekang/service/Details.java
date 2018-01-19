@@ -59,19 +59,19 @@ public class Details {
 				.executeQuery("SELECT id,ip,method,ua,url,remarks FROM black_list");
 
 		String color;
-		String ipColor;
+		String ipColorClass;
 		String methodColor;
 		String uaColor;
 		String urlColor;
 
 		for (int i = 0; i < logList.size(); i++) {
+			
 			color = "";
-			ipColor = "";
+			ipColorClass = Ip.ipFilter(logList.get(i).get("c_ip"));
 //			String ipColorT = Ip.getIPInfo(logList.get(i).get("c_ip"));
 			methodColor = "";
 			uaColor = "";
 			urlColor = "";
-			
 			
 			for (int j = 0; j < whiteList.size(); j++) {
 				
@@ -140,7 +140,7 @@ public class Details {
 				 */
 				if(isSafety){
 					if(isSafetyItems[0]){
-						ipColor = "label label-" + itemsColor[0];
+						ipColorClass = "label label-" + itemsColor[0];
 					}
 					if(isSafetyItems[1]){
 						methodColor = "label label-" + itemsColor[1];
@@ -226,7 +226,7 @@ public class Details {
 				 */
 				if(isDangerous){
 					if(isDangerousItems[0]){
-						ipColor = "label label-" + itemsColor[0];
+						ipColorClass = "label label-" + itemsColor[0];
 					}
 					if(isDangerousItems[1]){
 						methodColor = "label label-" + itemsColor[1];
@@ -249,7 +249,7 @@ public class Details {
 			String col1 = "<input type='checkbox' class='cbr'>";
 			String time = "<span class='' title='" + logList.get(i).get("date") + "'>" + logList.get(i).get("time")
 					+ "</span>";
-			String ip = "<span class='ip-span " + ipColor + "' title='" + Ip.getIpInfo(logList.get(i).get("c_ip"))
+			String ip = "<span class='ip-span " + ipColorClass + "' title='" + Ip.getIpInfo(logList.get(i).get("c_ip"))
 					+ "'>" + logList.get(i).get("c_ip") + "</span>";
 			String method = "<span class='m-span " + methodColor + "'>" + logList.get(i).get("cs_method") + "</span>";
 			
@@ -296,7 +296,8 @@ public class Details {
 		getObj.put("sEcho", sEcho);
 		//实际的行数
 		getObj.put("iTotalRecords", listTotalSize);
-		getObj.put("iTotalDisplayRecords", listTotalSize);// 显示的行数,这个要和上面写的一样
+		//显示的行数,这个要和上面写的一样
+		getObj.put("iTotalDisplayRecords", listTotalSize);
 
 		getObj.put("aaData", lst);
 

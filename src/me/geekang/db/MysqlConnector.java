@@ -29,7 +29,7 @@ public class MysqlConnector {
 		
 		try {
 			//uri = new URI(System.getenv("DATABASE_URL"));//mysql://user:pwd@localhost:3306/db
-			uri = new URI("mysql://root:19940328@localhost:3306/logansys");
+			uri = new URI("mysql://root:root@localhost:3306/logansys");
 			//System.out.println(uri);
 			
 			url = "jdbc:mysql://" + uri.getHost() + ":" + uri.getPort() + "/" + uri.getPath().split("/")[1] + "?user="

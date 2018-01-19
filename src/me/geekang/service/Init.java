@@ -27,11 +27,15 @@ import me.geekang.var.Var;
  */
 public class Init {
 
-	public static List<TreeMap<String, String>> logList = new ArrayList<TreeMap<String, String>>();// log
-																									// row
-	public static String[] fields = {};// 字段
-	static int fieldsNum;// 字段数量
-	static String firstLine;// first line
+	// log
+	public static List<TreeMap<String, String>> logList = new ArrayList<TreeMap<String, String>>();
+	// row
+	// 字段
+	public static String[] fields = {};
+	// 字段数量
+	static int fieldsNum;
+	// first line
+	static String firstLine;
 	static String platform;
 
 	/**
@@ -201,8 +205,7 @@ public class Init {
 	/**
 	 * 
 	 * 
-	 * @description Generate table name which format like
-	 *              "f+date_platform_hash".
+	 * @description Generate table name which format like "f+date_platform_hash".
 	 * @author Geekang
 	 * @date 2016年1月26日
 	 * @update 2016年1月26日

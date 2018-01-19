@@ -37,10 +37,7 @@ public class Ranking {
 		LinkedHashMap<String, String> pageMap = new LinkedHashMap<String, String>();
 
 		for (int i = 0; i < pageList.size(); i++) {
-			String ipColor =  Ip.getIPInfo(pageList.get(i).get("c_ip"));
-			if(!"".equals(ipColor)){
-				ipColor = "label label-" + ipColor;
-			}
+			String ipColor =  Ip.ipFilter(pageList.get(i).get("c_ip"));
 			String ip = "<span class='ip-span " + ipColor + "' title='"
 					+ Ip.getIpInfo(pageList.get(i).get("c_ip")) + "'>" + pageList.get(i).get("c_ip") + "</span>";;
 

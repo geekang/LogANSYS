@@ -390,8 +390,8 @@ $("#ua-pre2").click(function(){
 function showModel1(obj) {  
 	$("#model-span-ip").text($(obj).parent().siblings().find(".ip-span").text()).siblings("input").val($(obj).parent().siblings().find(".ip-span").text());
 	$("#model-span-m").text($(obj).parent().siblings().find(".m-span").text()).siblings("input").val($(obj).parent().siblings().find(".m-span").text());
-	$("#ua-pre").html($(obj).parent().siblings().find(".ua-span").attr("title")).siblings().find("input").val($(obj).parent().siblings().find(".ua-span").attr("title"));
-	$("#url-pre").html($(obj).parent().siblings().find(".url-span").text()).siblings().find("input").val($(obj).parent().siblings().find(".url-span").text());
+	$("#ua-pre").text($(obj).parent().siblings().find(".ua-span").attr("title")).siblings().find("input").val($(obj).parent().siblings().find(".ua-span").attr("title"));
+	$("#url-pre").text($(obj).parent().siblings().find(".url-span").text()).siblings().find("input").val($(obj).parent().siblings().find(".url-span").text());
 	//$("#url-pre").html($(obj).parent().siblings().find(".url-span").text()/ + "?" + $(obj).parent().siblings().find(".url-span").attr("title")).siblings().find("input").val($(obj).parent().siblings().find(".url-span").text() + "?" + $(obj).parent().siblings().find(".url-span").attr("title"));
     //获取表格中的一行数据  
     //var stuno = document.getElementById("table").rows[id].cells[0].innerText;  
@@ -413,8 +413,8 @@ function showModel1(obj) {
 function showModel2(obj) {  
 	$("#model2-span-ip").text($(obj).parent().siblings().find(".ip-span").text()).siblings("input").val($(obj).parent().siblings().find(".ip-span").text());
 	$("#model2-span-m").text($(obj).parent().siblings().find(".m-span").text()).siblings("input").val($(obj).parent().siblings().find(".m-span").text());
-	$("#ua-pre2").html($(obj).parent().siblings().find(".ua-span").attr("title")).siblings().find("input").val($(obj).parent().siblings().find(".ua-span").attr("title"));
-	$("#url-pre2").html($(obj).parent().siblings().find(".url-span").text()).siblings().find("input").val($(obj).parent().siblings().find(".url-span").text());
+	$("#ua-pre2").text($(obj).parent().siblings().find(".ua-span").attr("title")).siblings().find("input").val($(obj).parent().siblings().find(".ua-span").attr("title"));
+	$("#url-pre2").text($(obj).parent().siblings().find(".url-span").text()).siblings().find("input").val($(obj).parent().siblings().find(".url-span").text());
     //获取表格中的一行数据  
     //var stuno = document.getElementById("table").rows[id].cells[0].innerText;  
     //var pass = document.getElementById("table").rows[id].cells[1].innerText;  
@@ -436,8 +436,8 @@ function addBlackList() {
     //获取模态框数据  
     var ip = typeof($('input:checkbox[name="ip"]:checked').val())=="undefined"?"":$('input:checkbox[name="ip"]:checked').val();  
     var m = typeof($('input:checkbox[name="m"]:checked').val())=="undefined"?"":$('input:checkbox[name="m"]:checked').val();
-    var ua = j % 2 == 0?"":$("#ua-pre").html();
-    var url = i % 2 == 0?"":$("#url-pre").html();
+    var ua = j % 2 == 0?"":$("#ua-pre").text();
+    var url = i % 2 == 0?"":$("#url-pre").text();
     var remarks = $("#remarks").val();
     $.ajax({  
         type: "post",  
@@ -460,8 +460,8 @@ function addWhiteList() {
     //获取模态框数据  
     var ip = typeof($('#modal-2 input:checkbox[name="ip"]:checked').val())=="undefined"?"":$('#modal-2 input:checkbox[name="ip"]:checked').val();  
     var m = typeof($('#modal-2 input:checkbox[name="m"]:checked').val())=="undefined"?"":$('#modal-2 input:checkbox[name="m"]:checked').val();
-    var ua = j2 % 2 == 0?"":$("#ua-pre2").html();
-    var url = i2 % 2 == 0?"":$("#url-pre2").html();
+    var ua = j2 % 2 == 0?"":$("#ua-pre2").text();
+    var url = i2 % 2 == 0?"":$("#url-pre2").text();
     var remarks = $("#remarks2").val();
     $.ajax({  
         type: "post",  
