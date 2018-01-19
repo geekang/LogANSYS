@@ -30,7 +30,7 @@ public class LogfileInfo {
 	 */
 	public static HashMap<String, String> getLogFileInfo() {
 		
-		HashMap<String, String> fileInfo = new HashMap<String, String>();
+		HashMap<String, String> fileInfo = new HashMap<String, String>(8);
 
 		//上传的文件名
 		fileInfo.put("fileName", Var.getFileName());

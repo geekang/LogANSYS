@@ -105,7 +105,7 @@
 			                data : {"aoData":JSON.stringify(aoData111)},//这个是把datatable的一些基本数据传给后台,比如起始位置,每页显示的行数
 			                type : 'post',
 			                dataType : 'json',
-			                async : false,
+			                async : true,
 			                success : function(result) {
 			                    fnCallback111(result);//把返回的数据传给这个方法就可以了,datatable会自动绑定数据的
 			                },

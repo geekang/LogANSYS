@@ -9,6 +9,11 @@ import me.geekang.db.Dql;
 import me.geekang.util.Ip;
 import me.geekang.var.Var;
 
+/**
+ * 
+ * @author Geekang
+ *
+ */
 public class Ranking {
 
 	public static LinkedHashMap<String, String> page() {

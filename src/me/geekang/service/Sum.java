@@ -8,6 +8,11 @@ import me.geekang.db.Dql;
 import me.geekang.util.Ip;
 import me.geekang.var.Var;
 
+/**
+ * 
+ * @author Geekang
+ *
+ */
 public class Sum {
 
 	public static HashMap<String, Integer> area() {

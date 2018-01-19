@@ -27,14 +27,14 @@ import me.geekang.var.Var;
  */
 public class Init {
 
-	// log
+	/** log */
 	public static List<TreeMap<String, String>> logList = new ArrayList<TreeMap<String, String>>();
 	// row
-	// 字段
+	/** 字段 */
 	public static String[] fields = {};
-	// 字段数量
+	/** 字段数量 */
 	static int fieldsNum;
-	// first line
+	/** first line */
 	static String firstLine;
 	static String platform;
 
@@ -55,7 +55,8 @@ public class Init {
 		String byteread = null;
 		String[] fieldsTEMP = null;
 		String[] entryTEMP = null;
-		boolean isEntry = false;// 是否是请求记录
+		/** 是否是请求记录 */
+		boolean isEntry = false;
 		boolean isFirst = true;
 
 		try {
@@ -214,9 +215,11 @@ public class Init {
 	 * @return String
 	 */
 	private static String generateTABLEName(String platform, String filePath) {
+		
+		final String msIis = "Microsoft Internet Information Services";
 
 		String tableName = "f" + Date.getDate("yyyyMMdd");
-		if (platform != null && platform.contains("Microsoft Internet Information Services")) {
+		if (platform != null && platform.contains(msIis)) {
 			tableName = tableName + "_" + "iis";
 		} else {
 			tableName = tableName + "_" + "unknown";
