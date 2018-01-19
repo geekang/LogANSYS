@@ -32,7 +32,7 @@
 			
 			
 			<!-- Removing search and results count filter -->
-			<div class="panel panel-default">
+			<div class="panel panel-default" id="main-table">
 				<div class="panel-heading">
 					<h3 class="panel-title">以下是此日志文件所有的请求记录</h3>
 					
@@ -102,6 +102,7 @@
 					});
 					// 3个参数的名字可以随便命名,但必须是3个参数,少一个都不行
 			        function retrieveData( sSource111,aoData111, fnCallback111) {
+			        	$("html,body").animate({scrollTop:170}, 0);
 			            $.ajax({
 			                url : sSource111,//这个就是请求地址对应sAjaxSource
 			                data : {"aoData":JSON.stringify(aoData111)},//这个是把datatable的一些基本数据传给后台,比如起始位置,每页显示的行数

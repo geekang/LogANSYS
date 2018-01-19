@@ -9,6 +9,14 @@ import me.geekang.var.Var;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
+/**
+ * 
+ * @ClassName: Whitelist
+ * @Description:TODO
+ * @author: Geekang
+ * @date: 2018年1月19日 下午11:37:47
+ *
+ */
 public class Whitelist {
 
 	public static String tableAjax(String aoData) {
@@ -18,8 +26,10 @@ public class Whitelist {
 		Var.setBlackList(Dql.executeQuery("SELECT id,ip,method,ua,url,remarks FROM white_list"));
 
 		String sEcho = null;
-		int iDisplayStart = 0; // 起始索引
-		int iDisplayLength = 0; // 每页显示的行数
+		// 起始索引
+		int iDisplayStart = 0;
+		// 每页显示的行数
+		int iDisplayLength = 0;
 
 		for (int i = 0; i < jsonarray.size(); i++) {
 			JSONObject obj = (JSONObject) jsonarray.get(i);
@@ -53,7 +63,8 @@ public class Whitelist {
 		}
 
 		JSONObject getObj = new JSONObject();
-		getObj.put("sEcho", sEcho);// 不知道这个值有什么用,有知道的请告知一下
+		// 不知道这个值有什么用,有知道的请告知一下
+		getObj.put("sEcho", sEcho);
 		getObj.put("iTotalRecords", lst.size());// 实际的行数
 		getObj.put("iTotalDisplayRecords", lst.size());// 显示的行数,这个要和上面写的一样
 

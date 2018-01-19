@@ -19,7 +19,7 @@ public class Sum {
 
 		List<HashMap<String, String>> ipList = Dql
 				.executeQuery("SELECT c_ip FROM " + Var.getLastedTable());
-		HashMap<String, Integer> location = new HashMap<String, Integer>();
+		HashMap<String, Integer> location = new HashMap<String, Integer>(34);
 		location.put("北京",0);
 		location.put("天津",0);
 		location.put("上海",0);
